@@ -1,0 +1,2 @@
+'''use the wc simulator function to simulate the world cup results based on the csv data file per model
+this will be the backend of the app, which will be called by the frontend (html, css, js) to get the results and display them to the user'''
