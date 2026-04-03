@@ -533,6 +533,67 @@ header .trophy { font-size: 22px; }
 }
 .chart-tooltip-none { color: var(--muted); font-style: italic; }
 
+/* ── Bracket View ────────────────────────────────────────────────── */
+.bracket-wrap { overflow-x: auto; padding-bottom: 8px; }
+.bracket {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  align-items: stretch;
+  min-width: max-content;
+}
+.bk-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-shrink: 0;
+}
+.bk-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.bk-card {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.bk-card-final { border-color: var(--gold); }
+.bk-team {
+  padding: 6px 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: 11px;
+}
+.bk-team.winner { background: rgba(40,201,106,.15); color: var(--green); font-weight: 700; }
+.bk-team.loser  { color: var(--muted); }
+.bk-divider { height: 1px; background: var(--border); }
+.bk-card-multi { display: flex; flex-direction: column; justify-content: center; }
+.bk-freq-row {
+  display: flex;
+  align-items: center;
+  padding: 3px 7px;
+  gap: 5px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+}
+.bk-freq-row:last-child { border-bottom: none; }
+.bk-pct  { min-width: 32px; font-weight: 700; color: var(--gold); flex-shrink: 0; font-size: 11px; }
+.bk-match-teams { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+.bk-vs   { color: var(--muted); margin: 0 2px; }
+.bk-no-data { color: var(--muted); font-size: 11px; text-align: center; padding: 6px; }
+.bracket-labels { display: flex; gap: 20px; min-width: max-content; margin-top: 6px; }
+.bk-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--muted); text-align: center; flex-shrink: 0;
+}
+
 /* ── Podium sim table ────────────────────────────────────────────── */
 .sim-table-wrap { overflow-x: auto; max-height: 360px; overflow-y: auto; }
 .sim-table {
@@ -702,12 +763,8 @@ function renderSingle(d) {
   main.appendChild(sectionPodium(d.podium));
   main.appendChild(sectionGroups(d.groups));
   main.appendChild(sectionThirdQualifiers(d.third_place_qualifiers));
-  main.appendChild(sectionKO('Round of 32', d.r32));
-  main.appendChild(sectionKO('Round of 16', d.r16));
-  main.appendChild(sectionKO('Quarter-Finals', d.qf));
-  main.appendChild(sectionKO('Semi-Finals', d.sf));
+  main.appendChild(sectionBracket(d, false));
   main.appendChild(sectionKO('Third-Place Match', [d.third_place_match]));
-  main.appendChild(sectionKO('Final', [d.final]));
 }
 
 function sectionPodium(podium) {
@@ -802,12 +859,8 @@ function renderMulti(d) {
 
   main.appendChild(sectionProbTable(d.probabilities, d.n));
   main.appendChild(sectionGroupFrequencies(d.group_frequencies));
-  main.appendChild(sectionFreqKO('Round of 32',        d.bracket_top3.r32));
-  main.appendChild(sectionFreqKO('Round of 16',        d.bracket_top3.r16));
-  main.appendChild(sectionFreqKO('Quarter-Finals',     d.bracket_top3.qf));
-  main.appendChild(sectionFreqKO('Semi-Finals',        d.bracket_top3.sf));
+  main.appendChild(sectionBracket(d, true));
   main.appendChild(sectionFreqKO('Third-Place Match',  d.bracket_top3.third_place));
-  main.appendChild(sectionFreqKO('Final',              d.bracket_top3.final));
   main.appendChild(sectionTeamStageChart(d.team_stage_probs, d.team_stage_opponents));
   main.appendChild(sectionSimTable(d.podium_table));
 }
@@ -1015,6 +1068,200 @@ function renderTeamChart(team, teamStageProbs, teamStageOpponents) {
 
   wrap.innerHTML = '';
   wrap.appendChild(chart);
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  BRACKET VIEW
+// ═══════════════════════════════════════════════════════════════
+
+const BK_CARD_W_S = 155;   // single card width
+const BK_CARD_W_M = 175;   // multi card width
+const BK_CARD_H_S = 50;    // single card height
+const BK_CARD_H_M = 71;    // multi card height (3 rows)
+const BK_COL_GAP  = 20;    // gap between columns (connector runway)
+const BK_H_S      = 480;   // single bracket total height (8 × 60px slots)
+const BK_H_M      = 648;   // multi bracket total height  (8 × 81px slots)
+
+const BK_ROUND_LABELS = { r32: 'R32', r16: 'R16', qf: 'QF', sf: 'SF', final: 'Final' };
+
+function _bkSliceSingle(d) {
+  return {
+    r32:   { L: d.r32.slice(0, 8),              R: d.r32.slice(8, 16)            },
+    r16:   { L: d.r16.slice(0, 4),              R: d.r16.slice(4, 8)             },
+    qf:    { L: d.qf.slice(0, 2),               R: d.qf.slice(2, 4)              },
+    sf:    { L: [d.sf[0]],                       R: [d.sf[1]]                     },
+    final: d.final,
+  };
+}
+function _bkSliceMulti(d) {
+  const b = d.bracket_top3;
+  return {
+    r32:   { L: b.r32.slice(0, 8),              R: b.r32.slice(8, 16)            },
+    r16:   { L: b.r16.slice(0, 4),              R: b.r16.slice(4, 8)             },
+    qf:    { L: b.qf.slice(0, 2),               R: b.qf.slice(2, 4)              },
+    sf:    { L: [b.sf[0]],                       R: [b.sf[1]]                     },
+    final: b.final[0],
+  };
+}
+
+function sectionBracket(d, multi) {
+  const sec = el('div');
+  sec.innerHTML = `<div class="section-title">Tournament Bracket</div>`;
+
+  const slices = multi ? _bkSliceMulti(d) : _bkSliceSingle(d);
+  const bkH    = multi ? BK_H_M : BK_H_S;
+  const cardW  = multi ? BK_CARD_W_M : BK_CARD_W_S;
+  const cardH  = multi ? BK_CARD_H_M : BK_CARD_H_S;
+
+  const wrap = el('div', 'bracket-wrap');
+  const bk   = el('div', 'bracket');
+  bk.style.height = bkH + 'px';
+
+  // SVG overlay (drawn after layout)
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;';
+  bk.appendChild(svg);
+
+  const colOrder = ['r32', 'r16', 'qf', 'sf'];     // left: outer → inner
+  const colOrderR = ['sf', 'qf', 'r16', 'r32'];     // right: inner → outer
+
+  const labels = el('div', 'bracket-labels');
+
+  colOrder.forEach(r => {
+    bk.appendChild(_bkCol(slices[r].L, r, 'L', bkH, cardW, cardH, multi));
+    labels.appendChild(_bkLabelCell(BK_ROUND_LABELS[r], cardW));
+  });
+  bk.appendChild(_bkFinalCol(slices.final, bkH, cardW, cardH, multi));
+  labels.appendChild(_bkLabelCell(BK_ROUND_LABELS.final, cardW));
+  colOrderR.forEach(r => {
+    bk.appendChild(_bkCol(slices[r].R, r, 'R', bkH, cardW, cardH, multi));
+    labels.appendChild(_bkLabelCell(BK_ROUND_LABELS[r], cardW));
+  });
+
+  wrap.appendChild(bk);
+  wrap.appendChild(labels);
+  sec.appendChild(wrap);
+
+  requestAnimationFrame(() => _drawBkConnectors(bk, svg));
+  return sec;
+}
+
+function _bkLabelCell(text, w) {
+  const d = el('div', 'bk-label');
+  d.style.width = w + 'px';
+  d.textContent = text;
+  return d;
+}
+
+function _bkCol(matches, round, side, bkH, cardW, cardH, multi) {
+  const col = el('div', 'bk-col');
+  col.style.width = cardW + 'px';
+  matches.forEach((m, i) => {
+    const slot = el('div', 'bk-slot');
+    slot.style.height = (bkH / matches.length) + 'px';
+    const card = multi ? _bkCardMulti(m, round, side, i, cardH) : _bkCardSingle(m, round, side, i, cardH);
+    slot.appendChild(card);
+    col.appendChild(slot);
+  });
+  return col;
+}
+
+function _bkFinalCol(match, bkH, cardW, cardH, multi) {
+  const col = el('div', 'bk-col');
+  col.style.width = cardW + 'px';
+  const slot = el('div', 'bk-slot');
+  slot.style.height = bkH + 'px';
+  const card = multi ? _bkCardMulti(match, 'final', 'C', 0, cardH) : _bkCardSingle(match, 'final', 'C', 0, cardH);
+  card.classList.add('bk-card-final');
+  slot.appendChild(card);
+  col.appendChild(slot);
+  return col;
+}
+
+function _bkCardSingle(m, round, side, idx, cardH) {
+  const card = el('div', 'bk-card');
+  card.dataset.bk = `${side}-${round}-${idx}`;
+  card.style.height = cardH + 'px';
+  const isT1 = m.winner === m.t1;
+  card.innerHTML = `
+    <div class="bk-team ${isT1 ? 'winner' : 'loser'}">${m.t1}</div>
+    <div class="bk-divider"></div>
+    <div class="bk-team ${!isT1 ? 'winner' : 'loser'}">${m.t2}</div>
+  `;
+  return card;
+}
+
+function _bkCardMulti(rows, round, side, idx, cardH) {
+  const card = el('div', 'bk-card bk-card-multi');
+  card.dataset.bk = `${side}-${round}-${idx}`;
+  card.style.height = cardH + 'px';
+  if (!rows || !rows.length) {
+    card.innerHTML = `<div class="bk-no-data">—</div>`;
+    return card;
+  }
+  card.innerHTML = rows.map(r =>
+    `<div class="bk-freq-row">
+       <span class="bk-pct">${r.pct}%</span>
+       <span class="bk-match-teams">${r.t1}<span class="bk-vs">vs</span>${r.t2}</span>
+     </div>`
+  ).join('');
+  return card;
+}
+
+function _drawBkConnectors(bk, svg) {
+  const bkRect = bk.getBoundingClientRect();
+
+  function pos(id) {
+    const node = bk.querySelector(`[data-bk="${id}"]`);
+    if (!node) return null;
+    const r = node.getBoundingClientRect();
+    return {
+      left:  r.left  - bkRect.left,
+      right: r.right - bkRect.left,
+      cy:    r.top   - bkRect.top + r.height / 2,
+    };
+  }
+
+  const S  = 'stroke="#3a4a6a" stroke-width="1.5" fill="none"';
+  const lines = [];
+
+  // Pair connections within one side (0-based local indices, same pattern L & R)
+  const pairs = [
+    ...Array.from({length: 4}, (_, k) => [`r32-${2*k}`, `r32-${2*k+1}`, `r16-${k}`]),
+    ...Array.from({length: 2}, (_, k) => [`r16-${2*k}`, `r16-${2*k+1}`, `qf-${k}`]),
+    ['qf-0', 'qf-1', 'sf-0'],
+  ];
+
+  ['L', 'R'].forEach(side => {
+    const left = side === 'L';
+
+    pairs.forEach(([c1id, c2id, pid]) => {
+      const c1 = pos(`${side}-${c1id}`);
+      const c2 = pos(`${side}-${c2id}`);
+      const p  = pos(`${side}-${pid}`);
+      if (!c1 || !c2 || !p) return;
+
+      // midX sits in the column gap between children and parent
+      const midX = left ? (c1.right + p.left) / 2 : (c1.left + p.right) / 2;
+      const cx   = left ? 'right' : 'left';
+      const px   = left ? 'left'  : 'right';
+
+      lines.push(`<line ${S} x1="${c1[cx]}" y1="${c1.cy}" x2="${midX}" y2="${c1.cy}" />`);
+      lines.push(`<line ${S} x1="${c2[cx]}" y1="${c2.cy}" x2="${midX}" y2="${c2.cy}" />`);
+      lines.push(`<line ${S} x1="${midX}"   y1="${c1.cy}" x2="${midX}" y2="${c2.cy}" />`);
+      lines.push(`<line ${S} x1="${midX}"   y1="${p.cy}"  x2="${p[px]}" y2="${p.cy}" />`);
+    });
+
+    // SF → Final
+    const sf  = pos(`${side}-sf-0`);
+    const fin = pos('C-final-0');
+    if (sf && fin) {
+      const fx = left ? fin.left : fin.right;
+      lines.push(`<line ${S} x1="${left ? sf.right : sf.left}" y1="${sf.cy}" x2="${fx}" y2="${fin.cy}" />`);
+    }
+  });
+
+  svg.innerHTML = `<g>${lines.join('')}</g>`;
 }
 
 function sectionSimTable(rows) {
