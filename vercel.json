@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 60,
+      "includeFiles": "src/**|data/**|frontend/**"
+    }
+  },
+  "routes": [
+    { "src": "/api/(.*)", "dest": "api/index.py" },
+    { "src": "/(.*)",     "dest": "api/index.py" }
+  ]
+}

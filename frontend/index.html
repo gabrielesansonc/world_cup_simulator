@@ -598,7 +598,10 @@ header .trophy { font-size: 22px; }
   border-radius: var(--radius);
   overflow: hidden;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
+.bk-card .bk-team { flex: 1; display: flex; align-items: center; }
 .bk-card-final { border-color: var(--gold); }
 .bk-team {
   padding: 6px 8px;
@@ -608,7 +611,7 @@ header .trophy { font-size: 22px; }
   font-weight: 500;
   font-size: 11px;
 }
-.bk-team.winner { background: rgba(40,201,106,.15); color: var(--green); font-weight: 700; }
+.bk-team.winner { color: var(--green); font-weight: 700; }
 .bk-team.loser  { color: var(--muted); }
 .bk-divider { height: 1px; background: var(--border); }
 .bk-card-multi { display: flex; flex-direction: column; justify-content: center; }
@@ -660,6 +663,8 @@ header .trophy { font-size: 22px; }
 .sim-table tr:hover td { background: var(--surface2); }
 .sim-table td:first-child { color: var(--muted); }
 </style>
+<!-- Vercel Web Analytics — enable in Vercel dashboard → Analytics tab -->
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -890,7 +895,6 @@ function renderMulti(d) {
   main.appendChild(sectionBracket(d, true));
   main.appendChild(sectionFreqKO('Third-Place Match',  d.bracket_top3.third_place));
   main.appendChild(sectionTeamStageChart(d.team_stage_probs, d.team_stage_opponents));
-  main.appendChild(sectionSimTable(d.podium_table));
 }
 
 function sectionProbTable(probs, n) {

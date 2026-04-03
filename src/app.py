@@ -3,10 +3,14 @@ app.py — Flask backend for the World Cup 2026 Simulator frontend.
 Serves the static HTML frontend and exposes three JSON endpoints.
 """
 
+import logging
 import os
 import sys
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
@@ -60,7 +64,9 @@ def simulate_single():
         seed = int(seed)
 
     csv_path = os.path.join(DATA_DIR, f"wc_2026_match_probabilities_{model}.csv")
+    t0 = time.time()
     result = simulate_world_cup_full(csv_path, seed=seed, temperature=temperature)
+    logging.info("SINGLE model=%s seed=%s temp=%s elapsed=%.2fs", model, seed, temperature, time.time() - t0)
     return jsonify(result)
 
 
@@ -77,6 +83,7 @@ def simulate_multiple():
         return jsonify({"error": "Invalid model"}), 400
 
     csv_path = os.path.join(DATA_DIR, f"wc_2026_match_probabilities_{model}.csv")
+    t0 = time.time()
 
     podium_table  = []
     podium_counts = {"champion": {}, "runner_up": {}, "third": {}, "fourth": {}}
@@ -256,6 +263,7 @@ def simulate_multiple():
                 for opp, cnt in top3
             ]
 
+    logging.info("MULTI model=%s n=%d temp=%s elapsed=%.2fs", model, n, temperature, time.time() - t0)
     return jsonify({
         "n":                    n,
         "podium_table":         podium_table,
