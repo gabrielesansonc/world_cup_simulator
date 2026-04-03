@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>World Cup 2026 Simulator</title>
+<style>
+/* ── Reset & Base ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0b0f1e;
+  --surface:   #131929;
+  --surface2:  #1c2540;
+  --border:    #263050;
+  --text:      #e4eaf7;
+  --muted:     #7a8baa;
+  --gold:      #f5c842;
+  --gold-dim:  #b89420;
+  --green:     #28c96a;
+  --green-dim: #1a7a40;
+  --blue:      #4a9eff;
+  --red:       #f05454;
+  --radius:    8px;
+  --shadow:    0 2px 12px rgba(0,0,0,.45);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: .02em;
+}
+header .trophy { font-size: 22px; }
+
+/* ── Layout ─────────────────────────────────────────────────────── */
+.layout { display: flex; min-height: calc(100vh - 57px); }
+
+/* ── Sidebar / Controls ─────────────────────────────────────────── */
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mode-tabs {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.mode-tab {
+  flex: 1;
+  padding: 9px 6px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background .15s, color .15s;
+}
+.mode-tab.active {
+  background: var(--gold);
+  color: #000;
+}
+.mode-tab:not(.active):hover { background: var(--surface2); color: var(--text); }
+
+.ctrl-group { display: flex; flex-direction: column; gap: 6px; }
+.ctrl-group label { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+.ctrl-group select,
+.ctrl-group input[type=number],
+.ctrl-group input[type=range] {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  padding: 8px 10px;
+  font-size: 13px;
+  width: 100%;
+  outline: none;
+  transition: border-color .15s;
+}
+.ctrl-group select:focus,
+.ctrl-group input[type=number]:focus { border-color: var(--gold); }
+.ctrl-group input[type=range] { padding: 4px 0; accent-color: var(--gold); cursor: pointer; }
+
+.temp-label { display: flex; justify-content: space-between; }
+.temp-hint { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+.btn-run {
+  background: var(--gold);
+  color: #000;
+  border: none;
+  border-radius: var(--radius);
+  padding: 11px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity .15s;
+  letter-spacing: .02em;
+}
+.btn-run:hover { opacity: .88; }
+.btn-run:disabled { opacity: .45; cursor: not-allowed; }
+
+.sidebar-only-single { display: flex; flex-direction: column; gap: 6px; }
+.sidebar-only-multi  { display: flex; flex-direction: column; gap: 6px; }
+
+/* ── Main content ────────────────────────────────────────────────── */
+.main {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── States ─────────────────────────────────────────────────────── */
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+.empty-state .big-icon { font-size: 52px; }
+.empty-state h2 { font-size: 18px; color: var(--text); }
+
+.spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Section titles ─────────────────────────────────────────────── */
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--gold);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+
+/* ── Podium ─────────────────────────────────────────────────────── */
+.podium {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.podium-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.podium-card.p1 { border-color: var(--gold); }
+.podium-card.p2 { border-color: #aab0c0; }
+.podium-card.p3 { border-color: #c08050; }
+.podium-rank { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.podium-card.p1 .podium-rank { color: var(--gold); }
+.podium-team { font-size: 16px; font-weight: 700; }
+.podium-card.p1 .podium-team { font-size: 18px; }
+
+/* ── Group cards ─────────────────────────────────────────────────── */
+.groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.group-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.group-header {
+  background: var(--surface);
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--gold);
+  border-bottom: 1px solid var(--border);
+}
+.group-table { width: 100%; border-collapse: collapse; }
+.group-table th {
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 5px 8px;
+  text-align: right;
+  font-weight: 600;
+}
+.group-table th:first-child { text-align: left; }
+.group-table td {
+  padding: 6px 8px;
+  text-align: right;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+}
+.group-table td:first-child { text-align: left; font-weight: 500; }
+.group-table tr.qualified td { color: var(--green); }
+.group-table tr.q3 td { color: #f5a623; }
+
+/* ── 3rd place qualifiers ────────────────────────────────────────── */
+.third-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.third-pill {
+  background: var(--surface2);
+  border: 1px solid #f5a623;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #f5a623;
+}
+.third-pill span { color: var(--muted); font-weight: 400; margin-left: 4px; }
+
+/* ── Knockout rounds ─────────────────────────────────────────────── */
+.ko-round { margin-bottom: 6px; }
+.ko-round-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+}
+.match-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-size: 13px;
+}
+.match-team {
+  flex: 1;
+  padding: 9px 12px;
+  font-weight: 500;
+  transition: background .1s;
+}
+.match-team.winner {
+  background: rgba(40,201,106,.15);
+  color: var(--green);
+  font-weight: 700;
+}
+.match-vs {
+  padding: 0 8px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.match-team.t2 { text-align: right; }
+
+/* ── Frequency bracket (multi-run) ──────────────────────────────── */
+.freq-matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+}
+.freq-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.freq-card-title {
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 2px;
+}
+.freq-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.freq-pct {
+  min-width: 38px;
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 12px;
+}
+.freq-teams {
+  flex: 1;
+  color: var(--text);
+}
+.freq-teams .sep { color: var(--muted); margin: 0 4px; }
+
+/* ── Group freq cards (multi-run) ───────────────────────────────── */
+.grp-freq-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.grp-freq-header {
+  background: var(--surface);
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--gold);
+  border-bottom: 1px solid var(--border);
+}
+.grp-freq-table { width: 100%; border-collapse: collapse; }
+.grp-freq-table td {
+  padding: 5px 10px;
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+}
+.grp-freq-table td:first-child {
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 11px;
+  width: 28px;
+  text-transform: uppercase;
+}
+.freq-team-row { display: flex; gap: 4px; flex-wrap: wrap; }
+.freq-team-badge {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.freq-team-badge .pct { color: var(--gold); font-weight: 700; margin-left: 3px; }
+
+/* ── Probability table ───────────────────────────────────────────── */
+.prob-table-wrap { overflow-x: auto; }
+.prob-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px;
+}
+.prob-table th {
+  padding: 8px 12px;
+  text-align: right;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.prob-table th:first-child { text-align: left; }
+.prob-table td {
+  padding: 7px 12px;
+  text-align: right;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+}
+.prob-table td:first-child { text-align: left; font-weight: 600; }
+.prob-table tr:hover td { background: var(--surface2); }
+.prob-cell { font-weight: 700; }
+.prob-cell.hi  { color: var(--green); }
+.prob-cell.mid { color: var(--gold); }
+.prob-cell.lo  { color: var(--muted); }
+.prob-cell.zero { color: var(--border); }
+
+/* ── Team stage chart ────────────────────────────────────────────── */
+.team-chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.team-chart-controls label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.team-chart-controls select {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  padding: 8px 12px;
+  font-size: 13px;
+  outline: none;
+  min-width: 200px;
+  transition: border-color .15s;
+}
+.team-chart-controls select:focus { border-color: var(--gold); }
+
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 640px;
+}
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bar-label {
+  width: 130px;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.bar-track {
+  flex: 1;
+  height: 28px;
+  background: var(--surface2);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width .4s ease;
+  min-width: 2px;
+}
+.bar-pct {
+  width: 46px;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+.bar-empty { color: var(--muted); font-style: italic; font-size: 13px; }
+
+.bar-row { cursor: default; }
+.bar-row:hover .bar-track { outline: 1px solid var(--gold); }
+
+/* tooltip */
+.chart-tooltip {
+  position: fixed;
+  z-index: 999;
+  background: #1e2a45;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .12s;
+  min-width: 180px;
+  box-shadow: var(--shadow);
+}
+.chart-tooltip.visible { opacity: 1; }
+.chart-tooltip-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--gold);
+  margin-bottom: 7px;
+}
+.chart-tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 2px 0;
+  color: var(--text);
+}
+.chart-tooltip-row .opp-pct {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.chart-tooltip-none { color: var(--muted); font-style: italic; }
+
+/* ── Podium sim table ────────────────────────────────────────────── */
+.sim-table-wrap { overflow-x: auto; max-height: 360px; overflow-y: auto; }
+.sim-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 400px;
+}
+.sim-table th {
+  padding: 7px 10px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.sim-table td {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.sim-table tr:hover td { background: var(--surface2); }
+.sim-table td:first-child { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="trophy">🏆</span>
+  <h1>World Cup 2026 Simulator</h1>
+</header>
+
+<div class="layout">
+
+  <!-- ── Sidebar ───────────────────────────────────────────────── -->
+  <aside class="sidebar">
+
+    <div class="mode-tabs">
+      <button class="mode-tab active" id="tab-single" onclick="setMode('single')">Single Run</button>
+      <button class="mode-tab"        id="tab-multi"  onclick="setMode('multi')">Multi Run</button>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Model</label>
+      <select id="sel-model">
+        <option value="">Loading…</option>
+      </select>
+    </div>
+
+    <!-- Single-only controls -->
+    <div id="single-controls" class="sidebar-only-single">
+      <div class="ctrl-group">
+        <label>Seed (optional)</label>
+        <input type="number" id="inp-seed" placeholder="Random" min="0" />
+      </div>
+    </div>
+
+    <!-- Multi-only controls -->
+    <div id="multi-controls" class="sidebar-only-multi" style="display:none">
+      <div class="ctrl-group">
+        <label>Number of simulations</label>
+        <input type="number" id="inp-n" value="100" min="10" max="100000" step="10" />
+      </div>
+    </div>
+
+    <div class="ctrl-group">
+      <div class="temp-label">
+        <label>Temperature</label>
+        <span id="temp-val" style="font-size:13px;color:var(--gold)">1.0</span>
+      </div>
+      <input type="range" id="inp-temp" min="0.1" max="2.0" step="0.1" value="1.0"
+             oninput="document.getElementById('temp-val').textContent=parseFloat(this.value).toFixed(1)" />
+      <div class="temp-hint">↓ favours winners · 1.0 = raw · ↑ more upsets</div>
+    </div>
+
+    <button class="btn-run" id="btn-run" onclick="run()">▶  Run Simulation</button>
+
+  </aside>
+
+  <!-- ── Main ──────────────────────────────────────────────────── -->
+  <main class="main" id="main">
+    <div class="empty-state">
+      <div class="big-icon">⚽</div>
+      <h2>Ready to simulate</h2>
+      <p>Choose a model and hit Run.</p>
+    </div>
+  </main>
+
+</div>
+
+<script>
+// ── State ────────────────────────────────────────────────────────
+let mode = 'single';
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('tab-single').classList.toggle('active', m === 'single');
+  document.getElementById('tab-multi').classList.toggle('active',  m === 'multi');
+  document.getElementById('single-controls').style.display = m === 'single' ? 'flex' : 'none';
+  document.getElementById('multi-controls').style.display  = m === 'multi'  ? 'flex' : 'none';
+}
+
+// ── Bootstrap ────────────────────────────────────────────────────
+async function init() {
+  try {
+    const res   = await fetch('/api/models');
+    const models = await res.json();
+    const sel   = document.getElementById('sel-model');
+    sel.innerHTML = models.map(m =>
+      `<option value="${m.id}">${m.name}</option>`
+    ).join('');
+  } catch (e) {
+    console.error('Failed to load models', e);
+  }
+}
+init();
+
+// ── Run ──────────────────────────────────────────────────────────
+async function run() {
+  const btn   = document.getElementById('btn-run');
+  const main  = document.getElementById('main');
+  const model = document.getElementById('sel-model').value;
+  const temp  = parseFloat(document.getElementById('inp-temp').value);
+
+  btn.disabled = true;
+  main.innerHTML = `<div class="empty-state"><div class="spinner"></div><p>Simulating…</p></div>`;
+
+  try {
+    if (mode === 'single') {
+      const seedRaw = document.getElementById('inp-seed').value.trim();
+      const body = { model, temperature: temp };
+      if (seedRaw !== '') body.seed = parseInt(seedRaw);
+      const res  = await fetch('/api/simulate/single', {
+        method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body)
+      });
+      const data = await res.json();
+      renderSingle(data);
+    } else {
+      const n = parseInt(document.getElementById('inp-n').value) || 100;
+      const res = await fetch('/api/simulate/multiple', {
+        method: 'POST', headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ model, n, temperature: temp })
+      });
+      const data = await res.json();
+      renderMulti(data);
+    }
+  } catch (e) {
+    main.innerHTML = `<div class="empty-state"><p style="color:var(--red)">Error: ${e.message}</p></div>`;
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  SINGLE SIMULATION RENDER
+// ═══════════════════════════════════════════════════════════════
+
+function renderSingle(d) {
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+
+  main.appendChild(sectionPodium(d.podium));
+  main.appendChild(sectionGroups(d.groups));
+  main.appendChild(sectionThirdQualifiers(d.third_place_qualifiers));
+  main.appendChild(sectionKO('Round of 32', d.r32));
+  main.appendChild(sectionKO('Round of 16', d.r16));
+  main.appendChild(sectionKO('Quarter-Finals', d.qf));
+  main.appendChild(sectionKO('Semi-Finals', d.sf));
+  main.appendChild(sectionKO('Third-Place Match', [d.third_place_match]));
+  main.appendChild(sectionKO('Final', [d.final]));
+}
+
+function sectionPodium(podium) {
+  const sec = el('div');
+  sec.innerHTML = `<div class="section-title">Final Results</div>`;
+  const pod = el('div', 'podium');
+  const places = [
+    { cls: 'p1', rank: '🥇 Champion',   team: podium.champion },
+    { cls: 'p2', rank: '🥈 Runner-up',  team: podium.runner_up },
+    { cls: 'p3', rank: '🥉 Third Place',team: podium.third },
+    { cls: '',   rank: '4th Place',      team: podium.fourth },
+  ];
+  places.forEach(p => {
+    const card = el('div', `podium-card ${p.cls}`);
+    card.innerHTML = `<div class="podium-rank">${p.rank}</div><div class="podium-team">${p.team}</div>`;
+    pod.appendChild(card);
+  });
+  sec.appendChild(pod);
+  return sec;
+}
+
+function sectionGroups(groups) {
+  const sec = el('div');
+  sec.innerHTML = `<div class="section-title">Group Stage</div>`;
+  const grid = el('div', 'groups-grid');
+  const groupOrder = 'ABCDEFGHIJKL'.split('');
+  groupOrder.forEach(g => {
+    if (!groups[g]) return;
+    const gd = groups[g];
+    const card = el('div', 'group-card');
+    card.innerHTML = `<div class="group-header">Group ${g}</div>`;
+    const tbl = el('table', 'group-table');
+    tbl.innerHTML = `
+      <thead><tr>
+        <th>Team</th><th>Pts</th><th>GF</th><th>GA</th><th>GD</th>
+      </tr></thead>
+    `;
+    const tbody = el('tbody');
+    gd.standings.forEach(s => {
+      const tr = el('tr');
+      if (s.rank <= 2) tr.classList.add('qualified');
+      else if (s.rank === 3) tr.classList.add('q3');
+      tr.innerHTML = `<td>${s.team}</td><td>${s.pts}</td><td>${s.gf}</td><td>${s.ga}</td><td>${s.gd > 0 ? '+' : ''}${s.gd}</td>`;
+      tbody.appendChild(tr);
+    });
+    tbl.appendChild(tbody);
+    card.appendChild(tbl);
+    grid.appendChild(card);
+  });
+  sec.appendChild(grid);
+  return sec;
+}
+
+function sectionThirdQualifiers(thirds) {
+  const sec = el('div');
+  sec.innerHTML = `<div class="section-title">3rd-Place Qualifiers (Best 8 of 12)</div>`;
+  const grid = el('div', 'third-grid');
+  thirds.forEach((t, i) => {
+    const pill = el('div', 'third-pill');
+    pill.innerHTML = `${i + 1}. ${t.team}<span>Grp ${t.group} · ${t.pts}pts · GD ${t.gd > 0 ? '+' : ''}${t.gd}</span>`;
+    grid.appendChild(pill);
+  });
+  sec.appendChild(grid);
+  return sec;
+}
+
+function sectionKO(title, matches) {
+  const sec = el('div', 'ko-round');
+  sec.innerHTML = `<div class="section-title">${title}</div>`;
+  const grid = el('div', 'matches-grid');
+  matches.forEach((m, i) => {
+    const card = el('div', 'match-card');
+    const isT1 = m.winner === m.t1;
+    card.innerHTML = `
+      <div class="match-team t1${isT1 ? ' winner' : ''}">${m.t1}</div>
+      <div class="match-vs">vs</div>
+      <div class="match-team t2${!isT1 ? ' winner' : ''}">${m.t2}</div>
+    `;
+    grid.appendChild(card);
+  });
+  sec.appendChild(grid);
+  return sec;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  MULTI SIMULATION RENDER
+// ═══════════════════════════════════════════════════════════════
+
+function renderMulti(d) {
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+
+  main.appendChild(sectionProbTable(d.probabilities, d.n));
+  main.appendChild(sectionGroupFrequencies(d.group_frequencies));
+  main.appendChild(sectionFreqKO('Round of 32',        d.bracket_top3.r32));
+  main.appendChild(sectionFreqKO('Round of 16',        d.bracket_top3.r16));
+  main.appendChild(sectionFreqKO('Quarter-Finals',     d.bracket_top3.qf));
+  main.appendChild(sectionFreqKO('Semi-Finals',        d.bracket_top3.sf));
+  main.appendChild(sectionFreqKO('Third-Place Match',  d.bracket_top3.third_place));
+  main.appendChild(sectionFreqKO('Final',              d.bracket_top3.final));
+  main.appendChild(sectionTeamStageChart(d.team_stage_probs, d.team_stage_opponents));
+  main.appendChild(sectionSimTable(d.podium_table));
+}
+
+function sectionProbTable(probs, n) {
+  const sec = el('div');
+  sec.innerHTML = `<div class="section-title">Podium Probabilities — ${n} simulations (teams with ≥ 1%)</div>`;
+  const wrap = el('div', 'prob-table-wrap');
+  if (!probs.length) {
+    wrap.textContent = 'No data.';
+    sec.appendChild(wrap);
+    return sec;
+  }
+  const tbl = el('table', 'prob-table');
+  tbl.innerHTML = `
+    <thead><tr>
+      <th>Team</th>
+      <th>Champion</th><th>Runner-up</th><th>3rd</th><th>4th</th><th>Top 4</th>
+    </tr></thead>
+  `;
+  const tbody = el('tbody');
+  probs.forEach(p => {
+    const tr = el('tr');
+    tr.innerHTML = `
+      <td>${p.team}</td>
+      ${pctCell(p.champion)}
+      ${pctCell(p.runner_up)}
+      ${pctCell(p.third)}
+      ${pctCell(p.fourth)}
+      ${pctCell(p.top4)}
+    `;
+    tbody.appendChild(tr);
+  });
+  tbl.appendChild(tbody);
+  wrap.appendChild(tbl);
+  sec.appendChild(wrap);
+  return sec;
+}
+
+function pctCell(v) {
+  const cls = v === 0 ? 'zero' : v >= 20 ? 'hi' : v >= 5 ? 'mid' : 'lo';
+  return `<td><span class="prob-cell ${cls}">${v > 0 ? v + '%' : '—'}</span></td>`;
+}
+
+function sectionGroupFrequencies(gf) {
+  const sec = el('div');
+  sec.innerHTML = `<div class="section-title">Group Stage — Most Likely Finishes</div>`;
+  const grid = el('div', 'groups-grid');
+  'ABCDEFGHIJKL'.split('').forEach(g => {
+    if (!gf[g]) return;
+    const card = el('div', 'grp-freq-card');
+    card.innerHTML = `<div class="grp-freq-header">Group ${g}</div>`;
+    const tbl = el('table', 'grp-freq-table');
+    const tbody = el('tbody');
+    ['1','2','3','4'].forEach(pos => {
+      const teams = gf[g][pos] || [];
+      const tr = el('tr');
+      const badges = teams.map(t =>
+        `<span class="freq-team-badge">${t.team}<span class="pct">${t.pct}%</span></span>`
+      ).join('');
+      tr.innerHTML = `<td>${pos}${pos==='1'?'st':pos==='2'?'nd':pos==='3'?'rd':'th'}</td><td><div class="freq-team-row">${badges}</div></td>`;
+      tbody.appendChild(tr);
+    });
+    tbl.appendChild(tbody);
+    card.appendChild(tbl);
+    grid.appendChild(card);
+  });
+  sec.appendChild(grid);
+  return sec;
+}
+
+function sectionFreqKO(title, slots) {
+  const sec = el('div', 'ko-round');
+  sec.innerHTML = `<div class="section-title">${title}</div>`;
+  const grid = el('div', 'freq-matches-grid');
+  slots.forEach((top3, i) => {
+    const card = el('div', 'freq-card');
+    card.innerHTML = `<div class="freq-card-title">Match ${i + 1}</div>`;
+    if (!top3.length) {
+      card.innerHTML += `<div style="color:var(--muted);font-size:12px">No data</div>`;
+    } else {
+      top3.forEach(row => {
+        const r = el('div', 'freq-row');
+        r.innerHTML = `
+          <span class="freq-pct">${row.pct}%</span>
+          <span class="freq-teams">${row.t1}<span class="sep">vs</span>${row.t2}</span>
+        `;
+        card.appendChild(r);
+      });
+    }
+    grid.appendChild(card);
+  });
+  sec.appendChild(grid);
+  return sec;
+}
+
+// ── Stage colours (groups→final) ────────────────────────────────
+const STAGE_COLORS = {
+  groups: '#f05454',
+  r32:    '#f5a623',
+  r16:    '#f5c842',
+  qf:     '#a3e048',
+  sf:     '#4a9eff',
+  final:  '#28c96a',
+};
+const STAGE_LABELS = {
+  groups: 'Group Stage',
+  r32:    'Round of 32',
+  r16:    'Round of 16',
+  qf:     'Quarter-Finals',
+  sf:     'Semi-Finals',
+  final:  'Final',
+};
+
+// ── Shared tooltip element ───────────────────────────────────────
+const _tooltip = el('div', 'chart-tooltip');
+document.addEventListener('DOMContentLoaded', () => document.body.appendChild(_tooltip));
+// also append immediately in case DOMContentLoaded already fired
+document.body.appendChild(_tooltip);
+
+function _showTooltip(e, stage, opponents) {
+  const opps = opponents || [];
+  _tooltip.innerHTML = `
+    <div class="chart-tooltip-title">Top opponents — ${STAGE_LABELS[stage]}</div>
+    ${opps.length
+      ? opps.map(o => `
+          <div class="chart-tooltip-row">
+            <span>${o.team}</span>
+            <span class="opp-pct">${o.pct}% of sims</span>
+          </div>`).join('')
+      : '<div class="chart-tooltip-none">No data</div>'
+    }
+  `;
+  _positionTooltip(e);
+  _tooltip.classList.add('visible');
+}
+
+function _positionTooltip(e) {
+  const x = e.clientX + 16;
+  const y = e.clientY - 10;
+  const tw = _tooltip.offsetWidth  || 200;
+  const th = _tooltip.offsetHeight || 80;
+  _tooltip.style.left = (x + tw > window.innerWidth  ? e.clientX - tw - 8 : x) + 'px';
+  _tooltip.style.top  = (y + th > window.innerHeight ? e.clientY - th - 8 : y) + 'px';
+}
+
+function _hideTooltip() { _tooltip.classList.remove('visible'); }
+
+function sectionTeamStageChart(teamStageProbs, teamStageOpponents) {
+  const sec = el('div');
+  sec.innerHTML = `<div class="section-title">Team Elimination Stage</div>`;
+
+  const teams = Object.keys(teamStageProbs).sort();
+
+  const ctrl = el('div', 'team-chart-controls');
+  ctrl.innerHTML = `
+    <label>Select Team</label>
+    <select id="team-stage-sel">
+      <option value="">— choose a team —</option>
+      ${teams.map(t => `<option value="${t}">${t}</option>`).join('')}
+    </select>
+  `;
+  sec.appendChild(ctrl);
+
+  const chartWrap = el('div');
+  chartWrap.id = 'team-stage-chart';
+  chartWrap.innerHTML = `<div class="bar-empty">Select a team to see their elimination probability by stage.</div>`;
+  sec.appendChild(chartWrap);
+
+  ctrl.querySelector('#team-stage-sel').addEventListener('change', function () {
+    renderTeamChart(this.value, teamStageProbs, teamStageOpponents);
+  });
+
+  return sec;
+}
+
+function renderTeamChart(team, teamStageProbs, teamStageOpponents) {
+  const wrap = document.getElementById('team-stage-chart');
+  if (!team) {
+    wrap.innerHTML = `<div class="bar-empty">Select a team to see their elimination probability by stage.</div>`;
+    return;
+  }
+  const stages  = ['groups', 'r32', 'r16', 'qf', 'sf', 'final'];
+  const data    = teamStageProbs[team]    || {};
+  const oppData = teamStageOpponents[team] || {};
+  const maxPct  = Math.max(...stages.map(s => data[s] || 0), 1);
+
+  const chart = el('div', 'bar-chart');
+  stages.forEach(s => {
+    const pct  = data[s] || 0;
+    const opps = oppData[s] || [];
+    const row  = el('div', 'bar-row');
+    row.innerHTML = `
+      <div class="bar-label">${STAGE_LABELS[s]}</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:${(pct / maxPct * 100).toFixed(1)}%;background:${STAGE_COLORS[s]}"></div>
+      </div>
+      <div class="bar-pct">${pct > 0 ? pct + '%' : '—'}</div>
+    `;
+    row.addEventListener('mouseenter', e => _showTooltip(e, s, opps));
+    row.addEventListener('mousemove',  e => _positionTooltip(e));
+    row.addEventListener('mouseleave', _hideTooltip);
+    chart.appendChild(row);
+  });
+
+  wrap.innerHTML = '';
+  wrap.appendChild(chart);
+}
+
+function sectionSimTable(rows) {
+  const sec = el('div');
+  sec.innerHTML = `<div class="section-title">All Simulation Results</div>`;
+  const wrap = el('div', 'sim-table-wrap');
+  const tbl  = el('table', 'sim-table');
+  tbl.innerHTML = `
+    <thead><tr>
+      <th>#</th><th>Champion</th><th>Runner-up</th><th>3rd</th><th>4th</th>
+    </tr></thead>
+  `;
+  const tbody = el('tbody');
+  rows.forEach(r => {
+    const tr = el('tr');
+    tr.innerHTML = `<td>${r.sim}</td><td>${r.champion}</td><td>${r.runner_up}</td><td>${r.third}</td><td>${r.fourth}</td>`;
+    tbody.appendChild(tr);
+  });
+  tbl.appendChild(tbody);
+  wrap.appendChild(tbl);
+  sec.appendChild(wrap);
+  return sec;
+}
+
+// ── Utility ──────────────────────────────────────────────────────
+function el(tag, cls = '') {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  return e;
+}
+</script>
+
+</body>
+</html>

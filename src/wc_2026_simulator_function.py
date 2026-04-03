@@ -411,6 +411,173 @@ def simulate_world_cup(
     }
 
 
+# ─── Full-Data Simulation (for frontend) ─────────────────────────────────────
+
+def _simulate_group_full(teams: list[str], probs: dict) -> tuple[list[dict], list[dict]]:
+    """
+    Like _simulate_group but returns (standings, matches) without printing.
+    matches: list of {t1, g1, t2, g2}
+    standings: list of {team, pts, gf, ga}  sorted best→worst
+    """
+    rec = {t: {"team": t, "pts": 0, "gf": 0, "ga": 0} for t in teams}
+    match_pairs = [(teams[i], teams[j]) for i in range(4) for j in range(i + 1, 4)]
+    matches_out = []
+
+    for t1, t2 in match_pairs:
+        result = _sim_group_match(probs, t1, t2)
+        g1, g2 = _rand_scoreline(result)
+
+        if result == "team1":
+            rec[t1]["pts"] += 3
+        elif result == "team2":
+            rec[t2]["pts"] += 3
+        else:
+            rec[t1]["pts"] += 1
+            rec[t2]["pts"] += 1
+
+        rec[t1]["gf"] += g1;  rec[t1]["ga"] += g2
+        rec[t2]["gf"] += g2;  rec[t2]["ga"] += g1
+        matches_out.append({"t1": t1, "g1": g1, "t2": t2, "g2": g2})
+
+    standings = sorted(
+        rec.values(),
+        key=lambda r: (-r["pts"], -(r["gf"] - r["ga"]), -r["gf"], random.random()),
+    )
+    return list(standings), matches_out
+
+
+def simulate_world_cup_full(
+    csv_path: str,
+    seed: Optional[int] = None,
+    temperature: float = 1.0,
+) -> dict:
+    """
+    Simulate the full 2026 FIFA World Cup and return complete bracket data.
+
+    Returns a dict with:
+      groups, third_place_qualifiers, r32, r16, qf, sf,
+      third_place_match, final, podium
+    """
+    if seed is not None:
+        random.seed(seed)
+
+    probs = load_probabilities(csv_path)
+    probs = _apply_temperature(probs, temperature)
+
+    # ── Group Stage ─────────────────────────────────────────────────────────
+    group_data: dict = {}
+    group_standings: dict = {}
+    for grp, teams in GROUPS.items():
+        standings, matches = _simulate_group_full(teams, probs)
+        group_standings[grp] = standings
+        group_data[grp] = {
+            "standings": [
+                {
+                    "team": s["team"],
+                    "pts":  s["pts"],
+                    "gf":   s["gf"],
+                    "ga":   s["ga"],
+                    "gd":   s["gf"] - s["ga"],
+                    "rank": i + 1,
+                }
+                for i, s in enumerate(standings)
+            ],
+            "matches": matches,
+        }
+
+    # ── Slots & 3rd-place qualifiers ────────────────────────────────────────
+    slots: dict[str, str] = {}
+    for grp, standings in group_standings.items():
+        slots[f"1{grp}"] = standings[0]["team"]
+        slots[f"2{grp}"] = standings[1]["team"]
+
+    all_thirds = [
+        {**s[2], "group": grp}
+        for grp, s in group_standings.items()
+    ]
+    all_thirds.sort(
+        key=lambda r: (-r["pts"], -(r["gf"] - r["ga"]), -r["gf"], random.random())
+    )
+    best_thirds = all_thirds[:8]
+
+    # ── Round of 32 ─────────────────────────────────────────────────────────
+    third_assignment = _assign_third_place(best_thirds)
+
+    def _resolve(slot) -> str:
+        return slots[slot] if isinstance(slot, str) else third_assignment[slot]
+
+    r32_results = []
+    for a, b in R32_BRACKET:
+        t1, t2 = _resolve(a), _resolve(b)
+        winner, _ = _sim_ko_match(probs, t1, t2)
+        r32_results.append({"t1": t1, "t2": t2, "winner": winner})
+
+    r32_winners = [m["winner"] for m in r32_results]
+
+    # ── Round of 16 ─────────────────────────────────────────────────────────
+    r16_results = []
+    for i in range(0, 16, 2):
+        t1, t2 = r32_winners[i], r32_winners[i + 1]
+        winner, _ = _sim_ko_match(probs, t1, t2)
+        r16_results.append({"t1": t1, "t2": t2, "winner": winner})
+
+    r16_winners = [m["winner"] for m in r16_results]
+
+    # ── Quarter-Finals ───────────────────────────────────────────────────────
+    qf_results = []
+    for i in range(0, 8, 2):
+        t1, t2 = r16_winners[i], r16_winners[i + 1]
+        winner, _ = _sim_ko_match(probs, t1, t2)
+        qf_results.append({"t1": t1, "t2": t2, "winner": winner})
+
+    qf_winners = [m["winner"] for m in qf_results]
+
+    # ── Semi-Finals ─────────────────────────────────────────────────────────
+    sf_results = []
+    sf_losers  = []
+    for t1, t2 in [(qf_winners[0], qf_winners[1]), (qf_winners[2], qf_winners[3])]:
+        winner, loser = _sim_ko_match(probs, t1, t2)
+        sf_results.append({"t1": t1, "t2": t2, "winner": winner})
+        sf_losers.append(loser)
+
+    sf_winners = [m["winner"] for m in sf_results]
+
+    # ── Third-Place Match ────────────────────────────────────────────────────
+    tp_winner, tp_loser = _sim_ko_match(probs, sf_losers[0], sf_losers[1])
+    third_place_match = {"t1": sf_losers[0], "t2": sf_losers[1], "winner": tp_winner}
+
+    # ── Final ────────────────────────────────────────────────────────────────
+    f_winner, f_loser = _sim_ko_match(probs, sf_winners[0], sf_winners[1])
+    final_match = {"t1": sf_winners[0], "t2": sf_winners[1], "winner": f_winner}
+
+    return {
+        "groups": group_data,
+        "third_place_qualifiers": [
+            {
+                "team":  t["team"],
+                "group": t["group"],
+                "pts":   t["pts"],
+                "gf":    t["gf"],
+                "ga":    t["ga"],
+                "gd":    t["gf"] - t["ga"],
+            }
+            for t in best_thirds
+        ],
+        "r32":               r32_results,
+        "r16":               r16_results,
+        "qf":                qf_results,
+        "sf":                sf_results,
+        "third_place_match": third_place_match,
+        "final":             final_match,
+        "podium": {
+            "champion":  f_winner,
+            "runner_up": f_loser,
+            "third":     tp_winner,
+            "fourth":    tp_loser,
+        },
+    }
+
+
 # ─── CLI ──────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
