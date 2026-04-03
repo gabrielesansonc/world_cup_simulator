@@ -51,19 +51,18 @@ header h1 {
 }
 header .trophy { font-size: 22px; }
 
-/* ── Layout ─────────────────────────────────────────────────────── */
-.layout { display: flex; min-height: calc(100vh - 57px); }
-
-/* ── Sidebar / Controls ─────────────────────────────────────────── */
-.sidebar {
-  width: 280px;
-  flex-shrink: 0;
+/* ── Top control bar ─────────────────────────────────────────────── */
+.controls {
   background: var(--surface);
-  border-right: 1px solid var(--border);
-  padding: 20px 16px;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 20px;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .mode-tabs {
@@ -71,70 +70,108 @@ header .trophy { font-size: 22px; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  flex-shrink: 0;
 }
 .mode-tab {
-  flex: 1;
-  padding: 9px 6px;
+  padding: 7px 14px;
   background: none;
   border: none;
   color: var(--muted);
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   transition: background .15s, color .15s;
+  white-space: nowrap;
 }
-.mode-tab.active {
-  background: var(--gold);
-  color: #000;
-}
+.mode-tab.active { background: var(--gold); color: #000; }
 .mode-tab:not(.active):hover { background: var(--surface2); color: var(--text); }
 
-.ctrl-group { display: flex; flex-direction: column; gap: 6px; }
-.ctrl-group label { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
-.ctrl-group select,
-.ctrl-group input[type=number],
-.ctrl-group input[type=range] {
+.ctrl-sep {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.ctrl-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+.ctrl-item label {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  white-space: nowrap;
+}
+.ctrl-item select,
+.ctrl-item input[type=number] {
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--text);
-  padding: 8px 10px;
+  padding: 6px 10px;
   font-size: 13px;
-  width: 100%;
   outline: none;
   transition: border-color .15s;
+  height: 34px;
 }
-.ctrl-group select:focus,
-.ctrl-group input[type=number]:focus { border-color: var(--gold); }
-.ctrl-group input[type=range] { padding: 4px 0; accent-color: var(--gold); cursor: pointer; }
+.ctrl-item select:focus,
+.ctrl-item input[type=number]:focus { border-color: var(--gold); }
+.ctrl-item select { min-width: 180px; }
+.ctrl-item input[type=number] { width: 90px; }
 
-.temp-label { display: flex; justify-content: space-between; }
-.temp-hint { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.ctrl-temp {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+.ctrl-temp label {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  white-space: nowrap;
+}
+.ctrl-temp input[type=range] {
+  width: 100px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.ctrl-temp .temp-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  min-width: 26px;
+}
 
 .btn-run {
   background: var(--gold);
   color: #000;
   border: none;
   border-radius: var(--radius);
-  padding: 11px 16px;
-  font-size: 14px;
+  padding: 7px 18px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
-  width: 100%;
+  height: 34px;
   transition: opacity .15s;
   letter-spacing: .02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 .btn-run:hover { opacity: .88; }
 .btn-run:disabled { opacity: .45; cursor: not-allowed; }
 
-.sidebar-only-single { display: flex; flex-direction: column; gap: 6px; }
-.sidebar-only-multi  { display: flex; flex-direction: column; gap: 6px; }
-
 /* ── Main content ────────────────────────────────────────────────── */
 .main {
-  flex: 1;
   padding: 24px;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -631,63 +668,54 @@ header .trophy { font-size: 22px; }
   <h1>World Cup 2026 Simulator</h1>
 </header>
 
-<div class="layout">
+<!-- ── Top Controls ──────────────────────────────────────────────── -->
+<div class="controls">
 
-  <!-- ── Sidebar ───────────────────────────────────────────────── -->
-  <aside class="sidebar">
+  <div class="mode-tabs">
+    <button class="mode-tab active" id="tab-single" onclick="setMode('single')">Single Run</button>
+    <button class="mode-tab"        id="tab-multi"  onclick="setMode('multi')">Multi Run</button>
+  </div>
 
-    <div class="mode-tabs">
-      <button class="mode-tab active" id="tab-single" onclick="setMode('single')">Single Run</button>
-      <button class="mode-tab"        id="tab-multi"  onclick="setMode('multi')">Multi Run</button>
-    </div>
+  <div class="ctrl-sep"></div>
 
-    <div class="ctrl-group">
-      <label>Model</label>
-      <select id="sel-model">
-        <option value="">Loading…</option>
-      </select>
-    </div>
+  <div class="ctrl-item">
+    <label>Model</label>
+    <select id="sel-model"><option value="">Loading…</option></select>
+  </div>
 
-    <!-- Single-only controls -->
-    <div id="single-controls" class="sidebar-only-single">
-      <div class="ctrl-group">
-        <label>Seed (optional)</label>
-        <input type="number" id="inp-seed" placeholder="Random" min="0" />
-      </div>
-    </div>
+  <!-- Single-only -->
+  <div id="single-controls" class="ctrl-item">
+    <label>Seed</label>
+    <input type="number" id="inp-seed" placeholder="Random" min="0" />
+  </div>
 
-    <!-- Multi-only controls -->
-    <div id="multi-controls" class="sidebar-only-multi" style="display:none">
-      <div class="ctrl-group">
-        <label>Number of simulations</label>
-        <input type="number" id="inp-n" value="100" min="10" max="100000" step="10" />
-      </div>
-    </div>
+  <!-- Multi-only -->
+  <div id="multi-controls" class="ctrl-item" style="display:none">
+    <label>Simulations</label>
+    <input type="number" id="inp-n" value="100" min="10" max="100000" step="10" />
+  </div>
 
-    <div class="ctrl-group">
-      <div class="temp-label">
-        <label>Temperature</label>
-        <span id="temp-val" style="font-size:13px;color:var(--gold)">1.0</span>
-      </div>
-      <input type="range" id="inp-temp" min="0.1" max="2.0" step="0.1" value="1.0"
-             oninput="document.getElementById('temp-val').textContent=parseFloat(this.value).toFixed(1)" />
-      <div class="temp-hint">↓ favours winners · 1.0 = raw · ↑ more upsets</div>
-    </div>
+  <div class="ctrl-sep"></div>
 
-    <button class="btn-run" id="btn-run" onclick="run()">▶  Run Simulation</button>
+  <div class="ctrl-temp">
+    <label>Temperature</label>
+    <input type="range" id="inp-temp" min="0.1" max="2.0" step="0.1" value="1.0"
+           oninput="document.getElementById('temp-val').textContent=parseFloat(this.value).toFixed(1)" />
+    <span class="temp-val" id="temp-val">1.0</span>
+  </div>
 
-  </aside>
-
-  <!-- ── Main ──────────────────────────────────────────────────── -->
-  <main class="main" id="main">
-    <div class="empty-state">
-      <div class="big-icon">⚽</div>
-      <h2>Ready to simulate</h2>
-      <p>Choose a model and hit Run.</p>
-    </div>
-  </main>
+  <button class="btn-run" id="btn-run" onclick="run()">▶ Run</button>
 
 </div>
+
+<!-- ── Main ──────────────────────────────────────────────────────── -->
+<main class="main" id="main">
+  <div class="empty-state">
+    <div class="big-icon">⚽</div>
+    <h2>Ready to simulate</h2>
+    <p>Choose a model and hit Run.</p>
+  </div>
+</main>
 
 <script>
 // ── State ────────────────────────────────────────────────────────
@@ -1076,10 +1104,10 @@ function renderTeamChart(team, teamStageProbs, teamStageOpponents) {
 
 const BK_CARD_W_S = 155;   // single card width
 const BK_CARD_W_M = 175;   // multi card width
-const BK_CARD_H_S = 50;    // single card height
+const BK_CARD_H_S = 64;    // single card height
 const BK_CARD_H_M = 71;    // multi card height (3 rows)
 const BK_COL_GAP  = 20;    // gap between columns (connector runway)
-const BK_H_S      = 480;   // single bracket total height (8 × 60px slots)
+const BK_H_S      = 640;   // single bracket total height (8 × 80px slots)
 const BK_H_M      = 648;   // multi bracket total height  (8 × 81px slots)
 
 const BK_ROUND_LABELS = { r32: 'R32', r16: 'R16', qf: 'QF', sf: 'SF', final: 'Final' };
