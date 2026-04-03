@@ -1,0 +1,12 @@
+{
+  "name": "world-cup-simulator",
+  "version": "1.0.0",
+  "description": "World Cup 2026 Simulator",
+  "private": true,
+  "scripts": {
+    "install-analytics": "npm install"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
