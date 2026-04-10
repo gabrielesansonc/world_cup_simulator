@@ -169,6 +169,106 @@ header .trophy { font-size: 22px; }
 .btn-run:hover { opacity: .88; }
 .btn-run:disabled { opacity: .45; cursor: not-allowed; }
 
+/* ── Info bar ────────────────────────────────────────────────────── */
+.info-bar {
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  padding: 7px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.info-bar-text { flex: 1; }
+.info-bar-text strong { color: var(--text); font-weight: 600; }
+.info-bar-mode {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gold);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.info-bar-dismiss {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 2px;
+  flex-shrink: 0;
+  transition: color .15s;
+}
+.info-bar-dismiss:hover { color: var(--text); }
+
+/* ── ℹ Tooltips ──────────────────────────────────────────────────── */
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  cursor: default;
+  flex-shrink: 0;
+  position: relative;
+  font-style: normal;
+  line-height: 1;
+  transition: border-color .15s, color .15s;
+}
+.info-icon:hover { border-color: var(--gold); color: var(--gold); }
+
+.info-tip {
+  position: fixed;
+  z-index: 200;
+  background: #1a2440;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 280px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .12s;
+  box-shadow: var(--shadow);
+}
+.info-tip.visible { opacity: 1; }
+.info-tip-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.info-tip p { margin-bottom: 6px; color: var(--muted); }
+.info-tip p:last-child { margin-bottom: 0; }
+.info-tip strong { color: var(--text); font-weight: 600; }
+.info-tip code {
+  font-family: monospace;
+  font-size: 11px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 5px;
+  display: block;
+  margin: 5px 0;
+  color: #a3e048;
+  white-space: nowrap;
+}
+
 /* ── Main content ────────────────────────────────────────────────── */
 .main {
   padding: 24px;
@@ -680,12 +780,14 @@ header .trophy { font-size: 22px; }
     <button class="mode-tab active" id="tab-single" onclick="setMode('single')">Single Run</button>
     <button class="mode-tab"        id="tab-multi"  onclick="setMode('multi')">Multi Run</button>
   </div>
+  <i class="info-icon" id="tip-mode-icon">i</i>
 
   <div class="ctrl-sep"></div>
 
   <div class="ctrl-item">
     <label>Model</label>
     <select id="sel-model"><option value="">Loading…</option></select>
+    <i class="info-icon" id="tip-model-icon">i</i>
   </div>
 
   <!-- Single-only -->
@@ -704,6 +806,7 @@ header .trophy { font-size: 22px; }
 
   <div class="ctrl-temp">
     <label>Temperature</label>
+    <i class="info-icon" id="tip-temp-icon">i</i>
     <input type="range" id="inp-temp" min="0.1" max="2.0" step="0.1" value="1.0"
            oninput="document.getElementById('temp-val').textContent=parseFloat(this.value).toFixed(1)" />
     <span class="temp-val" id="temp-val">1.0</span>
@@ -711,6 +814,15 @@ header .trophy { font-size: 22px; }
 
   <button class="btn-run" id="btn-run" onclick="run()">▶ Run</button>
 
+</div>
+
+<!-- ── Info bar ───────────────────────────────────────────────────── -->
+<div class="info-bar" id="info-bar">
+  <span class="info-bar-text">
+    Simulations use <strong>static match probabilities</strong> from AI models — no live API calls are made. Each model rated every possible matchup; the simulator uses those odds to play out the tournament.
+  </span>
+  <span class="info-bar-mode" id="info-bar-mode">Single run: one full tournament</span>
+  <button class="info-bar-dismiss" onclick="document.getElementById('info-bar').style.display='none'" title="Dismiss">×</button>
 </div>
 
 <!-- ── Main ──────────────────────────────────────────────────────── -->
@@ -722,6 +834,11 @@ header .trophy { font-size: 22px; }
   </div>
 </main>
 
+<!-- ── Tooltips ───────────────────────────────────────────────────── -->
+<div class="info-tip" id="tip-mode"></div>
+<div class="info-tip" id="tip-model"></div>
+<div class="info-tip" id="tip-temp"></div>
+
 <script>
 // ── State ────────────────────────────────────────────────────────
 let mode = 'single';
@@ -732,6 +849,66 @@ function setMode(m) {
   document.getElementById('tab-multi').classList.toggle('active',  m === 'multi');
   document.getElementById('single-controls').style.display = m === 'single' ? 'flex' : 'none';
   document.getElementById('multi-controls').style.display  = m === 'multi'  ? 'flex' : 'none';
+  const pill = document.getElementById('info-bar-mode');
+  if (pill) pill.textContent = m === 'single'
+    ? 'Single run: one full tournament'
+    : 'Multi run: statistical aggregation';
+}
+
+// ── Info tooltips ─────────────────────────────────────────────────
+const _TIPS = {
+  'tip-mode': {
+    title: 'Single Run vs Multi Run',
+    html: `
+      <p><strong>Single Run</strong> simulates one complete World Cup end-to-end. Every match is played once using the model's probabilities. Great for exploring a plausible tournament path.</p>
+      <p><strong>Multi Run</strong> simulates the tournament N times and aggregates the results — showing championship probabilities, most likely bracket matchups, and how far each team typically goes.</p>
+      <p>Use <strong>Single</strong> to tell a story. Use <strong>Multi</strong> to find patterns.</p>
+    `
+  },
+  'tip-model': {
+    title: 'AI Model Probabilities',
+    html: `
+      <p>Each model is an AI that rated the win/draw/loss probability for every possible match between the 48 teams.</p>
+      <p>These are <strong>static ratings</strong> — no live API calls are made during simulation. The models were queried once and their probabilities saved.</p>
+      <p><strong>Average (Consensus)</strong> is the equal-weight average across all five models — a good neutral baseline.</p>
+    `
+  },
+  'tip-temp': {
+    title: 'Temperature',
+    html: `
+      <p>Temperature reshapes the model's probabilities before simulating — borrowed from how LLMs control output randomness.</p>
+      <code>p_i = exp(log(p_i) / T) / Σ exp(log(p_j) / T)</code>
+      <p><strong>T &lt; 1</strong> sharpens the odds — favourites win more reliably, fewer upsets.</p>
+      <p><strong>T = 1</strong> uses the model's probabilities unchanged.</p>
+      <p><strong>T &gt; 1</strong> flattens the odds — more chaos, anyone can win.</p>
+      <p>Based on experience, <strong>T = 0.7</strong> is a sweet spot: it respects the model's rankings while keeping the bracket realistic and not too deterministic.</p>
+    `
+  }
+};
+
+(function initTips() {
+  Object.keys(_TIPS).forEach(tipId => {
+    const icon = document.getElementById(tipId + '-icon');
+    const tip  = document.getElementById(tipId);
+    if (!icon || !tip) return;
+    const { title, html } = _TIPS[tipId];
+    tip.innerHTML = `<div class="info-tip-title">${title}</div>${html}`;
+    icon.addEventListener('mouseenter', e => {
+      tip.classList.add('visible');
+      _posTip(e, tip);
+    });
+    icon.addEventListener('mousemove',  e => _posTip(e, tip));
+    icon.addEventListener('mouseleave', () => tip.classList.remove('visible'));
+  });
+})();
+
+function _posTip(e, tip) {
+  const x  = e.clientX + 14;
+  const y  = e.clientY + 14;
+  const tw = tip.offsetWidth  || 280;
+  const th = tip.offsetHeight || 120;
+  tip.style.left = (x + tw > window.innerWidth  ? e.clientX - tw - 8 : x) + 'px';
+  tip.style.top  = (y + th > window.innerHeight ? e.clientY - th - 8 : y) + 'px';
 }
 
 // ── Bootstrap ────────────────────────────────────────────────────
