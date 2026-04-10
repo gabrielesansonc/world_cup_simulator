@@ -238,7 +238,7 @@ header .trophy { font-size: 22px; }
   font-size: 12px;
   color: var(--text);
   line-height: 1.6;
-  max-width: 280px;
+  width: 300px;
   pointer-events: none;
   opacity: 0;
   transition: opacity .12s;
@@ -262,11 +262,43 @@ header .trophy { font-size: 22px; }
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 3px;
-  padding: 2px 5px;
+  padding: 6px 8px;
   display: block;
-  margin: 5px 0;
+  margin: 6px 0;
   color: #a3e048;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.7;
+}
+
+/* ── Progress bar ────────────────────────────────────────────────── */
+.progress-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex: 1;
+}
+.progress-label {
+  font-size: 13px;
+  color: var(--muted);
+}
+.progress-label strong { color: var(--text); }
+.progress-track {
+  width: 320px;
+  height: 6px;
+  background: var(--surface2);
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 3px;
+  transition: width .2s ease;
+  width: 0%;
 }
 
 /* ── Main content ────────────────────────────────────────────────── */
@@ -807,9 +839,9 @@ header .trophy { font-size: 22px; }
   <div class="ctrl-temp">
     <label>Temperature</label>
     <i class="info-icon" id="tip-temp-icon">i</i>
-    <input type="range" id="inp-temp" min="0.1" max="2.0" step="0.1" value="1.0"
+    <input type="range" id="inp-temp" min="0.1" max="2.0" step="0.1" value="0.7"
            oninput="document.getElementById('temp-val').textContent=parseFloat(this.value).toFixed(1)" />
-    <span class="temp-val" id="temp-val">1.0</span>
+    <span class="temp-val" id="temp-val">0.7</span>
   </div>
 
   <button class="btn-run" id="btn-run" onclick="run()">▶ Run</button>
@@ -948,17 +980,63 @@ async function run() {
       renderSingle(data);
     } else {
       const n = parseInt(document.getElementById('inp-n').value) || 100;
-      const res = await fetch('/api/simulate/multiple', {
-        method: 'POST', headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({ model, n, temperature: temp })
-      });
-      const data = await res.json();
-      renderMulti(data);
+      await runMultiStream(model, n, temp);
     }
   } catch (e) {
     main.innerHTML = `<div class="empty-state"><p style="color:var(--red)">Error: ${e.message}</p></div>`;
   } finally {
     btn.disabled = false;
+  }
+}
+
+// ── Multi-run SSE stream ─────────────────────────────────────────
+async function runMultiStream(model, n, temp) {
+  const main = document.getElementById('main');
+
+  // show progress UI
+  main.innerHTML = `
+    <div class="empty-state progress-wrap">
+      <div class="spinner"></div>
+      <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+      <div class="progress-label" id="prog-label">Starting…</div>
+    </div>
+  `;
+
+  const res = await fetch('/api/simulate/multiple/stream', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ model, n, temperature: temp }),
+  });
+
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buf = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buf += decoder.decode(value, { stream: true });
+
+    // SSE lines: "data: {...}\n\n"
+    const parts = buf.split('\n\n');
+    buf = parts.pop(); // keep incomplete chunk
+
+    for (const part of parts) {
+      if (!part.startsWith('data: ')) continue;
+      const msg = JSON.parse(part.slice(6));
+
+      if (msg.progress !== undefined) {
+        const pct = (msg.progress / msg.total * 100).toFixed(1);
+        const fill = document.getElementById('prog-fill');
+        const label = document.getElementById('prog-label');
+        if (fill)  fill.style.width = pct + '%';
+        if (label) label.innerHTML = `<strong>${msg.progress.toLocaleString()}</strong> / ${msg.total.toLocaleString()} simulations&nbsp;&nbsp;${pct}%`;
+      }
+
+      if (msg.result) {
+        renderMulti(msg.result);
+      }
+    }
   }
 }
 
