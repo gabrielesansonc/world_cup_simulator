@@ -169,43 +169,6 @@ header .trophy { font-size: 22px; }
 .btn-run:hover { opacity: .88; }
 .btn-run:disabled { opacity: .45; cursor: not-allowed; }
 
-/* ── Info bar ────────────────────────────────────────────────────── */
-.info-bar {
-  background: var(--surface2);
-  border-bottom: 1px solid var(--border);
-  padding: 7px 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.4;
-}
-.info-bar-text { flex: 1; }
-.info-bar-text strong { color: var(--text); font-weight: 600; }
-.info-bar-mode {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 3px 10px;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--gold);
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-.info-bar-dismiss {
-  background: none;
-  border: none;
-  color: var(--muted);
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-  padding: 0 2px;
-  flex-shrink: 0;
-  transition: color .15s;
-}
-.info-bar-dismiss:hover { color: var(--text); }
 
 /* ── ℹ Tooltips ──────────────────────────────────────────────────── */
 .info-icon {
@@ -848,14 +811,6 @@ header .trophy { font-size: 22px; }
 
 </div>
 
-<!-- ── Info bar ───────────────────────────────────────────────────── -->
-<div class="info-bar" id="info-bar">
-  <span class="info-bar-text">
-    Simulations use <strong>static match probabilities</strong> from AI models — no live API calls are made. Each model rated every possible matchup; the simulator uses those odds to play out the tournament.
-  </span>
-  <span class="info-bar-mode" id="info-bar-mode">Single run: one full tournament</span>
-  <button class="info-bar-dismiss" onclick="document.getElementById('info-bar').style.display='none'" title="Dismiss">×</button>
-</div>
 
 <!-- ── Main ──────────────────────────────────────────────────────── -->
 <main class="main" id="main">
@@ -881,10 +836,6 @@ function setMode(m) {
   document.getElementById('tab-multi').classList.toggle('active',  m === 'multi');
   document.getElementById('single-controls').style.display = m === 'single' ? 'flex' : 'none';
   document.getElementById('multi-controls').style.display  = m === 'multi'  ? 'flex' : 'none';
-  const pill = document.getElementById('info-bar-mode');
-  if (pill) pill.textContent = m === 'single'
-    ? 'Single run: one full tournament'
-    : 'Multi run: statistical aggregation';
 }
 
 // ── Info tooltips ─────────────────────────────────────────────────
@@ -918,27 +869,74 @@ const _TIPS = {
   }
 };
 
+let _activeTip = null;
+
+function _closeAllTips() {
+  document.querySelectorAll('.info-tip.visible').forEach(t => t.classList.remove('visible'));
+  _activeTip = null;
+}
+
 (function initTips() {
+  const isTouchDevice = () => window.matchMedia('(hover: none)').matches;
+
   Object.keys(_TIPS).forEach(tipId => {
     const icon = document.getElementById(tipId + '-icon');
     const tip  = document.getElementById(tipId);
     if (!icon || !tip) return;
     const { title, html } = _TIPS[tipId];
     tip.innerHTML = `<div class="info-tip-title">${title}</div>${html}`;
+
+    // ── Desktop: hover ───────────────────────────────────────────
     icon.addEventListener('mouseenter', e => {
+      if (isTouchDevice()) return;
       tip.classList.add('visible');
       _posTip(e, tip);
     });
-    icon.addEventListener('mousemove',  e => _posTip(e, tip));
-    icon.addEventListener('mouseleave', () => tip.classList.remove('visible'));
+    icon.addEventListener('mousemove', e => {
+      if (isTouchDevice()) return;
+      _posTip(e, tip);
+    });
+    icon.addEventListener('mouseleave', () => {
+      if (isTouchDevice()) return;
+      tip.classList.remove('visible');
+    });
+
+    // ── Mobile: tap to open, tap again / outside to close ────────
+    icon.addEventListener('touchend', e => {
+      e.preventDefault(); // prevent ghost click
+      e.stopPropagation();
+      const isOpen = tip.classList.contains('visible');
+      _closeAllTips();
+      if (!isOpen) {
+        tip.classList.add('visible');
+        _activeTip = tip;
+        // position centred below the icon, clamped to viewport
+        const r  = icon.getBoundingClientRect();
+        const tw = 300;
+        const th = tip.scrollHeight || 200;
+        const x  = Math.min(Math.max(r.left + r.width / 2 - tw / 2, 8), window.innerWidth - tw - 8);
+        const y  = r.bottom + 8 + window.scrollY;
+        tip.style.position = 'absolute';
+        tip.style.left = x + 'px';
+        tip.style.top  = y + 'px';
+      }
+    });
+  });
+
+  // Tap anywhere else closes open tip on mobile
+  document.addEventListener('touchend', e => {
+    if (_activeTip && !e.target.closest('.info-icon')) {
+      _closeAllTips();
+    }
   });
 })();
 
 function _posTip(e, tip) {
   const x  = e.clientX + 14;
   const y  = e.clientY + 14;
-  const tw = tip.offsetWidth  || 280;
+  const tw = tip.offsetWidth  || 300;
   const th = tip.offsetHeight || 120;
+  tip.style.position = 'fixed';
   tip.style.left = (x + tw > window.innerWidth  ? e.clientX - tw - 8 : x) + 'px';
   tip.style.top  = (y + th > window.innerHeight ? e.clientY - th - 8 : y) + 'px';
 }
