@@ -1,43 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme-yellow">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>World Cup 2026 Simulator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Gabarito:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="brand.css">
 <style>
-/* ── Reset & Base ───────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --bg:        #0b0f1e;
-  --surface:   #131929;
-  --surface2:  #1c2540;
-  --border:    #263050;
-  --text:      #e4eaf7;
-  --muted:     #7a8baa;
-  --gold:      #f5c842;
-  --gold-dim:  #b89420;
-  --green:     #28c96a;
-  --green-dim: #1a7a40;
-  --blue:      #4a9eff;
-  --red:       #f05454;
-  --radius:    8px;
-  --shadow:    0 2px 12px rgba(0,0,0,.45);
-}
-
+/* ── Body override (data-dense app → 14px) ──────────────────────── */
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 14px;
-  line-height: 1.5;
   min-height: 100vh;
 }
 
 /* ── Header ─────────────────────────────────────────────────────── */
 header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-default);
   padding: 16px 24px;
   display: flex;
   align-items: center;
@@ -46,15 +27,15 @@ header {
 header h1 {
   font-size: 20px;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--accent);
   letter-spacing: .02em;
 }
 header .trophy { font-size: 22px; }
 
 /* ── Top control bar ─────────────────────────────────────────────── */
 .controls {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-default);
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -62,13 +43,13 @@ header .trophy { font-size: 22px; }
   flex-wrap: wrap;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: var(--z-sticky);
 }
 
 .mode-tabs {
   display: flex;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -76,20 +57,21 @@ header .trophy { font-size: 22px; }
   padding: 7px 14px;
   background: none;
   border: none;
-  color: var(--muted);
+  color: var(--text-secondary);
   cursor: pointer;
   font-size: 12px;
   font-weight: 600;
-  transition: background .15s, color .15s;
+  font-family: var(--font-sans);
+  transition: background var(--transition-fast), color var(--transition-fast);
   white-space: nowrap;
 }
-.mode-tab.active { background: var(--gold); color: #000; }
-.mode-tab:not(.active):hover { background: var(--surface2); color: var(--text); }
+.mode-tab.active { background: var(--accent); color: var(--text-inverse); }
+.mode-tab:not(.active):hover { background: var(--bg-surface-2); color: var(--text-primary); }
 
 .ctrl-sep {
   width: 1px;
   height: 28px;
-  background: var(--border);
+  background: var(--border-default);
   flex-shrink: 0;
 }
 
@@ -101,7 +83,7 @@ header .trophy { font-size: 22px; }
 }
 .ctrl-item label {
   font-size: 11px;
-  color: var(--muted);
+  color: var(--text-secondary);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .05em;
@@ -109,18 +91,19 @@ header .trophy { font-size: 22px; }
 }
 .ctrl-item select,
 .ctrl-item input[type=number] {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--text);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
   padding: 6px 10px;
   font-size: 13px;
+  font-family: var(--font-sans);
   outline: none;
-  transition: border-color .15s;
+  transition: border-color var(--transition-fast);
   height: 34px;
 }
 .ctrl-item select:focus,
-.ctrl-item input[type=number]:focus { border-color: var(--gold); }
+.ctrl-item input[type=number]:focus { border-color: var(--accent); }
 .ctrl-item select { min-width: 180px; }
 .ctrl-item input[type=number] { width: 90px; }
 
@@ -132,7 +115,7 @@ header .trophy { font-size: 22px; }
 }
 .ctrl-temp label {
   font-size: 11px;
-  color: var(--muted);
+  color: var(--text-secondary);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .05em;
@@ -140,27 +123,28 @@ header .trophy { font-size: 22px; }
 }
 .ctrl-temp input[type=range] {
   width: 100px;
-  accent-color: var(--gold);
+  accent-color: var(--accent);
   cursor: pointer;
 }
 .ctrl-temp .temp-val {
   font-size: 13px;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--accent);
   min-width: 26px;
 }
 
 .btn-run {
-  background: var(--gold);
-  color: #000;
+  background: var(--accent);
+  color: var(--text-inverse);
   border: none;
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
   padding: 7px 18px;
   font-size: 13px;
   font-weight: 700;
+  font-family: var(--font-sans);
   cursor: pointer;
   height: 34px;
-  transition: opacity .15s;
+  transition: opacity var(--transition-fast);
   letter-spacing: .02em;
   white-space: nowrap;
   flex-shrink: 0;
@@ -178,8 +162,8 @@ header .trophy { font-size: 22px; }
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  border: 1px solid var(--muted);
-  color: var(--muted);
+  border: 1px solid var(--text-secondary);
+  color: var(--text-secondary);
   font-size: 9px;
   font-weight: 700;
   cursor: default;
@@ -187,25 +171,25 @@ header .trophy { font-size: 22px; }
   position: relative;
   font-style: normal;
   line-height: 1;
-  transition: border-color .15s, color .15s;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
 }
-.info-icon:hover { border-color: var(--gold); color: var(--gold); }
+.info-icon:hover { border-color: var(--accent); color: var(--accent); }
 
 .info-tip {
   position: fixed;
   z-index: 200;
-  background: #1a2440;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
   padding: 12px 14px;
   font-size: 12px;
-  color: var(--text);
+  color: var(--text-primary);
   line-height: 1.6;
   width: 300px;
   pointer-events: none;
   opacity: 0;
   transition: opacity .12s;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-md);
 }
 .info-tip.visible { opacity: 1; }
 .info-tip-title {
@@ -213,22 +197,22 @@ header .trophy { font-size: 22px; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .06em;
-  color: var(--gold);
+  color: var(--accent);
   margin-bottom: 6px;
 }
-.info-tip p { margin-bottom: 6px; color: var(--muted); }
+.info-tip p { margin-bottom: 6px; color: var(--text-secondary); }
 .info-tip p:last-child { margin-bottom: 0; }
-.info-tip strong { color: var(--text); font-weight: 600; }
+.info-tip strong { color: var(--text-primary); font-weight: 600; }
 .info-tip code {
-  font-family: monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
+  background: var(--bg-base);
+  border: 1px solid var(--border-default);
   border-radius: 3px;
   padding: 6px 8px;
   display: block;
   margin: 6px 0;
-  color: #a3e048;
+  color: var(--color-success);
   white-space: normal;
   word-break: break-word;
   line-height: 1.7;
@@ -245,20 +229,20 @@ header .trophy { font-size: 22px; }
 }
 .progress-label {
   font-size: 13px;
-  color: var(--muted);
+  color: var(--text-secondary);
 }
-.progress-label strong { color: var(--text); }
+.progress-label strong { color: var(--text-primary); }
 .progress-track {
   width: 320px;
   height: 6px;
-  background: var(--surface2);
+  background: var(--bg-surface-2);
   border-radius: 3px;
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-default);
 }
 .progress-fill {
   height: 100%;
-  background: var(--gold);
+  background: var(--accent);
   border-radius: 3px;
   transition: width .2s ease;
   width: 0%;
@@ -280,16 +264,16 @@ header .trophy { font-size: 22px; }
   align-items: center;
   justify-content: center;
   gap: 12px;
-  color: var(--muted);
+  color: var(--text-secondary);
   text-align: center;
 }
 .empty-state .big-icon { font-size: 52px; }
-.empty-state h2 { font-size: 18px; color: var(--text); }
+.empty-state h2 { font-size: 18px; color: var(--text-primary); }
 
 .spinner {
   width: 40px; height: 40px;
-  border: 3px solid var(--border);
-  border-top-color: var(--gold);
+  border: 3px solid var(--border-default);
+  border-top-color: var(--accent);
   border-radius: 50%;
   animation: spin .8s linear infinite;
 }
@@ -301,9 +285,9 @@ header .trophy { font-size: 22px; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .08em;
-  color: var(--gold);
+  color: var(--accent);
   padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-default);
   margin-bottom: 14px;
 }
 
@@ -314,20 +298,20 @@ header .trophy { font-size: 22px; }
   flex-wrap: wrap;
 }
 .podium-card {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
   padding: 16px 20px;
   min-width: 140px;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-.podium-card.p1 { border-color: var(--gold); }
+.podium-card.p1 { border-color: var(--accent); }
 .podium-card.p2 { border-color: #aab0c0; }
 .podium-card.p3 { border-color: #c08050; }
-.podium-rank { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-.podium-card.p1 .podium-rank { color: var(--gold); }
+.podium-rank { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-secondary); }
+.podium-card.p1 .podium-rank { color: var(--accent); }
 .podium-team { font-size: 16px; font-weight: 700; }
 .podium-card.p1 .podium-team { font-size: 18px; }
 
@@ -338,25 +322,25 @@ header .trophy { font-size: 22px; }
   gap: 14px;
 }
 .group-card {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 .group-header {
-  background: var(--surface);
+  background: var(--bg-surface);
   padding: 7px 12px;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .07em;
-  color: var(--gold);
-  border-bottom: 1px solid var(--border);
+  color: var(--accent);
+  border-bottom: 1px solid var(--border-default);
 }
 .group-table { width: 100%; border-collapse: collapse; }
 .group-table th {
   font-size: 10px;
-  color: var(--muted);
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: .06em;
   padding: 5px 8px;
@@ -367,12 +351,12 @@ header .trophy { font-size: 22px; }
 .group-table td {
   padding: 6px 8px;
   text-align: right;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-default);
   font-size: 13px;
 }
 .group-table td:first-child { text-align: left; font-weight: 500; }
-.group-table tr.qualified td { color: var(--green); }
-.group-table tr.q3 td { color: #f5a623; }
+.group-table tr.qualified td { color: var(--color-success); }
+.group-table tr.q3 td { color: #FF7400; }
 
 /* ── 3rd place qualifiers ────────────────────────────────────────── */
 .third-grid {
@@ -381,15 +365,15 @@ header .trophy { font-size: 22px; }
   gap: 8px;
 }
 .third-pill {
-  background: var(--surface2);
-  border: 1px solid #f5a623;
+  background: var(--bg-surface-2);
+  border: 1px solid #FF7400;
   border-radius: 20px;
   padding: 5px 12px;
   font-size: 12px;
   font-weight: 600;
-  color: #f5a623;
+  color: #FF7400;
 }
-.third-pill span { color: var(--muted); font-weight: 400; margin-left: 4px; }
+.third-pill span { color: var(--text-secondary); font-weight: 400; margin-left: 4px; }
 
 /* ── Knockout rounds ─────────────────────────────────────────────── */
 .ko-round { margin-bottom: 6px; }
@@ -398,7 +382,7 @@ header .trophy { font-size: 22px; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .08em;
-  color: var(--muted);
+  color: var(--text-secondary);
   margin-bottom: 10px;
 }
 .matches-grid {
@@ -407,9 +391,9 @@ header .trophy { font-size: 22px; }
   gap: 8px;
 }
 .match-card {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -419,16 +403,16 @@ header .trophy { font-size: 22px; }
   flex: 1;
   padding: 9px 12px;
   font-weight: 500;
-  transition: background .1s;
+  transition: background var(--transition-fast);
 }
 .match-team.winner {
-  background: rgba(40,201,106,.15);
-  color: var(--green);
+  background: rgba(34,211,160,.15);
+  color: var(--color-success);
   font-weight: 700;
 }
 .match-vs {
   padding: 0 8px;
-  color: var(--muted);
+  color: var(--text-secondary);
   font-size: 11px;
   font-weight: 700;
   flex-shrink: 0;
@@ -442,9 +426,9 @@ header .trophy { font-size: 22px; }
   gap: 8px;
 }
 .freq-card {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
   padding: 10px 12px;
   display: flex;
   flex-direction: column;
@@ -452,7 +436,7 @@ header .trophy { font-size: 22px; }
 }
 .freq-card-title {
   font-size: 10px;
-  color: var(--muted);
+  color: var(--text-secondary);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .05em;
@@ -467,41 +451,41 @@ header .trophy { font-size: 22px; }
 .freq-pct {
   min-width: 38px;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--accent);
   font-size: 12px;
 }
 .freq-teams {
   flex: 1;
-  color: var(--text);
+  color: var(--text-primary);
 }
-.freq-teams .sep { color: var(--muted); margin: 0 4px; }
+.freq-teams .sep { color: var(--text-secondary); margin: 0 4px; }
 
 /* ── Group freq cards (multi-run) ───────────────────────────────── */
 .grp-freq-card {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 .grp-freq-header {
-  background: var(--surface);
+  background: var(--bg-surface);
   padding: 7px 12px;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .07em;
-  color: var(--gold);
-  border-bottom: 1px solid var(--border);
+  color: var(--accent);
+  border-bottom: 1px solid var(--border-default);
 }
 .grp-freq-table { width: 100%; border-collapse: collapse; }
 .grp-freq-table td {
   padding: 5px 10px;
   font-size: 12px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-default);
   vertical-align: top;
 }
 .grp-freq-table td:first-child {
-  color: var(--muted);
+  color: var(--text-secondary);
   font-weight: 700;
   font-size: 11px;
   width: 28px;
@@ -509,14 +493,14 @@ header .trophy { font-size: 22px; }
 }
 .freq-team-row { display: flex; gap: 4px; flex-wrap: wrap; }
 .freq-team-badge {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
   border-radius: 4px;
   padding: 2px 6px;
   font-size: 11px;
   white-space: nowrap;
 }
-.freq-team-badge .pct { color: var(--gold); font-weight: 700; margin-left: 3px; }
+.freq-team-badge .pct { color: var(--accent); font-weight: 700; margin-left: 3px; }
 
 /* ── Probability table ───────────────────────────────────────────── */
 .prob-table-wrap { overflow-x: auto; }
@@ -532,24 +516,24 @@ header .trophy { font-size: 22px; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .06em;
-  color: var(--muted);
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-default);
+  background: var(--bg-surface);
 }
 .prob-table th:first-child { text-align: left; }
 .prob-table td {
   padding: 7px 12px;
   text-align: right;
   font-size: 13px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-default);
 }
 .prob-table td:first-child { text-align: left; font-weight: 600; }
-.prob-table tr:hover td { background: var(--surface2); }
+.prob-table tr:hover td { background: var(--bg-surface-2); }
 .prob-cell { font-weight: 700; }
-.prob-cell.hi  { color: var(--green); }
-.prob-cell.mid { color: var(--gold); }
-.prob-cell.lo  { color: var(--muted); }
-.prob-cell.zero { color: var(--border); }
+.prob-cell.hi  { color: var(--color-success); }
+.prob-cell.mid { color: var(--accent); }
+.prob-cell.lo  { color: var(--text-secondary); }
+.prob-cell.zero { color: var(--border-default); }
 
 /* ── Team stage chart ────────────────────────────────────────────── */
 .team-chart-controls {
@@ -561,23 +545,24 @@ header .trophy { font-size: 22px; }
 }
 .team-chart-controls label {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--text-secondary);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .05em;
 }
 .team-chart-controls select {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--text);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
   padding: 8px 12px;
   font-size: 13px;
+  font-family: var(--font-sans);
   outline: none;
   min-width: 200px;
-  transition: border-color .15s;
+  transition: border-color var(--transition-fast);
 }
-.team-chart-controls select:focus { border-color: var(--gold); }
+.team-chart-controls select:focus { border-color: var(--accent); }
 
 .bar-chart {
   display: flex;
@@ -595,7 +580,7 @@ header .trophy { font-size: 22px; }
   flex-shrink: 0;
   font-size: 12px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--text-secondary);
   text-align: right;
   text-transform: uppercase;
   letter-spacing: .04em;
@@ -603,7 +588,7 @@ header .trophy { font-size: 22px; }
 .bar-track {
   flex: 1;
   height: 28px;
-  background: var(--surface2);
+  background: var(--bg-surface-2);
   border-radius: 4px;
   overflow: hidden;
   position: relative;
@@ -619,27 +604,27 @@ header .trophy { font-size: 22px; }
   flex-shrink: 0;
   font-size: 13px;
   font-weight: 700;
-  color: var(--text);
+  color: var(--text-primary);
 }
-.bar-empty { color: var(--muted); font-style: italic; font-size: 13px; }
+.bar-empty { color: var(--text-secondary); font-style: italic; font-size: 13px; }
 
 .bar-row { cursor: default; }
-.bar-row:hover .bar-track { outline: 1px solid var(--gold); }
+.bar-row:hover .bar-track { outline: 1px solid var(--accent); }
 
 /* tooltip */
 .chart-tooltip {
   position: fixed;
   z-index: 999;
-  background: #1e2a45;
-  border: 1px solid var(--gold);
-  border-radius: var(--radius);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-md);
   padding: 10px 14px;
   font-size: 12px;
   pointer-events: none;
   opacity: 0;
   transition: opacity .12s;
   min-width: 180px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-md);
 }
 .chart-tooltip.visible { opacity: 1; }
 .chart-tooltip-title {
@@ -647,7 +632,7 @@ header .trophy { font-size: 22px; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .06em;
-  color: var(--gold);
+  color: var(--accent);
   margin-bottom: 7px;
 }
 .chart-tooltip-row {
@@ -655,15 +640,15 @@ header .trophy { font-size: 22px; }
   justify-content: space-between;
   gap: 14px;
   padding: 2px 0;
-  color: var(--text);
+  color: var(--text-primary);
 }
 .chart-tooltip-row .opp-pct {
-  color: var(--muted);
+  color: var(--text-secondary);
   font-weight: 600;
   font-size: 11px;
   white-space: nowrap;
 }
-.chart-tooltip-none { color: var(--muted); font-style: italic; }
+.chart-tooltip-none { color: var(--text-secondary); font-style: italic; }
 
 /* ── Bracket View ────────────────────────────────────────────────── */
 .bracket-wrap { overflow-x: auto; padding-bottom: 8px; }
@@ -688,16 +673,16 @@ header .trophy { font-size: 22px; }
 }
 .bk-card {
   width: 100%;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
   overflow: hidden;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
 }
 .bk-card .bk-team { flex: 1; display: flex; align-items: center; }
-.bk-card-final { border-color: var(--gold); }
+.bk-card-final { border-color: var(--accent); }
 .bk-team {
   padding: 6px 8px;
   white-space: nowrap;
@@ -706,27 +691,27 @@ header .trophy { font-size: 22px; }
   font-weight: 500;
   font-size: 11px;
 }
-.bk-team.winner { color: var(--green); font-weight: 700; }
-.bk-team.loser  { color: var(--muted); }
-.bk-divider { height: 1px; background: var(--border); }
+.bk-team.winner { color: var(--color-success); font-weight: 700; }
+.bk-team.loser  { color: var(--text-secondary); }
+.bk-divider { height: 1px; background: var(--border-default); }
 .bk-card-multi { display: flex; flex-direction: column; justify-content: center; }
 .bk-freq-row {
   display: flex;
   align-items: center;
   padding: 3px 7px;
   gap: 5px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-default);
   font-size: 11px;
 }
 .bk-freq-row:last-child { border-bottom: none; }
-.bk-pct  { min-width: 32px; font-weight: 700; color: var(--gold); flex-shrink: 0; font-size: 11px; }
-.bk-match-teams { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
-.bk-vs   { color: var(--muted); margin: 0 2px; }
-.bk-no-data { color: var(--muted); font-size: 11px; text-align: center; padding: 6px; }
+.bk-pct  { min-width: 32px; font-weight: 700; color: var(--accent); flex-shrink: 0; font-size: 11px; }
+.bk-match-teams { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-primary); }
+.bk-vs   { color: var(--text-secondary); margin: 0 2px; }
+.bk-no-data { color: var(--text-secondary); font-size: 11px; text-align: center; padding: 6px; }
 .bracket-labels { display: flex; gap: 20px; min-width: max-content; margin-top: 6px; }
 .bk-label {
   font-size: 10px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .06em; color: var(--muted); text-align: center; flex-shrink: 0;
+  letter-spacing: .06em; color: var(--text-secondary); text-align: center; flex-shrink: 0;
 }
 
 /* ── Podium sim table ────────────────────────────────────────────── */
@@ -743,9 +728,9 @@ header .trophy { font-size: 22px; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .06em;
-  color: var(--muted);
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-default);
+  background: var(--bg-surface);
   position: sticky;
   top: 0;
   z-index: 1;
@@ -753,10 +738,10 @@ header .trophy { font-size: 22px; }
 .sim-table td {
   padding: 6px 10px;
   font-size: 12px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-default);
 }
-.sim-table tr:hover td { background: var(--surface2); }
-.sim-table td:first-child { color: var(--muted); }
+.sim-table tr:hover td { background: var(--bg-surface-2); }
+.sim-table td:first-child { color: var(--text-secondary); }
 </style>
 <!-- Vercel Web Analytics — enable in Vercel dashboard → Analytics tab -->
 <script defer src="/_vercel/insights/script.js"></script>
@@ -981,7 +966,7 @@ async function run() {
       await runMultiStream(model, n, temp);
     }
   } catch (e) {
-    main.innerHTML = `<div class="empty-state"><p style="color:var(--red)">Error: ${e.message}</p></div>`;
+    main.innerHTML = `<div class="empty-state"><p style="color:var(--color-error)">Error: ${e.message}</p></div>`;
   } finally {
     btn.disabled = false;
   }
@@ -1225,7 +1210,7 @@ function sectionFreqKO(title, slots) {
     const card = el('div', 'freq-card');
     card.innerHTML = `<div class="freq-card-title">Match ${i + 1}</div>`;
     if (!top3.length) {
-      card.innerHTML += `<div style="color:var(--muted);font-size:12px">No data</div>`;
+      card.innerHTML += `<div style="color:var(--text-secondary);font-size:12px">No data</div>`;
     } else {
       top3.forEach(row => {
         const r = el('div', 'freq-row');
@@ -1244,12 +1229,12 @@ function sectionFreqKO(title, slots) {
 
 // ── Stage colours (groups→final) ────────────────────────────────
 const STAGE_COLORS = {
-  groups: '#f05454',
-  r32:    '#f5a623',
-  r16:    '#f5c842',
-  qf:     '#a3e048',
-  sf:     '#4a9eff',
-  final:  '#28c96a',
+  groups: '#F87171',
+  r32:    '#FF7400',
+  r16:    '#FFE600',
+  qf:     '#9FD800',
+  sf:     '#60A5FA',
+  final:  '#22D3A0',
 };
 const STAGE_LABELS = {
   groups: 'Group Stage',
@@ -1507,7 +1492,7 @@ function _drawBkConnectors(bk, svg) {
     };
   }
 
-  const S  = 'stroke="#3a4a6a" stroke-width="1.5" fill="none"';
+  const S  = 'stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none"';
   const lines = [];
 
   // Pair connections within one side (0-based local indices, same pattern L & R)
