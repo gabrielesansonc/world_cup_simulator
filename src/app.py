@@ -12,7 +12,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
-from flask import Flask, jsonify, request, send_from_directory
+import json
+from flask import Flask, jsonify, request, send_from_directory, Response, stream_with_context
 from flask_cors import CORS
 
 from wc_2026_simulator_function import simulate_world_cup_full
@@ -273,6 +274,208 @@ def simulate_multiple():
         "team_stage_probs":     team_stage_probs,
         "team_stage_opponents": team_stage_opponents,
     })
+
+
+# ── API: multiple simulations with SSE progress ───────────────────────────────
+
+@app.route("/api/simulate/multiple/stream", methods=["POST"])
+def simulate_multiple_stream():
+    data        = request.get_json(force=True) or {}
+    model       = data.get("model", "avg")
+    n           = min(int(data.get("n", 100)), 100000)
+    temperature = float(data.get("temperature", 1.0))
+
+    if model not in MODELS:
+        return jsonify({"error": "Invalid model"}), 400
+
+    csv_path = os.path.join(DATA_DIR, f"wc_2026_match_probabilities_{model}.csv")
+
+    def _generate():
+        t0 = time.time()
+
+        podium_table  = []
+        podium_counts = {"champion": {}, "runner_up": {}, "third": {}, "fourth": {}}
+        bracket_counts = {
+            "r32":         [{} for _ in range(16)],
+            "r16":         [{} for _ in range(8)],
+            "qf":          [{} for _ in range(4)],
+            "sf":          [{} for _ in range(2)],
+            "third_place": [{}],
+            "final":       [{}],
+        }
+        group_counts = {
+            grp: {"1": {}, "2": {}, "3": {}, "4": {}}
+            for grp in "ABCDEFGHIJKL"
+        }
+        last_stage_counts: dict = {}
+
+        def _track_stage(team, stage):
+            if team not in last_stage_counts:
+                last_stage_counts[team] = {}
+            last_stage_counts[team][stage] = last_stage_counts[team].get(stage, 0) + 1
+
+        stage_opponents: dict = {}
+
+        def _track_opponent(team, stage, opponent):
+            if team not in stage_opponents:
+                stage_opponents[team] = {}
+            if stage not in stage_opponents[team]:
+                stage_opponents[team][stage] = {}
+            d = stage_opponents[team][stage]
+            d[opponent] = d.get(opponent, 0) + 1
+
+        # emit progress every 1% or at least every 100 sims
+        progress_interval = max(1, n // 100)
+
+        for i in range(n):
+            r   = simulate_world_cup_full(csv_path, seed=i, temperature=temperature)
+            pod = r["podium"]
+
+            podium_table.append({
+                "sim":       i + 1,
+                "champion":  pod["champion"],
+                "runner_up": pod["runner_up"],
+                "third":     pod["third"],
+                "fourth":    pod["fourth"],
+            })
+
+            for pos in ("champion", "runner_up", "third", "fourth"):
+                team = pod[pos]
+                podium_counts[pos][team] = podium_counts[pos].get(team, 0) + 1
+
+            for round_name, matches in [
+                ("r32",         r["r32"]),
+                ("r16",         r["r16"]),
+                ("qf",          r["qf"]),
+                ("sf",          r["sf"]),
+                ("third_place", [r["third_place_match"]]),
+                ("final",       [r["final"]]),
+            ]:
+                for idx, match in enumerate(matches):
+                    key = tuple(sorted([match["t1"], match["t2"]]))
+                    d   = bracket_counts[round_name][idx]
+                    d[key] = d.get(key, 0) + 1
+
+            for grp, gdata in r["groups"].items():
+                for standing in gdata["standings"]:
+                    pos  = str(standing["rank"])
+                    team = standing["team"]
+                    group_counts[grp][pos][team] = group_counts[grp][pos].get(team, 0) + 1
+
+            r32_teams = {m["t1"] for m in r["r32"]} | {m["t2"] for m in r["r32"]}
+            all_group_teams = {
+                s["team"]
+                for gdata in r["groups"].values()
+                for s in gdata["standings"]
+            }
+            for team in all_group_teams - r32_teams:
+                _track_stage(team, "groups")
+            for m in r["r32"]:
+                _track_stage(m["t1"] if m["winner"] == m["t2"] else m["t2"], "r32")
+            for m in r["r16"]:
+                _track_stage(m["t1"] if m["winner"] == m["t2"] else m["t2"], "r16")
+            for m in r["qf"]:
+                _track_stage(m["t1"] if m["winner"] == m["t2"] else m["t2"], "qf")
+            for m in r["sf"]:
+                _track_stage(m["t1"] if m["winner"] == m["t2"] else m["t2"], "sf")
+            _track_stage(r["final"]["t1"], "final")
+            _track_stage(r["final"]["t2"], "final")
+
+            for grp, gdata in r["groups"].items():
+                for match in gdata["matches"]:
+                    _track_opponent(match["t1"], "groups", match["t2"])
+                    _track_opponent(match["t2"], "groups", match["t1"])
+            for stage_name, matches in [
+                ("r32",   r["r32"]),
+                ("r16",   r["r16"]),
+                ("qf",    r["qf"]),
+                ("sf",    r["sf"]),
+                ("final", [r["final"]]),
+            ]:
+                for match in matches:
+                    _track_opponent(match["t1"], stage_name, match["t2"])
+                    _track_opponent(match["t2"], stage_name, match["t1"])
+
+            if (i + 1) % progress_interval == 0 or i == n - 1:
+                yield f"data: {json.dumps({'progress': i + 1, 'total': n})}\n\n"
+
+        # build final payload
+        all_teams = set()
+        for pd in podium_counts.values():
+            all_teams.update(pd.keys())
+
+        probabilities = {}
+        for team in all_teams:
+            row   = {}
+            passes = False
+            for pos in ("champion", "runner_up", "third", "fourth"):
+                pct = podium_counts[pos].get(team, 0) / n * 100
+                row[pos] = round(pct, 1)
+                if pct >= 1.0:
+                    passes = True
+            if passes:
+                row["top4"] = round(
+                    sum(podium_counts[pos].get(team, 0) for pos in podium_counts) / n * 100, 1
+                )
+                probabilities[team] = row
+
+        probabilities = [
+            {"team": team, **row}
+            for team, row in sorted(probabilities.items(), key=lambda x: -x[1]["champion"])
+        ]
+
+        bracket_top3 = {}
+        for round_name, slot_dicts in bracket_counts.items():
+            bracket_top3[round_name] = []
+            for counts in slot_dicts:
+                top = sorted(counts.items(), key=lambda x: -x[1])[:3]
+                bracket_top3[round_name].append([
+                    {"t1": pair[0], "t2": pair[1], "pct": round(cnt / n * 100, 1)}
+                    for pair, cnt in top
+                ])
+
+        group_frequencies = {}
+        for grp, positions in group_counts.items():
+            group_frequencies[grp] = {}
+            for pos, counts in positions.items():
+                top = sorted(counts.items(), key=lambda x: -x[1])[:3]
+                group_frequencies[grp][pos] = [
+                    {"team": team, "pct": round(cnt / n * 100, 1)}
+                    for team, cnt in top
+                ]
+
+        stage_order = ["groups", "r32", "r16", "qf", "sf", "final"]
+        team_stage_probs = {
+            team: {s: round(counts.get(s, 0) / n * 100, 1) for s in stage_order}
+            for team, counts in sorted(last_stage_counts.items())
+        }
+
+        team_stage_opponents = {}
+        for team, stages in sorted(stage_opponents.items()):
+            team_stage_opponents[team] = {}
+            for stage, opp_counts in stages.items():
+                top3 = sorted(opp_counts.items(), key=lambda x: -x[1])[:3]
+                team_stage_opponents[team][stage] = [
+                    {"team": opp, "pct": round(cnt / n * 100, 1)}
+                    for opp, cnt in top3
+                ]
+
+        payload = {
+            "n":                    n,
+            "probabilities":        probabilities,
+            "bracket_top3":         bracket_top3,
+            "group_frequencies":    group_frequencies,
+            "team_stage_probs":     team_stage_probs,
+            "team_stage_opponents": team_stage_opponents,
+        }
+        logging.info("MULTI-STREAM model=%s n=%d temp=%s elapsed=%.2fs", model, n, temperature, time.time() - t0)
+        yield f"data: {json.dumps({'result': payload})}\n\n"
+
+    return Response(
+        stream_with_context(_generate()),
+        mimetype="text/event-stream",
+        headers={"X-Accel-Buffering": "no", "Cache-Control": "no-cache"},
+    )
 
 
 # ── Entry point ───────────────────────────────────────────────────────────────
