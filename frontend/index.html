@@ -763,6 +763,12 @@ header .trophy {
   transition: opacity var(--transition-fast);
 }
 .expand-btn:hover { opacity: 0.8; }
+
+/* ── 3rd place match: text-only winner (no background) ────────────────── */
+.match-team.winner-text {
+  color: var(--color-success);
+  font-weight: 700;
+}
 </style>
 <!-- Vercel Web Analytics — enable in Vercel dashboard → Analytics tab -->
 <script>
@@ -999,6 +1005,12 @@ async function run() {
       renderSingle(data);
     } else {
       const n = parseInt(document.getElementById('inp-n').value) || 100;
+      if (n > 5000) {
+        document.getElementById('inp-n').value = 5000;
+        main.innerHTML = `<div class="empty-state"><p style="color:var(--color-error)">Whoa, slow down there! Keep it under 5k.</p></div>`;
+        btn.disabled = false;
+        return;
+      }
       await runMultiStream(model, n, temp);
     }
   } catch (e) {
@@ -1070,7 +1082,7 @@ function renderSingle(d) {
   main.appendChild(sectionGroups(d.groups));
   main.appendChild(sectionThirdQualifiers(d.third_place_qualifiers));
   main.appendChild(sectionBracket(d, false));
-  main.appendChild(sectionKO('Third-Place Match', [d.third_place_match]));
+  main.appendChild(sectionKO('Third-Place Match', [d.third_place_match], true));
 }
 
 function sectionPodium(podium) {
@@ -1137,17 +1149,18 @@ function sectionThirdQualifiers(thirds) {
   return sec;
 }
 
-function sectionKO(title, matches, hideWinner = false) {
+function sectionKO(title, matches, textOnlyWinner = false) {
   const sec = el('div', 'ko-round');
   sec.innerHTML = `<div class="section-title">${title}</div>`;
   const grid = el('div', 'matches-grid');
   matches.forEach((m, i) => {
     const card = el('div', 'match-card');
     const isT1 = m.winner === m.t1;
+    const winClass = textOnlyWinner ? 'winner-text' : 'winner';
     card.innerHTML = `
-      <div class="match-team t1${!hideWinner && isT1 ? ' winner' : ''}">${m.t1}</div>
+      <div class="match-team t1${isT1 ? ' ' + winClass : ''}">${m.t1}</div>
       <div class="match-vs">vs</div>
-      <div class="match-team t2${!hideWinner && !isT1 ? ' winner' : ''}">${m.t2}</div>
+      <div class="match-team t2${!isT1 ? ' ' + winClass : ''}">${m.t2}</div>
     `;
     grid.appendChild(card);
   });
