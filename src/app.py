@@ -80,8 +80,8 @@ def simulate_multiple():
     n_requested = int(data.get("n", 100))
     temperature = float(data.get("temperature", 1.0))
 
-    if n_requested > 10000:
-        return jsonify({"error": "Whoa, slow down! You're going to burn my resources. 10k should be enough."}), 400
+    if n_requested > 5000:
+        return jsonify({"error": "Whoa, slow down! You're going to burn my resources. 5k should be enough."}), 400
 
     n = n_requested
     if model not in MODELS:
@@ -289,8 +289,8 @@ def simulate_multiple_stream():
     n_requested = int(data.get("n", 100))
     temperature = float(data.get("temperature", 1.0))
 
-    if n_requested > 10000:
-        return jsonify({"error": "Whoa, slow down! You're going to burn my resources. 10k should be enough."}), 400
+    if n_requested > 5000:
+        return jsonify({"error": "Whoa, slow down! You're going to burn my resources. 5k should be enough."}), 400
 
     n = n_requested
     if model not in MODELS:
