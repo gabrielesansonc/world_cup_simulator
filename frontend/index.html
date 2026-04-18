@@ -781,11 +781,9 @@ header .trophy {
 <body>
 
 <header>
-  <!-- Heroicons: Trophy -->
-  <svg class="trophy" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 15a3 3 0 100-6 3 3 0 000 6z"></path>
-    <path d="M9.212 4.486a.75.75 0 00-.577.21l-5.85 5.85a.75.75 0 101.06 1.061L8.7 6.587a.75.75 0 00-.488-1.101zM14.788 4.486a.75.75 0 01.577.21l5.85 5.85a.75.75 0 11-1.06 1.061l-5.85-5.85a.75.75 0 01.483-1.271z"></path>
-    <path d="M6 9a3 3 0 00-3 3v6a3 3 0 003 3h12a3 3 0 003-3v-6a3 3 0 00-3-3"></path>
+  <!-- Heroicons: Trophy (v2) -->
+  <svg class="trophy" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 9V5a2 2 0 012-2h8a2 2 0 012 2v4m0 0a2 2 0 110 4H4a2 2 0 110-4m12 0v7a2 2 0 01-2 2H8a2 2 0 01-2-2v-7M9 18h6"></path>
   </svg>
   <h1>World Cup 2026 Simulator</h1>
 </header>
@@ -837,11 +835,11 @@ header .trophy {
 <!-- ── Main ──────────────────────────────────────────────────────── -->
 <main class="main" id="main">
   <div class="empty-state">
-    <!-- Heroicons: Football (Soccer Ball) -->
+    <!-- Soccer Ball Icon -->
     <svg class="big-icon" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="10"></circle>
-      <path d="M8.56 2.75c4.37 6.03 6.29 9.42 8.05 17.72m2.34-13.47c3.72 3.72 4.45 8.74 5.15 17.72M19.5 13.5c5.33 5.33 7.74 7.74 8.35 9.85"></path>
-      <path d="M2 12a10 10 0 0110-10 10 10 0 0110 10"></path>
+      <path d="M12 2v20M2 12h20M6.22 6.22l14.14 14.14M17.78 6.22L3.64 20.36"></path>
+      <path d="M8.5 7.5l7 7M7.5 15.5l7-7"></path>
     </svg>
     <h2>Ready to simulate</h2>
     <p>Choose a model and hit Run.</p>
@@ -1202,11 +1200,10 @@ function sectionProbTable(probs, n) {
     </tr></thead>
   `;
   const tbody = el('tbody');
+  const extraRows = []; // track rows beyond top 10
 
   probs.forEach((p, idx) => {
     const tr = el('tr');
-    // hide rows beyond top 10
-    if (idx >= 10) tr.classList.add('hidden');
     tr.innerHTML = `
       <td>${p.team}</td>
       ${pctCell(p.champion)}
@@ -1215,6 +1212,10 @@ function sectionProbTable(probs, n) {
       ${pctCell(p.fourth)}
       ${pctCell(p.top4)}
     `;
+    if (idx >= 10) {
+      tr.classList.add('hidden');
+      extraRows.push(tr);
+    }
     tbody.appendChild(tr);
   });
 
@@ -1227,8 +1228,7 @@ function sectionProbTable(probs, n) {
     expandBtn.textContent = `Show all ${probs.length} teams`;
     expandBtn.onclick = () => {
       isExpanded[0] = !isExpanded[0];
-      const hiddenRows = tbl.querySelectorAll('tbody tr.hidden');
-      hiddenRows.forEach(row => {
+      extraRows.forEach(row => {
         if (isExpanded[0]) {
           row.classList.remove('hidden');
         } else {
