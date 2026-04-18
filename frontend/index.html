@@ -30,7 +30,10 @@ header h1 {
   color: var(--accent);
   letter-spacing: .02em;
 }
-header .trophy { font-size: 22px; }
+header .trophy {
+  color: var(--accent);
+  flex-shrink: 0;
+}
 
 /* ── Top control bar ─────────────────────────────────────────────── */
 .controls {
@@ -267,7 +270,10 @@ header .trophy { font-size: 22px; }
   color: var(--text-secondary);
   text-align: center;
 }
-.empty-state .big-icon { font-size: 52px; }
+.empty-state .big-icon {
+  color: var(--accent);
+  opacity: 0.7;
+}
 .empty-state h2 { font-size: 18px; color: var(--text-primary); }
 
 .spinner {
@@ -742,6 +748,21 @@ header .trophy { font-size: 22px; }
 }
 .sim-table tr:hover td { background: var(--bg-surface-2); }
 .sim-table td:first-child { color: var(--text-secondary); }
+
+/* ── Expandable table rows ──────────────────────────────────────── */
+.prob-table tr.hidden { display: none; }
+.expand-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 0;
+  text-decoration: underline;
+  transition: opacity var(--transition-fast);
+}
+.expand-btn:hover { opacity: 0.8; }
 </style>
 <!-- Vercel Web Analytics — enable in Vercel dashboard → Analytics tab -->
 <script>
@@ -754,7 +775,11 @@ header .trophy { font-size: 22px; }
 <body>
 
 <header>
-  <span class="trophy">🏆</span>
+  <svg class="trophy" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 3H18V6C18 8.21 16.79 10 15 10H9C7.21 10 6 8.21 6 6V3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7 10C5.34 10 4 11.34 4 13V15C4 16.66 5.34 18 7 18H9V21H15V18H17C18.66 18 20 16.66 20 15V13C20 11.34 18.66 10 17 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 21V23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
   <h1>World Cup 2026 Simulator</h1>
 </header>
 
@@ -784,7 +809,7 @@ header .trophy { font-size: 22px; }
   <!-- Multi-only -->
   <div id="multi-controls" class="ctrl-item" style="display:none">
     <label>Simulations</label>
-    <input type="number" id="inp-n" value="100" min="10" max="100000" step="10" />
+    <input type="number" id="inp-n" value="100" min="10" max="10000" step="10" />
   </div>
 
   <div class="ctrl-sep"></div>
@@ -805,7 +830,11 @@ header .trophy { font-size: 22px; }
 <!-- ── Main ──────────────────────────────────────────────────────── -->
 <main class="main" id="main">
   <div class="empty-state">
-    <div class="big-icon">⚽</div>
+    <svg class="big-icon" width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 2V22M2 12H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M7.5 4.5L9 9M16.5 4.5L15 9M4.5 7.5L9 9M19.5 7.5L15 9M7.5 19.5L9 15M16.5 19.5L15 15M4.5 16.5L9 15M19.5 16.5L15 15" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
     <h2>Ready to simulate</h2>
     <p>Choose a model and hit Run.</p>
   </div>
@@ -954,7 +983,7 @@ async function run() {
   const temp  = parseFloat(document.getElementById('inp-temp').value);
 
   btn.disabled = true;
-  main.innerHTML = `<div class="empty-state"><div class="spinner"></div><p>Simulating…</p></div>`;
+  main.innerHTML = `<div class="empty-state"><p>Simulating…</p></div>`;
 
   try {
     if (mode === 'single') {
@@ -984,7 +1013,6 @@ async function runMultiStream(model, n, temp) {
   // show progress UI
   main.innerHTML = `
     <div class="empty-state progress-wrap">
-      <div class="spinner"></div>
       <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
       <div class="progress-label" id="prog-label">Starting…</div>
     </div>
@@ -1040,7 +1068,7 @@ function renderSingle(d) {
   main.appendChild(sectionGroups(d.groups));
   main.appendChild(sectionThirdQualifiers(d.third_place_qualifiers));
   main.appendChild(sectionBracket(d, false));
-  main.appendChild(sectionKO('Third-Place Match', [d.third_place_match]));
+  main.appendChild(sectionKO('Third-Place Match', [d.third_place_match], true));
 }
 
 function sectionPodium(podium) {
@@ -1107,7 +1135,7 @@ function sectionThirdQualifiers(thirds) {
   return sec;
 }
 
-function sectionKO(title, matches) {
+function sectionKO(title, matches, hideWinner = false) {
   const sec = el('div', 'ko-round');
   sec.innerHTML = `<div class="section-title">${title}</div>`;
   const grid = el('div', 'matches-grid');
@@ -1115,9 +1143,9 @@ function sectionKO(title, matches) {
     const card = el('div', 'match-card');
     const isT1 = m.winner === m.t1;
     card.innerHTML = `
-      <div class="match-team t1${isT1 ? ' winner' : ''}">${m.t1}</div>
+      <div class="match-team t1${!hideWinner && isT1 ? ' winner' : ''}">${m.t1}</div>
       <div class="match-vs">vs</div>
-      <div class="match-team t2${!isT1 ? ' winner' : ''}">${m.t2}</div>
+      <div class="match-team t2${!hideWinner && !isT1 ? ' winner' : ''}">${m.t2}</div>
     `;
     grid.appendChild(card);
   });
@@ -1149,6 +1177,8 @@ function sectionProbTable(probs, n) {
     sec.appendChild(wrap);
     return sec;
   }
+
+  const isExpanded = [false]; // closure var to track state
   const tbl = el('table', 'prob-table');
   tbl.innerHTML = `
     <thead><tr>
@@ -1157,8 +1187,11 @@ function sectionProbTable(probs, n) {
     </tr></thead>
   `;
   const tbody = el('tbody');
-  probs.forEach(p => {
+
+  probs.forEach((p, idx) => {
     const tr = el('tr');
+    // hide rows beyond top 10
+    if (idx >= 10) tr.classList.add('hidden');
     tr.innerHTML = `
       <td>${p.team}</td>
       ${pctCell(p.champion)}
@@ -1169,8 +1202,29 @@ function sectionProbTable(probs, n) {
     `;
     tbody.appendChild(tr);
   });
+
   tbl.appendChild(tbody);
   wrap.appendChild(tbl);
+
+  // Add expand button if there are more than 10 teams
+  if (probs.length > 10) {
+    const expandBtn = el('button', 'expand-btn');
+    expandBtn.textContent = `Show all ${probs.length} teams`;
+    expandBtn.onclick = () => {
+      isExpanded[0] = !isExpanded[0];
+      const hiddenRows = tbl.querySelectorAll('tbody tr.hidden');
+      hiddenRows.forEach(row => {
+        if (isExpanded[0]) {
+          row.classList.remove('hidden');
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+      expandBtn.textContent = isExpanded[0] ? `Show top 10 teams` : `Show all ${probs.length} teams`;
+    };
+    wrap.appendChild(expandBtn);
+  }
+
   sec.appendChild(wrap);
   return sec;
 }

@@ -77,9 +77,13 @@ def simulate_single():
 def simulate_multiple():
     data        = request.get_json(force=True) or {}
     model       = data.get("model", "avg")
-    n           = min(int(data.get("n", 100)), 100000)
+    n_requested = int(data.get("n", 100))
     temperature = float(data.get("temperature", 1.0))
 
+    if n_requested > 10000:
+        return jsonify({"error": "Whoa, slow down! You're going to burn my resources. 10k should be enough."}), 400
+
+    n = n_requested
     if model not in MODELS:
         return jsonify({"error": "Invalid model"}), 400
 
@@ -282,9 +286,13 @@ def simulate_multiple():
 def simulate_multiple_stream():
     data        = request.get_json(force=True) or {}
     model       = data.get("model", "avg")
-    n           = min(int(data.get("n", 100)), 100000)
+    n_requested = int(data.get("n", 100))
     temperature = float(data.get("temperature", 1.0))
 
+    if n_requested > 10000:
+        return jsonify({"error": "Whoa, slow down! You're going to burn my resources. 10k should be enough."}), 400
+
+    n = n_requested
     if model not in MODELS:
         return jsonify({"error": "Invalid model"}), 400
 
