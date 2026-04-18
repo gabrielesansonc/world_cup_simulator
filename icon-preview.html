@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icon Preview</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      padding: 40px;
+      margin: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 40px;
+    }
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    .icon-card {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .icon-card h3 {
+      margin-top: 0;
+      color: #333;
+      font-size: 16px;
+    }
+    .icon-card svg {
+      display: block;
+      margin: 20px auto;
+      color: #FFE600; /* accent color - app yellow */
+    }
+    .icon-card .label {
+      font-size: 12px;
+      color: #999;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🎯 Icon Preview Test — Two Design Options</h1>
+
+  <h2>Your Icons (Tabler Icons)</h2>
+  <div class="icon-grid">
+
+    <div class="icon-card">
+      <h3>World Map (Trophy replacement)</h3>
+      <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M20 8h-2a2 2 0 0 0 -2 2a2 2 0 1 1 -4 0v-1a2 2 0 0 0 -2 -2h-1a2 2 0 0 1 -2 -2v-.5" />
+        <path d="M3 12h3a2 2 0 0 1 2 2v.5a1.5 1.5 0 0 0 1.5 1.5a1.5 1.5 0 0 1 1.5 1.5v3.25" />
+        <path d="M15 20.5v-3.5a2 2 0 0 1 2 -2h3.5" />
+        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+      </svg>
+      <div class="label">Global reach & world cup</div>
+    </div>
+
+    <div class="icon-card">
+      <h3>Play Football (Soccer Ball replacement)</h3>
+      <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M11 4a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
+        <path d="M3 17l5 1l.75 -1.5" />
+        <path d="M14 21v-4l-4 -3l1 -6" />
+        <path d="M6 12v-3l5 -1l3 3l3 1" />
+        <path d="M19.5 20a.5 .5 0 1 0 0 -1a.5 .5 0 0 0 0 1" fill="currentColor" />
+      </svg>
+      <div class="label">Action-packed football</div>
+    </div>
+
+  </div>
+
+  <h2>Your Final Icons</h2>
+  <p style="color: #666; line-height: 1.6;">
+    These are your chosen icons in your app's yellow (#FFE600):<br><br>
+    ✓ <strong>World Map</strong> — Replaces the trophy in the header<br>
+    ✓ <strong>Play Football</strong> — Replaces the soccer ball in the empty state<br>
+    ✓ <strong>Favicon</strong> — Using the play football icon<br><br>
+    Ready to integrate these into your app!
+  </p>
+
+</div>
+
+</body>
+</html>
