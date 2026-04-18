@@ -542,6 +542,26 @@ header .trophy {
 .prob-cell.lo  { color: var(--text-secondary); }
 .prob-cell.zero { color: var(--border-default); }
 
+/* ── Responsive section row (2 col desktop, 1 col mobile) ────────── */
+.section-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+@media (min-width: 1024px) {
+  .section-row {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+  .section-row > div:last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    min-height: 400px;
+  }
+}
+
 /* ── Team stage chart ────────────────────────────────────────────── */
 .team-chart-controls {
   display: flex;
@@ -1182,11 +1202,15 @@ function renderMulti(d) {
   const main = document.getElementById('main');
   main.innerHTML = '';
 
-  main.appendChild(sectionProbTable(d.probabilities, d.n));
+  // Two-column responsive section: probability table + team stage chart
+  const rowWrapper = el('div', 'section-row');
+  rowWrapper.appendChild(sectionProbTable(d.probabilities, d.n));
+  rowWrapper.appendChild(sectionTeamStageChart(d.team_stage_probs, d.team_stage_opponents));
+  main.appendChild(rowWrapper);
+
   main.appendChild(sectionGroupFrequencies(d.group_frequencies));
   main.appendChild(sectionBracket(d, true));
   main.appendChild(sectionFreqKO('Third-Place Match',  d.bracket_top3.third_place));
-  main.appendChild(sectionTeamStageChart(d.team_stage_probs, d.team_stage_opponents));
 }
 
 function sectionProbTable(probs, n) {
