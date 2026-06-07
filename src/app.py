@@ -33,7 +33,6 @@ MODELS = {
     "grok_42":      "Grok 4.2",
     "opus_46":      "Claude Opus 4.6",
     "sonnet_46":    "Claude Sonnet 4.6",
-    "sonnet_opus":  "Sonnet + Opus Blend",
 }
 
 # ── Static frontend ───────────────────────────────────────────────────────────

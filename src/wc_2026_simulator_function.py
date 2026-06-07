@@ -8,9 +8,9 @@ Usage
 
 Examples
 --------
-    python wc_2026_simulator.py wc_2026_match_probabilities_sonnet_opus.csv
-    python wc_2026_simulator.py wc_2026_match_probabilities_opus.csv --silent
-    python wc_2026_simulator.py wc_2026_match_probabilities_sonnet_opus.csv --seed 42
+    python wc_2026_simulator.py wc_2026_match_probabilities_avg.csv
+    python wc_2026_simulator.py wc_2026_match_probabilities_opus_46.csv --silent
+    python wc_2026_simulator.py wc_2026_match_probabilities_avg.csv --seed 42
 """
 
 import math
