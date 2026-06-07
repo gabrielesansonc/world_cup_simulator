@@ -42,6 +42,11 @@ def index():
     return send_from_directory(FRONTEND_DIR, "index.html")
 
 
+@app.route("/report")
+def report():
+    return send_from_directory(FRONTEND_DIR, "report.html")
+
+
 # ── API: list models ──────────────────────────────────────────────────────────
 
 @app.route("/api/models")

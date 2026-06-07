@@ -1,0 +1,644 @@
+team_1,team_2,team_1_win_prob,team_2_win_prob,draw_prob
+Argentina,France,0.39,0.37,0.24
+Argentina,Spain,0.41,0.35,0.24
+Argentina,England,0.43,0.33,0.24
+Argentina,Brazil,0.46,0.30,0.24
+Argentina,Portugal,0.47,0.29,0.24
+Argentina,Netherlands,0.49,0.27,0.24
+Argentina,Colombia,0.50,0.26,0.24
+Argentina,Uruguay,0.52,0.25,0.23
+Argentina,Germany,0.52,0.25,0.23
+Argentina,Belgium,0.53,0.24,0.23
+Argentina,Croatia,0.55,0.22,0.23
+Argentina,Japan,0.59,0.18,0.23
+Argentina,Senegal,0.61,0.17,0.22
+Argentina,Morocco,0.61,0.17,0.22
+Argentina,USA,0.64,0.14,0.22
+Argentina,Mexico,0.64,0.14,0.22
+Argentina,Switzerland,0.64,0.14,0.22
+Argentina,Ecuador,0.65,0.13,0.22
+Argentina,Austria,0.65,0.13,0.22
+Argentina,Ivory Coast,0.67,0.12,0.21
+Argentina,South Korea,0.67,0.12,0.21
+Argentina,Iran,0.68,0.11,0.21
+Argentina,Australia,0.68,0.11,0.21
+Argentina,Türkiye,0.70,0.09,0.21
+Argentina,Norway,0.70,0.09,0.21
+Argentina,Canada,0.71,0.08,0.21
+Argentina,Sweden,0.71,0.08,0.21
+Argentina,Czechia,0.73,0.07,0.20
+Argentina,Egypt,0.74,0.06,0.20
+Argentina,Algeria,0.76,0.05,0.19
+Argentina,Saudi Arabia,0.79,0.03,0.18
+Argentina,Qatar,0.79,0.03,0.18
+Argentina,Tunisia,0.79,0.03,0.18
+Argentina,Panama,0.80,0.02,0.18
+Argentina,Ghana,0.80,0.02,0.18
+Argentina,Bosnia,0.82,0.01,0.17
+Argentina,South Africa,0.83,0.01,0.16
+Argentina,Scotland,0.83,0.01,0.16
+Argentina,Iraq,0.85,0.01,0.14
+Argentina,Uzbekistan,0.85,0.01,0.14
+Argentina,Paraguay,0.85,0.01,0.14
+Argentina,Jordan,0.85,0.01,0.14
+Argentina,DR Congo,0.85,0.01,0.14
+Argentina,Haiti,0.85,0.01,0.14
+Argentina,Cabo Verde,0.85,0.01,0.14
+Argentina,New Zealand,0.85,0.01,0.14
+Argentina,Curaçao,0.85,0.01,0.14
+France,Spain,0.40,0.36,0.24
+France,England,0.41,0.35,0.24
+France,Brazil,0.44,0.32,0.24
+France,Portugal,0.46,0.30,0.24
+France,Netherlands,0.47,0.29,0.24
+France,Colombia,0.49,0.27,0.24
+France,Uruguay,0.50,0.26,0.24
+France,Germany,0.50,0.26,0.24
+France,Belgium,0.52,0.25,0.23
+France,Croatia,0.53,0.24,0.23
+France,Japan,0.58,0.19,0.23
+France,Senegal,0.59,0.18,0.23
+France,Morocco,0.59,0.18,0.23
+France,USA,0.62,0.15,0.23
+France,Mexico,0.62,0.15,0.23
+France,Switzerland,0.62,0.15,0.23
+France,Ecuador,0.64,0.14,0.22
+France,Austria,0.64,0.14,0.22
+France,Ivory Coast,0.65,0.13,0.22
+France,South Korea,0.65,0.13,0.22
+France,Iran,0.67,0.12,0.21
+France,Australia,0.67,0.12,0.21
+France,Türkiye,0.68,0.11,0.21
+France,Norway,0.68,0.11,0.21
+France,Canada,0.70,0.09,0.21
+France,Sweden,0.70,0.09,0.21
+France,Czechia,0.71,0.08,0.21
+France,Egypt,0.73,0.07,0.20
+France,Algeria,0.74,0.06,0.20
+France,Saudi Arabia,0.77,0.04,0.19
+France,Qatar,0.77,0.04,0.19
+France,Tunisia,0.77,0.04,0.19
+France,Panama,0.79,0.03,0.18
+France,Ghana,0.79,0.03,0.18
+France,Bosnia,0.80,0.02,0.18
+France,South Africa,0.82,0.01,0.17
+France,Scotland,0.82,0.01,0.17
+France,Iraq,0.83,0.01,0.16
+France,Uzbekistan,0.85,0.01,0.14
+France,Paraguay,0.85,0.01,0.14
+France,Jordan,0.85,0.01,0.14
+France,DR Congo,0.85,0.01,0.14
+France,Haiti,0.85,0.01,0.14
+France,Cabo Verde,0.85,0.01,0.14
+France,New Zealand,0.85,0.01,0.14
+France,Curaçao,0.85,0.01,0.14
+Spain,England,0.40,0.36,0.24
+Spain,Brazil,0.43,0.33,0.24
+Spain,Portugal,0.44,0.32,0.24
+Spain,Netherlands,0.46,0.30,0.24
+Spain,Colombia,0.47,0.29,0.24
+Spain,Uruguay,0.49,0.27,0.24
+Spain,Germany,0.49,0.27,0.24
+Spain,Belgium,0.50,0.26,0.24
+Spain,Croatia,0.52,0.25,0.23
+Spain,Japan,0.56,0.21,0.23
+Spain,Senegal,0.58,0.19,0.23
+Spain,Morocco,0.58,0.19,0.23
+Spain,USA,0.61,0.17,0.22
+Spain,Mexico,0.61,0.17,0.22
+Spain,Switzerland,0.61,0.17,0.22
+Spain,Ecuador,0.62,0.15,0.23
+Spain,Austria,0.62,0.15,0.23
+Spain,Ivory Coast,0.64,0.14,0.22
+Spain,South Korea,0.64,0.14,0.22
+Spain,Iran,0.65,0.13,0.22
+Spain,Australia,0.65,0.13,0.22
+Spain,Türkiye,0.67,0.12,0.21
+Spain,Norway,0.67,0.12,0.21
+Spain,Canada,0.68,0.11,0.21
+Spain,Sweden,0.68,0.11,0.21
+Spain,Czechia,0.70,0.09,0.21
+Spain,Egypt,0.71,0.08,0.21
+Spain,Algeria,0.73,0.07,0.20
+Spain,Saudi Arabia,0.76,0.05,0.19
+Spain,Qatar,0.76,0.05,0.19
+Spain,Tunisia,0.76,0.05,0.19
+Spain,Panama,0.77,0.04,0.19
+Spain,Ghana,0.77,0.04,0.19
+Spain,Bosnia,0.79,0.03,0.18
+Spain,South Africa,0.80,0.02,0.18
+Spain,Scotland,0.80,0.02,0.18
+Spain,Iraq,0.82,0.01,0.17
+Spain,Uzbekistan,0.83,0.01,0.16
+Spain,Paraguay,0.83,0.01,0.16
+Spain,Jordan,0.85,0.01,0.14
+Spain,DR Congo,0.85,0.01,0.14
+Spain,Haiti,0.85,0.01,0.14
+Spain,Cabo Verde,0.85,0.01,0.14
+Spain,New Zealand,0.85,0.01,0.14
+Spain,Curaçao,0.85,0.01,0.14
+England,Brazil,0.41,0.35,0.24
+England,Portugal,0.43,0.33,0.24
+England,Netherlands,0.44,0.32,0.24
+England,Colombia,0.46,0.30,0.24
+England,Uruguay,0.47,0.29,0.24
+England,Germany,0.47,0.29,0.24
+England,Belgium,0.49,0.27,0.24
+England,Croatia,0.50,0.26,0.24
+England,Japan,0.55,0.22,0.23
+England,Senegal,0.56,0.21,0.23
+England,Morocco,0.56,0.21,0.23
+England,USA,0.59,0.18,0.23
+England,Mexico,0.59,0.18,0.23
+England,Switzerland,0.59,0.18,0.23
+England,Ecuador,0.61,0.17,0.22
+England,Austria,0.61,0.17,0.22
+England,Ivory Coast,0.62,0.15,0.23
+England,South Korea,0.62,0.15,0.23
+England,Iran,0.64,0.14,0.22
+England,Australia,0.64,0.14,0.22
+England,Türkiye,0.65,0.13,0.22
+England,Norway,0.65,0.13,0.22
+England,Canada,0.67,0.12,0.21
+England,Sweden,0.67,0.12,0.21
+England,Czechia,0.68,0.11,0.21
+England,Egypt,0.70,0.09,0.21
+England,Algeria,0.71,0.08,0.21
+England,Saudi Arabia,0.74,0.06,0.20
+England,Qatar,0.74,0.06,0.20
+England,Tunisia,0.74,0.06,0.20
+England,Panama,0.76,0.05,0.19
+England,Ghana,0.76,0.05,0.19
+England,Bosnia,0.77,0.04,0.19
+England,South Africa,0.79,0.03,0.18
+England,Scotland,0.79,0.03,0.18
+England,Iraq,0.80,0.02,0.18
+England,Uzbekistan,0.82,0.01,0.17
+England,Paraguay,0.82,0.01,0.17
+England,Jordan,0.83,0.01,0.16
+England,DR Congo,0.83,0.01,0.16
+England,Haiti,0.85,0.01,0.14
+England,Cabo Verde,0.85,0.01,0.14
+England,New Zealand,0.85,0.01,0.14
+England,Curaçao,0.85,0.01,0.14
+Brazil,Portugal,0.40,0.36,0.24
+Brazil,Netherlands,0.41,0.35,0.24
+Brazil,Colombia,0.43,0.33,0.24
+Brazil,Uruguay,0.44,0.32,0.24
+Brazil,Germany,0.44,0.32,0.24
+Brazil,Belgium,0.46,0.30,0.24
+Brazil,Croatia,0.47,0.29,0.24
+Brazil,Japan,0.52,0.25,0.23
+Brazil,Senegal,0.53,0.24,0.23
+Brazil,Morocco,0.53,0.24,0.23
+Brazil,USA,0.56,0.21,0.23
+Brazil,Mexico,0.56,0.21,0.23
+Brazil,Switzerland,0.56,0.21,0.23
+Brazil,Ecuador,0.58,0.19,0.23
+Brazil,Austria,0.58,0.19,0.23
+Brazil,Ivory Coast,0.59,0.18,0.23
+Brazil,South Korea,0.59,0.18,0.23
+Brazil,Iran,0.61,0.17,0.22
+Brazil,Australia,0.61,0.17,0.22
+Brazil,Türkiye,0.62,0.15,0.23
+Brazil,Norway,0.62,0.15,0.23
+Brazil,Canada,0.64,0.14,0.22
+Brazil,Sweden,0.64,0.14,0.22
+Brazil,Czechia,0.65,0.13,0.22
+Brazil,Egypt,0.67,0.12,0.21
+Brazil,Algeria,0.68,0.11,0.21
+Brazil,Saudi Arabia,0.71,0.08,0.21
+Brazil,Qatar,0.71,0.08,0.21
+Brazil,Tunisia,0.71,0.08,0.21
+Brazil,Panama,0.73,0.07,0.20
+Brazil,Ghana,0.73,0.07,0.20
+Brazil,Bosnia,0.74,0.06,0.20
+Brazil,South Africa,0.76,0.05,0.19
+Brazil,Scotland,0.76,0.05,0.19
+Brazil,Iraq,0.77,0.04,0.19
+Brazil,Uzbekistan,0.79,0.03,0.18
+Brazil,Paraguay,0.79,0.03,0.18
+Brazil,Jordan,0.80,0.02,0.18
+Brazil,DR Congo,0.80,0.02,0.18
+Brazil,Haiti,0.85,0.01,0.14
+Brazil,Cabo Verde,0.85,0.01,0.14
+Brazil,New Zealand,0.85,0.01,0.14
+Brazil,Curaçao,0.85,0.01,0.14
+Portugal,Netherlands,0.40,0.36,0.24
+Portugal,Colombia,0.41,0.35,0.24
+Portugal,Uruguay,0.43,0.33,0.24
+Portugal,Germany,0.43,0.33,0.24
+Portugal,Belgium,0.44,0.32,0.24
+Portugal,Croatia,0.46,0.30,0.24
+Portugal,Japan,0.50,0.26,0.24
+Portugal,Senegal,0.52,0.25,0.23
+Portugal,Morocco,0.52,0.25,0.23
+Portugal,USA,0.55,0.22,0.23
+Portugal,Mexico,0.55,0.22,0.23
+Portugal,Switzerland,0.55,0.22,0.23
+Portugal,Ecuador,0.56,0.21,0.23
+Portugal,Austria,0.56,0.21,0.23
+Portugal,Ivory Coast,0.58,0.19,0.23
+Portugal,South Korea,0.58,0.19,0.23
+Portugal,Iran,0.59,0.18,0.23
+Portugal,Australia,0.59,0.18,0.23
+Portugal,Türkiye,0.61,0.17,0.22
+Portugal,Norway,0.61,0.17,0.22
+Portugal,Canada,0.62,0.15,0.23
+Portugal,Sweden,0.62,0.15,0.23
+Portugal,Czechia,0.64,0.14,0.22
+Portugal,Egypt,0.65,0.13,0.22
+Portugal,Algeria,0.67,0.12,0.21
+Portugal,Saudi Arabia,0.70,0.09,0.21
+Portugal,Qatar,0.70,0.09,0.21
+Portugal,Tunisia,0.70,0.09,0.21
+Portugal,Panama,0.71,0.08,0.21
+Portugal,Ghana,0.71,0.08,0.21
+Portugal,Bosnia,0.73,0.07,0.20
+Portugal,South Africa,0.74,0.06,0.20
+Portugal,Scotland,0.74,0.06,0.20
+Portugal,Iraq,0.76,0.05,0.19
+Portugal,Uzbekistan,0.77,0.04,0.19
+Portugal,Paraguay,0.77,0.04,0.19
+Portugal,Jordan,0.79,0.03,0.18
+Portugal,DR Congo,0.79,0.03,0.18
+Portugal,Haiti,0.85,0.01,0.14
+Portugal,Cabo Verde,0.85,0.01,0.14
+Portugal,New Zealand,0.85,0.01,0.14
+Portugal,Curaçao,0.85,0.01,0.14
+Netherlands,Colombia,0.40,0.36,0.24
+Netherlands,Uruguay,0.41,0.35,0.24
+Netherlands,Germany,0.41,0.35,0.24
+Netherlands,Belgium,0.43,0.33,0.24
+Netherlands,Croatia,0.44,0.32,0.24
+Netherlands,Japan,0.49,0.27,0.24
+Netherlands,Senegal,0.50,0.26,0.24
+Netherlands,Morocco,0.50,0.26,0.24
+Netherlands,USA,0.53,0.24,0.23
+Netherlands,Mexico,0.53,0.24,0.23
+Netherlands,Switzerland,0.53,0.24,0.23
+Netherlands,Ecuador,0.55,0.22,0.23
+Netherlands,Austria,0.55,0.22,0.23
+Netherlands,Ivory Coast,0.56,0.21,0.23
+Netherlands,South Korea,0.56,0.21,0.23
+Netherlands,Iran,0.58,0.19,0.23
+Netherlands,Australia,0.58,0.19,0.23
+Netherlands,Türkiye,0.59,0.18,0.23
+Netherlands,Norway,0.59,0.18,0.23
+Netherlands,Canada,0.61,0.17,0.22
+Netherlands,Sweden,0.61,0.17,0.22
+Netherlands,Czechia,0.62,0.15,0.23
+Netherlands,Egypt,0.64,0.14,0.22
+Netherlands,Algeria,0.65,0.13,0.22
+Netherlands,Saudi Arabia,0.68,0.11,0.21
+Netherlands,Qatar,0.68,0.11,0.21
+Netherlands,Tunisia,0.68,0.11,0.21
+Netherlands,Panama,0.70,0.09,0.21
+Netherlands,Ghana,0.70,0.09,0.21
+Netherlands,Bosnia,0.71,0.08,0.21
+Netherlands,South Africa,0.73,0.07,0.20
+Netherlands,Scotland,0.73,0.07,0.20
+Netherlands,Iraq,0.74,0.06,0.20
+Netherlands,Uzbekistan,0.76,0.05,0.19
+Netherlands,Paraguay,0.76,0.05,0.19
+Netherlands,Jordan,0.77,0.04,0.19
+Netherlands,DR Congo,0.77,0.04,0.19
+Netherlands,Haiti,0.83,0.01,0.16
+Netherlands,Cabo Verde,0.83,0.01,0.16
+Netherlands,New Zealand,0.85,0.01,0.14
+Netherlands,Curaçao,0.85,0.01,0.14
+Colombia,Uruguay,0.40,0.36,0.24
+Colombia,Germany,0.40,0.36,0.24
+Colombia,Belgium,0.41,0.35,0.24
+Colombia,Croatia,0.43,0.33,0.24
+Colombia,Japan,0.47,0.29,0.24
+Colombia,Senegal,0.49,0.27,0.24
+Colombia,Morocco,0.49,0.27,0.24
+Colombia,USA,0.52,0.25,0.23
+Colombia,Mexico,0.52,0.25,0.23
+Colombia,Switzerland,0.52,0.25,0.23
+Colombia,Ecuador,0.53,0.24,0.23
+Colombia,Austria,0.53,0.24,0.23
+Colombia,Ivory Coast,0.55,0.22,0.23
+Colombia,South Korea,0.55,0.22,0.23
+Colombia,Iran,0.56,0.21,0.23
+Colombia,Australia,0.56,0.21,0.23
+Colombia,Türkiye,0.58,0.19,0.23
+Colombia,Norway,0.58,0.19,0.23
+Colombia,Canada,0.59,0.18,0.23
+Colombia,Sweden,0.59,0.18,0.23
+Colombia,Czechia,0.61,0.17,0.22
+Colombia,Egypt,0.62,0.15,0.23
+Colombia,Algeria,0.64,0.14,0.22
+Colombia,Saudi Arabia,0.67,0.12,0.21
+Colombia,Qatar,0.67,0.12,0.21
+Colombia,Tunisia,0.67,0.12,0.21
+Colombia,Panama,0.68,0.11,0.21
+Colombia,Ghana,0.68,0.11,0.21
+Colombia,Bosnia,0.70,0.09,0.21
+Colombia,South Africa,0.71,0.08,0.21
+Colombia,Scotland,0.71,0.08,0.21
+Colombia,Iraq,0.73,0.07,0.20
+Colombia,Uzbekistan,0.74,0.06,0.20
+Colombia,Paraguay,0.74,0.06,0.20
+Colombia,Jordan,0.76,0.05,0.19
+Colombia,DR Congo,0.76,0.05,0.19
+Colombia,Haiti,0.82,0.01,0.17
+Colombia,Cabo Verde,0.82,0.01,0.17
+Colombia,New Zealand,0.83,0.01,0.16
+Colombia,Curaçao,0.85,0.01,0.14
+Uruguay,Germany,0.38,0.38,0.24
+Uruguay,Belgium,0.40,0.36,0.24
+Uruguay,Croatia,0.41,0.35,0.24
+Uruguay,Japan,0.46,0.30,0.24
+Uruguay,Senegal,0.47,0.29,0.24
+Uruguay,Morocco,0.47,0.29,0.24
+Uruguay,USA,0.50,0.26,0.24
+Uruguay,Mexico,0.50,0.26,0.24
+Uruguay,Switzerland,0.50,0.26,0.24
+Uruguay,Ecuador,0.52,0.25,0.23
+Uruguay,Austria,0.52,0.25,0.23
+Uruguay,Ivory Coast,0.53,0.24,0.23
+Uruguay,South Korea,0.53,0.24,0.23
+Uruguay,Iran,0.55,0.22,0.23
+Uruguay,Australia,0.55,0.22,0.23
+Uruguay,Türkiye,0.56,0.21,0.23
+Uruguay,Norway,0.56,0.21,0.23
+Uruguay,Canada,0.58,0.19,0.23
+Uruguay,Sweden,0.58,0.19,0.23
+Uruguay,Czechia,0.59,0.18,0.23
+Uruguay,Egypt,0.61,0.17,0.22
+Uruguay,Algeria,0.62,0.15,0.23
+Uruguay,Saudi Arabia,0.65,0.13,0.22
+Uruguay,Qatar,0.65,0.13,0.22
+Uruguay,Tunisia,0.65,0.13,0.22
+Uruguay,Panama,0.67,0.12,0.21
+Uruguay,Ghana,0.67,0.12,0.21
+Uruguay,Bosnia,0.68,0.11,0.21
+Uruguay,South Africa,0.70,0.09,0.21
+Uruguay,Scotland,0.70,0.09,0.21
+Uruguay,Iraq,0.71,0.08,0.21
+Uruguay,Uzbekistan,0.73,0.07,0.20
+Uruguay,Paraguay,0.73,0.07,0.20
+Uruguay,Jordan,0.74,0.06,0.20
+Uruguay,DR Congo,0.74,0.06,0.20
+Uruguay,Haiti,0.80,0.02,0.18
+Uruguay,Cabo Verde,0.80,0.02,0.18
+Uruguay,New Zealand,0.82,0.01,0.17
+Uruguay,Curaçao,0.85,0.01,0.14
+Germany,Belgium,0.40,0.36,0.24
+Germany,Croatia,0.41,0.35,0.24
+Germany,Japan,0.46,0.30,0.24
+Germany,Senegal,0.47,0.29,0.24
+Germany,Morocco,0.47,0.29,0.24
+Germany,USA,0.50,0.26,0.24
+Germany,Mexico,0.50,0.26,0.24
+Germany,Switzerland,0.50,0.26,0.24
+Germany,Ecuador,0.52,0.25,0.23
+Germany,Austria,0.52,0.25,0.23
+Germany,Ivory Coast,0.53,0.24,0.23
+Germany,South Korea,0.53,0.24,0.23
+Germany,Iran,0.55,0.22,0.23
+Germany,Australia,0.55,0.22,0.23
+Germany,Türkiye,0.56,0.21,0.23
+Germany,Norway,0.56,0.21,0.23
+Germany,Canada,0.58,0.19,0.23
+Germany,Sweden,0.58,0.19,0.23
+Germany,Czechia,0.59,0.18,0.23
+Germany,Egypt,0.61,0.17,0.22
+Germany,Algeria,0.62,0.15,0.23
+Germany,Saudi Arabia,0.65,0.13,0.22
+Germany,Qatar,0.65,0.13,0.22
+Germany,Tunisia,0.65,0.13,0.22
+Germany,Panama,0.67,0.12,0.21
+Germany,Ghana,0.67,0.12,0.21
+Germany,Bosnia,0.68,0.11,0.21
+Germany,South Africa,0.70,0.09,0.21
+Germany,Scotland,0.70,0.09,0.21
+Germany,Iraq,0.71,0.08,0.21
+Germany,Uzbekistan,0.73,0.07,0.20
+Germany,Paraguay,0.73,0.07,0.20
+Germany,Jordan,0.74,0.06,0.20
+Germany,DR Congo,0.74,0.06,0.20
+Germany,Haiti,0.80,0.02,0.18
+Germany,Cabo Verde,0.80,0.02,0.18
+Germany,New Zealand,0.82,0.01,0.17
+Germany,Curaçao,0.85,0.01,0.14
+Belgium,Croatia,0.40,0.36,0.24
+Belgium,Japan,0.44,0.32,0.24
+Belgium,Senegal,0.46,0.30,0.24
+Belgium,Morocco,0.46,0.30,0.24
+Belgium,USA,0.49,0.27,0.24
+Belgium,Mexico,0.49,0.27,0.24
+Belgium,Switzerland,0.49,0.27,0.24
+Belgium,Ecuador,0.50,0.26,0.24
+Belgium,Austria,0.50,0.26,0.24
+Belgium,Ivory Coast,0.52,0.25,0.23
+Belgium,South Korea,0.52,0.25,0.23
+Belgium,Iran,0.53,0.24,0.23
+Belgium,Australia,0.53,0.24,0.23
+Belgium,Türkiye,0.55,0.22,0.23
+Belgium,Norway,0.55,0.22,0.23
+Belgium,Canada,0.56,0.21,0.23
+Belgium,Sweden,0.56,0.21,0.23
+Belgium,Czechia,0.58,0.19,0.23
+Belgium,Egypt,0.59,0.18,0.23
+Belgium,Algeria,0.61,0.17,0.22
+Belgium,Saudi Arabia,0.64,0.14,0.22
+Belgium,Qatar,0.64,0.14,0.22
+Belgium,Tunisia,0.64,0.14,0.22
+Belgium,Panama,0.65,0.13,0.22
+Belgium,Ghana,0.65,0.13,0.22
+Belgium,Bosnia,0.67,0.12,0.21
+Belgium,South Africa,0.68,0.11,0.21
+Belgium,Scotland,0.68,0.11,0.21
+Belgium,Iraq,0.70,0.09,0.21
+Belgium,Uzbekistan,0.71,0.08,0.21
+Belgium,Paraguay,0.71,0.08,0.21
+Belgium,Jordan,0.73,0.07,0.20
+Belgium,DR Congo,0.73,0.07,0.20
+Belgium,Haiti,0.79,0.03,0.18
+Belgium,Cabo Verde,0.79,0.03,0.18
+Belgium,New Zealand,0.80,0.02,0.18
+Belgium,Curaçao,0.83,0.01,0.16
+Croatia,Japan,0.43,0.33,0.24
+Croatia,Senegal,0.44,0.32,0.24
+Croatia,Morocco,0.44,0.32,0.24
+Croatia,USA,0.47,0.29,0.24
+Croatia,Mexico,0.47,0.29,0.24
+Croatia,Switzerland,0.47,0.29,0.24
+Croatia,Ecuador,0.49,0.27,0.24
+Croatia,Austria,0.49,0.27,0.24
+Croatia,Ivory Coast,0.50,0.26,0.24
+Croatia,South Korea,0.50,0.26,0.24
+Croatia,Iran,0.52,0.25,0.23
+Croatia,Australia,0.52,0.25,0.23
+Croatia,Türkiye,0.53,0.24,0.23
+Croatia,Norway,0.53,0.24,0.23
+Croatia,Canada,0.55,0.22,0.23
+Croatia,Sweden,0.55,0.22,0.23
+Croatia,Czechia,0.56,0.21,0.23
+Croatia,Egypt,0.58,0.19,0.23
+Croatia,Algeria,0.59,0.18,0.23
+Croatia,Saudi Arabia,0.62,0.15,0.23
+Croatia,Qatar,0.62,0.15,0.23
+Croatia,Tunisia,0.62,0.15,0.23
+Croatia,Panama,0.64,0.14,0.22
+Croatia,Ghana,0.64,0.14,0.22
+Croatia,Bosnia,0.65,0.13,0.22
+Croatia,South Africa,0.67,0.12,0.21
+Croatia,Scotland,0.67,0.12,0.21
+Croatia,Iraq,0.68,0.11,0.21
+Croatia,Uzbekistan,0.70,0.09,0.21
+Croatia,Paraguay,0.70,0.09,0.21
+Croatia,Jordan,0.71,0.08,0.21
+Croatia,DR Congo,0.71,0.08,0.21
+Croatia,Haiti,0.77,0.04,0.19
+Croatia,Cabo Verde,0.77,0.04,0.19
+Croatia,New Zealand,0.79,0.03,0.18
+Croatia,Curaçao,0.82,0.01,0.17
+Japan,Senegal,0.40,0.36,0.24
+Japan,Morocco,0.40,0.36,0.24
+Japan,USA,0.43,0.33,0.24
+Japan,Mexico,0.43,0.33,0.24
+Japan,Switzerland,0.43,0.33,0.24
+Japan,Ecuador,0.44,0.32,0.24
+Japan,Austria,0.44,0.32,0.24
+Japan,Ivory Coast,0.46,0.30,0.24
+Japan,South Korea,0.46,0.30,0.24
+Japan,Iran,0.47,0.29,0.24
+Japan,Australia,0.47,0.29,0.24
+Japan,Türkiye,0.49,0.27,0.24
+Japan,Norway,0.49,0.27,0.24
+Japan,Canada,0.50,0.26,0.24
+Japan,Sweden,0.50,0.26,0.24
+Japan,Czechia,0.52,0.25,0.23
+Japan,Egypt,0.53,0.24,0.23
+Japan,Algeria,0.55,0.22,0.23
+Japan,Saudi Arabia,0.58,0.19,0.23
+Japan,Qatar,0.58,0.19,0.23
+Japan,Tunisia,0.58,0.19,0.23
+Japan,Panama,0.59,0.18,0.23
+Japan,Ghana,0.59,0.18,0.23
+Japan,Bosnia,0.61,0.17,0.22
+Japan,South Africa,0.62,0.15,0.23
+Japan,Scotland,0.62,0.15,0.23
+Japan,Iraq,0.64,0.14,0.22
+Japan,Uzbekistan,0.65,0.13,0.22
+Japan,Paraguay,0.65,0.13,0.22
+Japan,Jordan,0.67,0.12,0.21
+Japan,DR Congo,0.67,0.12,0.21
+Japan,Haiti,0.73,0.07,0.20
+Japan,Cabo Verde,0.73,0.07,0.20
+Japan,New Zealand,0.74,0.06,0.20
+Japan,Curaçao,0.77,0.04,0.19
+USA,Mexico,0.38,0.38,0.24
+USA,Switzerland,0.38,0.38,0.24
+USA,Ecuador,0.40,0.36,0.24
+USA,Austria,0.40,0.36,0.24
+USA,Ivory Coast,0.41,0.35,0.24
+USA,South Korea,0.41,0.35,0.24
+USA,Iran,0.43,0.33,0.24
+USA,Australia,0.43,0.33,0.24
+USA,Türkiye,0.44,0.32,0.24
+USA,Norway,0.44,0.32,0.24
+USA,Canada,0.46,0.30,0.24
+USA,Sweden,0.46,0.30,0.24
+USA,Czechia,0.47,0.29,0.24
+USA,Egypt,0.49,0.27,0.24
+USA,Algeria,0.50,0.26,0.24
+USA,Saudi Arabia,0.53,0.24,0.23
+USA,Qatar,0.53,0.24,0.23
+USA,Tunisia,0.53,0.24,0.23
+USA,Panama,0.55,0.22,0.23
+USA,Ghana,0.55,0.22,0.23
+USA,Bosnia,0.56,0.21,0.23
+USA,South Africa,0.58,0.19,0.23
+USA,Scotland,0.58,0.19,0.23
+USA,Iraq,0.59,0.18,0.23
+USA,Uzbekistan,0.61,0.17,0.22
+USA,Paraguay,0.61,0.17,0.22
+USA,Jordan,0.62,0.15,0.23
+USA,DR Congo,0.62,0.15,0.23
+USA,Haiti,0.68,0.11,0.21
+USA,Cabo Verde,0.68,0.11,0.21
+USA,New Zealand,0.70,0.09,0.21
+USA,Curaçao,0.73,0.07,0.20
+Mexico,Switzerland,0.38,0.38,0.24
+Mexico,Ecuador,0.40,0.36,0.24
+Mexico,Austria,0.40,0.36,0.24
+Mexico,Ivory Coast,0.41,0.35,0.24
+Mexico,South Korea,0.41,0.35,0.24
+Mexico,Iran,0.43,0.33,0.24
+Mexico,Australia,0.43,0.33,0.24
+Mexico,Türkiye,0.44,0.32,0.24
+Mexico,Norway,0.44,0.32,0.24
+Mexico,Canada,0.46,0.30,0.24
+Mexico,Sweden,0.46,0.30,0.24
+Mexico,Czechia,0.47,0.29,0.24
+Mexico,Egypt,0.49,0.27,0.24
+Mexico,Algeria,0.50,0.26,0.24
+Mexico,Saudi Arabia,0.53,0.24,0.23
+Mexico,Qatar,0.53,0.24,0.23
+Mexico,Tunisia,0.53,0.24,0.23
+Mexico,Panama,0.55,0.22,0.23
+Mexico,Ghana,0.55,0.22,0.23
+Mexico,Bosnia,0.56,0.21,0.23
+Mexico,South Africa,0.58,0.19,0.23
+Mexico,Scotland,0.58,0.19,0.23
+Mexico,Iraq,0.59,0.18,0.23
+Mexico,Uzbekistan,0.61,0.17,0.22
+Mexico,Paraguay,0.61,0.17,0.22
+Mexico,Jordan,0.62,0.15,0.23
+Mexico,DR Congo,0.62,0.15,0.23
+Mexico,Haiti,0.68,0.11,0.21
+Mexico,Cabo Verde,0.68,0.11,0.21
+Mexico,New Zealand,0.70,0.09,0.21
+Mexico,Curaçao,0.73,0.07,0.20
+South Korea,Iran,0.40,0.36,0.24
+South Korea,Australia,0.40,0.36,0.24
+South Korea,Türkiye,0.41,0.35,0.24
+South Korea,Norway,0.41,0.35,0.24
+South Korea,Canada,0.43,0.33,0.24
+South Korea,Sweden,0.43,0.33,0.24
+South Korea,Czechia,0.44,0.32,0.24
+South Korea,Egypt,0.46,0.30,0.24
+South Korea,Algeria,0.47,0.29,0.24
+South Korea,Saudi Arabia,0.50,0.26,0.24
+South Korea,Qatar,0.50,0.26,0.24
+South Korea,Tunisia,0.50,0.26,0.24
+South Korea,Panama,0.52,0.25,0.23
+South Korea,Ghana,0.52,0.25,0.23
+South Korea,Bosnia,0.53,0.24,0.23
+South Korea,South Africa,0.55,0.22,0.23
+South Korea,Scotland,0.55,0.22,0.23
+South Korea,Iraq,0.56,0.21,0.23
+South Korea,Uzbekistan,0.58,0.19,0.23
+South Korea,Paraguay,0.58,0.19,0.23
+South Korea,Jordan,0.59,0.18,0.23
+South Korea,DR Congo,0.59,0.18,0.23
+South Korea,Haiti,0.65,0.13,0.22
+South Korea,Cabo Verde,0.65,0.13,0.22
+South Korea,New Zealand,0.67,0.12,0.21
+South Korea,Curaçao,0.70,0.09,0.21
+Canada,Sweden,0.38,0.38,0.24
+Canada,Czechia,0.40,0.36,0.24
+Canada,Egypt,0.41,0.35,0.24
+Canada,Algeria,0.43,0.33,0.24
+Canada,Saudi Arabia,0.46,0.30,0.24
+Canada,Qatar,0.46,0.30,0.24
+Canada,Tunisia,0.46,0.30,0.24
+Canada,Panama,0.47,0.29,0.24
+Canada,Ghana,0.47,0.29,0.24
+Canada,Bosnia,0.49,0.27,0.24
+Canada,South Africa,0.50,0.26,0.24
+Canada,Scotland,0.50,0.26,0.24
+Canada,Iraq,0.52,0.25,0.23
+Canada,Uzbekistan,0.53,0.24,0.23
+Canada,Paraguay,0.53,0.24,0.23
+Canada,Jordan,0.55,0.22,0.23
+Canada,DR Congo,0.55,0.22,0.23
+Canada,Haiti,0.61,0.17,0.22
+Canada,Cabo Verde,0.61,0.17,0.22
+Canada,New Zealand,0.62,0.15,0.23
+Canada,Curaçao,0.65,0.13,0.22

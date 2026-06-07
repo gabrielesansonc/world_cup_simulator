@@ -1,0 +1,1129 @@
+team_1,team_2,team_1_win_prob,team_2_win_prob,draw_prob
+Argentina,Australia,0.413,0.3515,0.2355
+Argentina,Austria,0.4075,0.3611,0.2314
+Argentina,Belgium,0.3979,0.3779,0.2242
+Argentina,Bosnia and Herzegovina,0.4267,0.3274,0.2459
+Argentina,Brazil,0.3931,0.3863,0.2206
+Argentina,Cabo Verde,0.4252,0.3301,0.2447
+Argentina,Canada,0.4192,0.3407,0.2401
+Argentina,Colombia,0.402,0.3708,0.2272
+Argentina,Congo DR,0.4237,0.3327,0.2436
+Argentina,Croatia,0.4004,0.3736,0.226
+Argentina,Curaçao,0.4289,0.3235,0.2476
+Argentina,Czechia,0.4275,0.3261,0.2464
+Argentina,Ecuador,0.4099,0.357,0.2331
+Argentina,Egypt,0.4138,0.3502,0.2361
+Argentina,England,0.3914,0.3892,0.2194
+Argentina,France,0.3892,0.3914,0.2194
+Argentina,Germany,0.3955,0.3821,0.2224
+Argentina,Ghana,0.4161,0.3461,0.2378
+Argentina,Haiti,0.426,0.3288,0.2453
+Argentina,Iraq,0.4214,0.3367,0.2418
+Argentina,IR Iran,0.4114,0.3543,0.2343
+Argentina,Japan,0.4036,0.368,0.2284
+Argentina,Jordan,0.423,0.334,0.243
+Argentina,Korea Republic,0.4122,0.3529,0.2349
+Argentina,Mexico,0.4044,0.3667,0.229
+Argentina,Morocco,0.3996,0.375,0.2254
+Argentina,Netherlands,0.3963,0.3807,0.223
+Argentina,New Zealand,0.4282,0.3248,0.247
+Argentina,Norway,0.4184,0.3421,0.2395
+Argentina,Panama,0.4245,0.3314,0.2441
+Argentina,Paraguay,0.4107,0.3556,0.2337
+Argentina,Portugal,0.3947,0.3835,0.2218
+Argentina,Qatar,0.4199,0.3394,0.2407
+Argentina,Saudi Arabia,0.4222,0.3354,0.2424
+Argentina,Scotland,0.4091,0.3584,0.2325
+Argentina,Senegal,0.4028,0.3694,0.2278
+Argentina,South Africa,0.4176,0.3434,0.239
+Argentina,Spain,0.3878,0.3923,0.22
+Argentina,Sweden,0.4083,0.3597,0.232
+Argentina,Switzerland,0.4059,0.3639,0.2302
+Argentina,Tunisia,0.4169,0.3447,0.2384
+Argentina,Türkiye,0.4067,0.3625,0.2308
+Argentina,United States,0.4051,0.3653,0.2296
+Argentina,Uruguay,0.4012,0.3722,0.2266
+Argentina,Uzbekistan,0.4207,0.338,0.2413
+Argentina,Algeria,0.4146,0.3488,0.2366
+Argentina,Côte d'Ivoire,0.4153,0.3474,0.2372
+Australia,Austria,0.3807,0.3963,0.223
+Australia,Belgium,0.3639,0.4059,0.2302
+Australia,Bosnia and Herzegovina,0.4051,0.3653,0.2296
+Australia,Brazil,0.3556,0.4107,0.2337
+Australia,Cabo Verde,0.4036,0.368,0.2284
+Australia,Canada,0.3971,0.3793,0.2236
+Australia,Colombia,0.3708,0.402,0.2272
+Australia,Congo DR,0.402,0.3708,0.2272
+Australia,Croatia,0.368,0.4036,0.2284
+Australia,Curaçao,0.4075,0.3611,0.2314
+Australia,Czechia,0.4059,0.3639,0.2302
+Australia,Ecuador,0.3849,0.3939,0.2212
+Australia,Egypt,0.3914,0.3892,0.2194
+Australia,England,0.3529,0.4122,0.2349
+Australia,France,0.3502,0.4138,0.2361
+Australia,Germany,0.3597,0.4083,0.232
+Australia,Ghana,0.3939,0.3849,0.2212
+Australia,Haiti,0.4044,0.3667,0.229
+Australia,Iraq,0.3996,0.375,0.2254
+Australia,IR Iran,0.3878,0.3923,0.22
+Australia,Japan,0.3736,0.4004,0.226
+Australia,Jordan,0.4012,0.3722,0.2266
+Australia,Korea Republic,0.3892,0.3914,0.2194
+Australia,Mexico,0.375,0.3996,0.2254
+Australia,Morocco,0.3667,0.4044,0.229
+Australia,Netherlands,0.3611,0.4075,0.2314
+Australia,New Zealand,0.4067,0.3625,0.2308
+Australia,Norway,0.3963,0.3807,0.223
+Australia,Panama,0.4028,0.3694,0.2278
+Australia,Paraguay,0.3863,0.3931,0.2206
+Australia,Portugal,0.3584,0.4091,0.2325
+Australia,Qatar,0.3979,0.3779,0.2242
+Australia,Saudi Arabia,0.4004,0.3736,0.226
+Australia,Scotland,0.3835,0.3947,0.2218
+Australia,Senegal,0.3722,0.4012,0.2266
+Australia,South Africa,0.3955,0.3821,0.2224
+Australia,Spain,0.3488,0.4146,0.2366
+Australia,Sweden,0.3821,0.3955,0.2224
+Australia,Switzerland,0.3779,0.3979,0.2242
+Australia,Tunisia,0.3947,0.3835,0.2218
+Australia,Türkiye,0.3793,0.3971,0.2236
+Australia,United States,0.3764,0.3987,0.2248
+Australia,Uruguay,0.3694,0.4028,0.2278
+Australia,Uzbekistan,0.3987,0.3764,0.2248
+Australia,Algeria,0.3923,0.3878,0.22
+Australia,Côte d'Ivoire,0.3931,0.3863,0.2206
+Austria,Belgium,0.3736,0.4004,0.226
+Austria,Bosnia and Herzegovina,0.4107,0.3556,0.2337
+Austria,Brazil,0.3653,0.4051,0.2296
+Austria,Cabo Verde,0.4091,0.3584,0.2325
+Austria,Canada,0.4028,0.3694,0.2278
+Austria,Colombia,0.3807,0.3963,0.223
+Austria,Congo DR,0.4075,0.3611,0.2314
+Austria,Croatia,0.3779,0.3979,0.2242
+Austria,Curaçao,0.413,0.3515,0.2355
+Austria,Czechia,0.4114,0.3543,0.2343
+Austria,Ecuador,0.3931,0.3863,0.2206
+Austria,Egypt,0.3971,0.3793,0.2236
+Austria,England,0.3625,0.4067,0.2308
+Austria,France,0.3597,0.4083,0.232
+Austria,Germany,0.3694,0.4028,0.2278
+Austria,Ghana,0.3996,0.375,0.2254
+Austria,Haiti,0.4099,0.357,0.2331
+Austria,Iraq,0.4051,0.3653,0.2296
+Austria,IR Iran,0.3947,0.3835,0.2218
+Austria,Japan,0.3835,0.3947,0.2218
+Austria,Jordan,0.4067,0.3625,0.2308
+Austria,Korea Republic,0.3955,0.3821,0.2224
+Austria,Mexico,0.3849,0.3939,0.2212
+Austria,Morocco,0.3764,0.3987,0.2248
+Austria,Netherlands,0.3708,0.402,0.2272
+Austria,New Zealand,0.4122,0.3529,0.2349
+Austria,Norway,0.402,0.3708,0.2272
+Austria,Panama,0.4083,0.3597,0.232
+Austria,Paraguay,0.3939,0.3849,0.2212
+Austria,Portugal,0.368,0.4036,0.2284
+Austria,Qatar,0.4036,0.368,0.2284
+Austria,Saudi Arabia,0.4059,0.3639,0.2302
+Austria,Scotland,0.3923,0.3878,0.22
+Austria,Senegal,0.3821,0.3955,0.2224
+Austria,South Africa,0.4012,0.3722,0.2266
+Austria,Spain,0.3584,0.4091,0.2325
+Austria,Sweden,0.3914,0.3892,0.2194
+Austria,Switzerland,0.3878,0.3923,0.22
+Austria,Tunisia,0.4004,0.3736,0.226
+Austria,Türkiye,0.3892,0.3914,0.2194
+Austria,United States,0.3863,0.3931,0.2206
+Austria,Uruguay,0.3793,0.3971,0.2236
+Austria,Uzbekistan,0.4044,0.3667,0.229
+Austria,Algeria,0.3979,0.3779,0.2242
+Austria,Côte d'Ivoire,0.3987,0.3764,0.2248
+Belgium,Bosnia and Herzegovina,0.4199,0.3394,0.2407
+Belgium,Brazil,0.3821,0.3955,0.2224
+Belgium,Cabo Verde,0.4184,0.3421,0.2395
+Belgium,Canada,0.4122,0.3529,0.2349
+Belgium,Colombia,0.3947,0.3835,0.2218
+Belgium,Congo DR,0.4169,0.3447,0.2384
+Belgium,Croatia,0.3931,0.3863,0.2206
+Belgium,Curaçao,0.4222,0.3354,0.2424
+Belgium,Czechia,0.4207,0.338,0.2413
+Belgium,Ecuador,0.4028,0.3694,0.2278
+Belgium,Egypt,0.4067,0.3625,0.2308
+Belgium,England,0.3793,0.3971,0.2236
+Belgium,France,0.3764,0.3987,0.2248
+Belgium,Germany,0.3863,0.3931,0.2206
+Belgium,Ghana,0.4091,0.3584,0.2325
+Belgium,Haiti,0.4192,0.3407,0.2401
+Belgium,Iraq,0.4146,0.3488,0.2366
+Belgium,IR Iran,0.4044,0.3667,0.229
+Belgium,Japan,0.3963,0.3807,0.223
+Belgium,Jordan,0.4161,0.3461,0.2378
+Belgium,Korea Republic,0.4051,0.3653,0.2296
+Belgium,Mexico,0.3971,0.3793,0.2236
+Belgium,Morocco,0.3923,0.3878,0.22
+Belgium,Netherlands,0.3878,0.3923,0.22
+Belgium,New Zealand,0.4214,0.3367,0.2418
+Belgium,Norway,0.4114,0.3543,0.2343
+Belgium,Panama,0.4176,0.3434,0.239
+Belgium,Paraguay,0.4036,0.368,0.2284
+Belgium,Portugal,0.3849,0.3939,0.2212
+Belgium,Qatar,0.413,0.3515,0.2355
+Belgium,Saudi Arabia,0.4153,0.3474,0.2372
+Belgium,Scotland,0.402,0.3708,0.2272
+Belgium,Senegal,0.3955,0.3821,0.2224
+Belgium,South Africa,0.4107,0.3556,0.2337
+Belgium,Spain,0.375,0.3996,0.2254
+Belgium,Sweden,0.4012,0.3722,0.2266
+Belgium,Switzerland,0.3987,0.3764,0.2248
+Belgium,Tunisia,0.4099,0.357,0.2331
+Belgium,Türkiye,0.3996,0.375,0.2254
+Belgium,United States,0.3979,0.3779,0.2242
+Belgium,Uruguay,0.3939,0.3849,0.2212
+Belgium,Uzbekistan,0.4138,0.3502,0.2361
+Belgium,Algeria,0.4075,0.3611,0.2314
+Belgium,Côte d'Ivoire,0.4083,0.3597,0.232
+Bosnia and Herzegovina,Brazil,0.3314,0.4245,0.2441
+Bosnia and Herzegovina,Cabo Verde,0.3878,0.3923,0.22
+Bosnia and Herzegovina,Canada,0.3764,0.3987,0.2248
+Bosnia and Herzegovina,Colombia,0.3461,0.4161,0.2378
+Bosnia and Herzegovina,Congo DR,0.3849,0.3939,0.2212
+Bosnia and Herzegovina,Croatia,0.3434,0.4176,0.239
+Bosnia and Herzegovina,Curaçao,0.3931,0.3863,0.2206
+Bosnia and Herzegovina,Czechia,0.3914,0.3892,0.2194
+Bosnia and Herzegovina,Ecuador,0.3597,0.4083,0.232
+Bosnia and Herzegovina,Egypt,0.3667,0.4044,0.229
+Bosnia and Herzegovina,England,0.3288,0.426,0.2453
+Bosnia and Herzegovina,France,0.3261,0.4275,0.2464
+Bosnia and Herzegovina,Germany,0.3354,0.4222,0.2424
+Bosnia and Herzegovina,Ghana,0.3708,0.402,0.2272
+Bosnia and Herzegovina,Haiti,0.3892,0.3914,0.2194
+Bosnia and Herzegovina,Iraq,0.3807,0.3963,0.223
+Bosnia and Herzegovina,IR Iran,0.3625,0.4067,0.2308
+Bosnia and Herzegovina,Japan,0.3488,0.4146,0.2366
+Bosnia and Herzegovina,Jordan,0.3835,0.3947,0.2218
+Bosnia and Herzegovina,Korea Republic,0.3639,0.4059,0.2302
+Bosnia and Herzegovina,Mexico,0.3502,0.4138,0.2361
+Bosnia and Herzegovina,Morocco,0.3421,0.4184,0.2395
+Bosnia and Herzegovina,Netherlands,0.3367,0.4214,0.2418
+Bosnia and Herzegovina,New Zealand,0.3923,0.3878,0.22
+Bosnia and Herzegovina,Norway,0.375,0.3996,0.2254
+Bosnia and Herzegovina,Panama,0.3863,0.3931,0.2206
+Bosnia and Herzegovina,Paraguay,0.3611,0.4075,0.2314
+Bosnia and Herzegovina,Portugal,0.334,0.423,0.243
+Bosnia and Herzegovina,Qatar,0.3779,0.3979,0.2242
+Bosnia and Herzegovina,Saudi Arabia,0.3821,0.3955,0.2224
+Bosnia and Herzegovina,Scotland,0.3584,0.4091,0.2325
+Bosnia and Herzegovina,Senegal,0.3474,0.4153,0.2372
+Bosnia and Herzegovina,South Africa,0.3736,0.4004,0.226
+Bosnia and Herzegovina,Spain,0.3248,0.4282,0.247
+Bosnia and Herzegovina,Sweden,0.357,0.4099,0.2331
+Bosnia and Herzegovina,Switzerland,0.3529,0.4122,0.2349
+Bosnia and Herzegovina,Tunisia,0.3722,0.4012,0.2266
+Bosnia and Herzegovina,Türkiye,0.3543,0.4114,0.2343
+Bosnia and Herzegovina,United States,0.3515,0.413,0.2355
+Bosnia and Herzegovina,Uruguay,0.3447,0.4169,0.2384
+Bosnia and Herzegovina,Uzbekistan,0.3793,0.3971,0.2236
+Bosnia and Herzegovina,Algeria,0.368,0.4036,0.2284
+Bosnia and Herzegovina,Côte d'Ivoire,0.3694,0.4028,0.2278
+Brazil,Cabo Verde,0.423,0.334,0.243
+Brazil,Canada,0.4169,0.3447,0.2384
+Brazil,Colombia,0.3996,0.375,0.2254
+Brazil,Congo DR,0.4214,0.3367,0.2418
+Brazil,Croatia,0.3979,0.3779,0.2242
+Brazil,Curaçao,0.4267,0.3274,0.2459
+Brazil,Czechia,0.4252,0.3301,0.2447
+Brazil,Ecuador,0.4075,0.3611,0.2314
+Brazil,Egypt,0.4114,0.3543,0.2343
+Brazil,England,0.3878,0.3923,0.22
+Brazil,France,0.3849,0.3939,0.2212
+Brazil,Germany,0.3931,0.3863,0.2206
+Brazil,Ghana,0.4138,0.3502,0.2361
+Brazil,Haiti,0.4237,0.3327,0.2436
+Brazil,Iraq,0.4192,0.3407,0.2401
+Brazil,IR Iran,0.4091,0.3584,0.2325
+Brazil,Japan,0.4012,0.3722,0.2266
+Brazil,Jordan,0.4207,0.338,0.2413
+Brazil,Korea Republic,0.4099,0.357,0.2331
+Brazil,Mexico,0.402,0.3708,0.2272
+Brazil,Morocco,0.3971,0.3793,0.2236
+Brazil,Netherlands,0.3939,0.3849,0.2212
+Brazil,New Zealand,0.426,0.3288,0.2453
+Brazil,Norway,0.4161,0.3461,0.2378
+Brazil,Panama,0.4222,0.3354,0.2424
+Brazil,Paraguay,0.4083,0.3597,0.232
+Brazil,Portugal,0.3923,0.3878,0.22
+Brazil,Qatar,0.4176,0.3434,0.239
+Brazil,Saudi Arabia,0.4199,0.3394,0.2407
+Brazil,Scotland,0.4067,0.3625,0.2308
+Brazil,Senegal,0.4004,0.3736,0.226
+Brazil,South Africa,0.4153,0.3474,0.2372
+Brazil,Spain,0.3835,0.3947,0.2218
+Brazil,Sweden,0.4059,0.3639,0.2302
+Brazil,Switzerland,0.4036,0.368,0.2284
+Brazil,Tunisia,0.4146,0.3488,0.2366
+Brazil,Türkiye,0.4044,0.3667,0.229
+Brazil,United States,0.4028,0.3694,0.2278
+Brazil,Uruguay,0.3987,0.3764,0.2248
+Brazil,Uzbekistan,0.4184,0.3421,0.2395
+Brazil,Algeria,0.4122,0.3529,0.2349
+Brazil,Côte d'Ivoire,0.413,0.3515,0.2355
+Cabo Verde,Canada,0.3793,0.3971,0.2236
+Cabo Verde,Colombia,0.3488,0.4146,0.2366
+Cabo Verde,Congo DR,0.3878,0.3923,0.22
+Cabo Verde,Croatia,0.3461,0.4161,0.2378
+Cabo Verde,Curaçao,0.3947,0.3835,0.2218
+Cabo Verde,Czechia,0.3931,0.3863,0.2206
+Cabo Verde,Ecuador,0.3625,0.4067,0.2308
+Cabo Verde,Egypt,0.3694,0.4028,0.2278
+Cabo Verde,England,0.3314,0.4245,0.2441
+Cabo Verde,France,0.3288,0.426,0.2453
+Cabo Verde,Germany,0.338,0.4207,0.2413
+Cabo Verde,Ghana,0.3736,0.4004,0.226
+Cabo Verde,Haiti,0.3914,0.3892,0.2194
+Cabo Verde,Iraq,0.3835,0.3947,0.2218
+Cabo Verde,IR Iran,0.3653,0.4051,0.2296
+Cabo Verde,Japan,0.3515,0.413,0.2355
+Cabo Verde,Jordan,0.3863,0.3931,0.2206
+Cabo Verde,Korea Republic,0.3667,0.4044,0.229
+Cabo Verde,Mexico,0.3529,0.4122,0.2349
+Cabo Verde,Morocco,0.3447,0.4169,0.2384
+Cabo Verde,Netherlands,0.3394,0.4199,0.2407
+Cabo Verde,New Zealand,0.3939,0.3849,0.2212
+Cabo Verde,Norway,0.3779,0.3979,0.2242
+Cabo Verde,Panama,0.3892,0.3914,0.2194
+Cabo Verde,Paraguay,0.3639,0.4059,0.2302
+Cabo Verde,Portugal,0.3367,0.4214,0.2418
+Cabo Verde,Qatar,0.3807,0.3963,0.223
+Cabo Verde,Saudi Arabia,0.3849,0.3939,0.2212
+Cabo Verde,Scotland,0.3611,0.4075,0.2314
+Cabo Verde,Senegal,0.3502,0.4138,0.2361
+Cabo Verde,South Africa,0.3764,0.3987,0.2248
+Cabo Verde,Spain,0.3274,0.4267,0.2459
+Cabo Verde,Sweden,0.3597,0.4083,0.232
+Cabo Verde,Switzerland,0.3556,0.4107,0.2337
+Cabo Verde,Tunisia,0.375,0.3996,0.2254
+Cabo Verde,Türkiye,0.357,0.4099,0.2331
+Cabo Verde,United States,0.3543,0.4114,0.2343
+Cabo Verde,Uruguay,0.3474,0.4153,0.2372
+Cabo Verde,Uzbekistan,0.3821,0.3955,0.2224
+Cabo Verde,Algeria,0.3708,0.402,0.2272
+Cabo Verde,Côte d'Ivoire,0.3722,0.4012,0.2266
+Canada,Colombia,0.3597,0.4083,0.232
+Canada,Congo DR,0.3955,0.3821,0.2224
+Canada,Croatia,0.357,0.4099,0.2331
+Canada,Curaçao,0.4012,0.3722,0.2266
+Canada,Czechia,0.3996,0.375,0.2254
+Canada,Ecuador,0.3736,0.4004,0.226
+Canada,Egypt,0.3807,0.3963,0.223
+Canada,England,0.3421,0.4184,0.2395
+Canada,France,0.3394,0.4199,0.2407
+Canada,Germany,0.3488,0.4146,0.2366
+Canada,Ghana,0.3849,0.3939,0.2212
+Canada,Haiti,0.3979,0.3779,0.2242
+Canada,Iraq,0.3931,0.3863,0.2206
+Canada,IR Iran,0.3764,0.3987,0.2248
+Canada,Japan,0.3625,0.4067,0.2308
+Canada,Jordan,0.3947,0.3835,0.2218
+Canada,Korea Republic,0.3779,0.3979,0.2242
+Canada,Mexico,0.3639,0.4059,0.2302
+Canada,Morocco,0.3556,0.4107,0.2337
+Canada,Netherlands,0.3502,0.4138,0.2361
+Canada,New Zealand,0.4004,0.3736,0.226
+Canada,Norway,0.3892,0.3914,0.2194
+Canada,Panama,0.3963,0.3807,0.223
+Canada,Paraguay,0.375,0.3996,0.2254
+Canada,Portugal,0.3474,0.4153,0.2372
+Canada,Qatar,0.3914,0.3892,0.2194
+Canada,Saudi Arabia,0.3939,0.3849,0.2212
+Canada,Scotland,0.3722,0.4012,0.2266
+Canada,Senegal,0.3611,0.4075,0.2314
+Canada,South Africa,0.3878,0.3923,0.22
+Canada,Spain,0.338,0.4207,0.2413
+Canada,Sweden,0.3708,0.402,0.2272
+Canada,Switzerland,0.3667,0.4044,0.229
+Canada,Tunisia,0.3863,0.3931,0.2206
+Canada,Türkiye,0.368,0.4036,0.2284
+Canada,United States,0.3653,0.4051,0.2296
+Canada,Uruguay,0.3584,0.4091,0.2325
+Canada,Uzbekistan,0.3923,0.3878,0.22
+Canada,Algeria,0.3821,0.3955,0.2224
+Canada,Côte d'Ivoire,0.3835,0.3947,0.2218
+Colombia,Congo DR,0.413,0.3515,0.2355
+Colombia,Croatia,0.3878,0.3923,0.22
+Colombia,Curaçao,0.4184,0.3421,0.2395
+Colombia,Czechia,0.4169,0.3447,0.2384
+Colombia,Ecuador,0.3987,0.3764,0.2248
+Colombia,Egypt,0.4028,0.3694,0.2278
+Colombia,England,0.3722,0.4012,0.2266
+Colombia,France,0.3694,0.4028,0.2278
+Colombia,Germany,0.3793,0.3971,0.2236
+Colombia,Ghana,0.4051,0.3653,0.2296
+Colombia,Haiti,0.4153,0.3474,0.2372
+Colombia,Iraq,0.4107,0.3556,0.2337
+Colombia,IR Iran,0.4004,0.3736,0.226
+Colombia,Japan,0.3923,0.3878,0.22
+Colombia,Jordan,0.4122,0.3529,0.2349
+Colombia,Korea Republic,0.4012,0.3722,0.2266
+Colombia,Mexico,0.3931,0.3863,0.2206
+Colombia,Morocco,0.3863,0.3931,0.2206
+Colombia,Netherlands,0.3807,0.3963,0.223
+Colombia,New Zealand,0.4176,0.3434,0.239
+Colombia,Norway,0.4075,0.3611,0.2314
+Colombia,Panama,0.4138,0.3502,0.2361
+Colombia,Paraguay,0.3996,0.375,0.2254
+Colombia,Portugal,0.3779,0.3979,0.2242
+Colombia,Qatar,0.4091,0.3584,0.2325
+Colombia,Saudi Arabia,0.4114,0.3543,0.2343
+Colombia,Scotland,0.3979,0.3779,0.2242
+Colombia,Senegal,0.3914,0.3892,0.2194
+Colombia,South Africa,0.4067,0.3625,0.2308
+Colombia,Spain,0.368,0.4036,0.2284
+Colombia,Sweden,0.3971,0.3793,0.2236
+Colombia,Switzerland,0.3947,0.3835,0.2218
+Colombia,Tunisia,0.4059,0.3639,0.2302
+Colombia,Türkiye,0.3955,0.3821,0.2224
+Colombia,United States,0.3939,0.3849,0.2212
+Colombia,Uruguay,0.3892,0.3914,0.2194
+Colombia,Uzbekistan,0.4099,0.357,0.2331
+Colombia,Algeria,0.4036,0.368,0.2284
+Colombia,Côte d'Ivoire,0.4044,0.3667,0.229
+Congo DR,Croatia,0.3488,0.4146,0.2366
+Congo DR,Curaçao,0.3963,0.3807,0.223
+Congo DR,Czechia,0.3947,0.3835,0.2218
+Congo DR,Ecuador,0.3653,0.4051,0.2296
+Congo DR,Egypt,0.3722,0.4012,0.2266
+Congo DR,England,0.334,0.423,0.243
+Congo DR,France,0.3314,0.4245,0.2441
+Congo DR,Germany,0.3407,0.4192,0.2401
+Congo DR,Ghana,0.3764,0.3987,0.2248
+Congo DR,Haiti,0.3931,0.3863,0.2206
+Congo DR,Iraq,0.3863,0.3931,0.2206
+Congo DR,IR Iran,0.368,0.4036,0.2284
+Congo DR,Japan,0.3543,0.4114,0.2343
+Congo DR,Jordan,0.3892,0.3914,0.2194
+Congo DR,Korea Republic,0.3694,0.4028,0.2278
+Congo DR,Mexico,0.3556,0.4107,0.2337
+Congo DR,Morocco,0.3474,0.4153,0.2372
+Congo DR,Netherlands,0.3421,0.4184,0.2395
+Congo DR,New Zealand,0.3955,0.3821,0.2224
+Congo DR,Norway,0.3807,0.3963,0.223
+Congo DR,Panama,0.3914,0.3892,0.2194
+Congo DR,Paraguay,0.3667,0.4044,0.229
+Congo DR,Portugal,0.3394,0.4199,0.2407
+Congo DR,Qatar,0.3835,0.3947,0.2218
+Congo DR,Saudi Arabia,0.3878,0.3923,0.22
+Congo DR,Scotland,0.3639,0.4059,0.2302
+Congo DR,Senegal,0.3529,0.4122,0.2349
+Congo DR,South Africa,0.3793,0.3971,0.2236
+Congo DR,Spain,0.3301,0.4252,0.2447
+Congo DR,Sweden,0.3625,0.4067,0.2308
+Congo DR,Switzerland,0.3584,0.4091,0.2325
+Congo DR,Tunisia,0.3779,0.3979,0.2242
+Congo DR,Türkiye,0.3597,0.4083,0.232
+Congo DR,United States,0.357,0.4099,0.2331
+Congo DR,Uruguay,0.3502,0.4138,0.2361
+Congo DR,Uzbekistan,0.3849,0.3939,0.2212
+Congo DR,Algeria,0.3736,0.4004,0.226
+Congo DR,Côte d'Ivoire,0.375,0.3996,0.2254
+Croatia,Curaçao,0.4199,0.3394,0.2407
+Croatia,Czechia,0.4184,0.3421,0.2395
+Croatia,Ecuador,0.4004,0.3736,0.226
+Croatia,Egypt,0.4044,0.3667,0.229
+Croatia,England,0.375,0.3996,0.2254
+Croatia,France,0.3722,0.4012,0.2266
+Croatia,Germany,0.3821,0.3955,0.2224
+Croatia,Ghana,0.4067,0.3625,0.2308
+Croatia,Haiti,0.4169,0.3447,0.2384
+Croatia,Iraq,0.4122,0.3529,0.2349
+Croatia,IR Iran,0.402,0.3708,0.2272
+Croatia,Japan,0.3939,0.3849,0.2212
+Croatia,Jordan,0.4138,0.3502,0.2361
+Croatia,Korea Republic,0.4028,0.3694,0.2278
+Croatia,Mexico,0.3947,0.3835,0.2218
+Croatia,Morocco,0.3892,0.3914,0.2194
+Croatia,Netherlands,0.3835,0.3947,0.2218
+Croatia,New Zealand,0.4192,0.3407,0.2401
+Croatia,Norway,0.4091,0.3584,0.2325
+Croatia,Panama,0.4153,0.3474,0.2372
+Croatia,Paraguay,0.4012,0.3722,0.2266
+Croatia,Portugal,0.3807,0.3963,0.223
+Croatia,Qatar,0.4107,0.3556,0.2337
+Croatia,Saudi Arabia,0.413,0.3515,0.2355
+Croatia,Scotland,0.3996,0.375,0.2254
+Croatia,Senegal,0.3931,0.3863,0.2206
+Croatia,South Africa,0.4083,0.3597,0.232
+Croatia,Spain,0.3708,0.402,0.2272
+Croatia,Sweden,0.3987,0.3764,0.2248
+Croatia,Switzerland,0.3963,0.3807,0.223
+Croatia,Tunisia,0.4075,0.3611,0.2314
+Croatia,Türkiye,0.3971,0.3793,0.2236
+Croatia,United States,0.3955,0.3821,0.2224
+Croatia,Uruguay,0.3914,0.3892,0.2194
+Croatia,Uzbekistan,0.4114,0.3543,0.2343
+Croatia,Algeria,0.4051,0.3653,0.2296
+Croatia,Côte d'Ivoire,0.4059,0.3639,0.2302
+Curaçao,Czechia,0.3878,0.3923,0.22
+Curaçao,Ecuador,0.3556,0.4107,0.2337
+Curaçao,Egypt,0.3625,0.4067,0.2308
+Curaçao,England,0.3248,0.4282,0.247
+Curaçao,France,0.3222,0.4297,0.2481
+Curaçao,Germany,0.3314,0.4245,0.2441
+Curaçao,Ghana,0.3667,0.4044,0.229
+Curaçao,Haiti,0.3849,0.3939,0.2212
+Curaçao,Iraq,0.3764,0.3987,0.2248
+Curaçao,IR Iran,0.3584,0.4091,0.2325
+Curaçao,Japan,0.3447,0.4169,0.2384
+Curaçao,Jordan,0.3793,0.3971,0.2236
+Curaçao,Korea Republic,0.3597,0.4083,0.232
+Curaçao,Mexico,0.3461,0.4161,0.2378
+Curaçao,Morocco,0.338,0.4207,0.2413
+Curaçao,Netherlands,0.3327,0.4237,0.2436
+Curaçao,New Zealand,0.3892,0.3914,0.2194
+Curaçao,Norway,0.3708,0.402,0.2272
+Curaçao,Panama,0.3821,0.3955,0.2224
+Curaçao,Paraguay,0.357,0.4099,0.2331
+Curaçao,Portugal,0.3301,0.4252,0.2447
+Curaçao,Qatar,0.3736,0.4004,0.226
+Curaçao,Saudi Arabia,0.3779,0.3979,0.2242
+Curaçao,Scotland,0.3543,0.4114,0.2343
+Curaçao,Senegal,0.3434,0.4176,0.239
+Curaçao,South Africa,0.3694,0.4028,0.2278
+Curaçao,Spain,0.3209,0.4304,0.2487
+Curaçao,Sweden,0.3529,0.4122,0.2349
+Curaçao,Switzerland,0.3488,0.4146,0.2366
+Curaçao,Tunisia,0.368,0.4036,0.2284
+Curaçao,Türkiye,0.3502,0.4138,0.2361
+Curaçao,United States,0.3474,0.4153,0.2372
+Curaçao,Uruguay,0.3407,0.4192,0.2401
+Curaçao,Uzbekistan,0.375,0.3996,0.2254
+Curaçao,Algeria,0.3639,0.4059,0.2302
+Curaçao,Côte d'Ivoire,0.3653,0.4051,0.2296
+Czechia,Ecuador,0.3584,0.4091,0.2325
+Czechia,Egypt,0.3653,0.4051,0.2296
+Czechia,England,0.3274,0.4267,0.2459
+Czechia,France,0.3248,0.4282,0.247
+Czechia,Germany,0.334,0.423,0.243
+Czechia,Ghana,0.3694,0.4028,0.2278
+Czechia,Haiti,0.3878,0.3923,0.22
+Czechia,Iraq,0.3793,0.3971,0.2236
+Czechia,IR Iran,0.3611,0.4075,0.2314
+Czechia,Japan,0.3474,0.4153,0.2372
+Czechia,Jordan,0.3821,0.3955,0.2224
+Czechia,Korea Republic,0.3625,0.4067,0.2308
+Czechia,Mexico,0.3488,0.4146,0.2366
+Czechia,Morocco,0.3407,0.4192,0.2401
+Czechia,Netherlands,0.3354,0.4222,0.2424
+Czechia,New Zealand,0.3914,0.3892,0.2194
+Czechia,Norway,0.3736,0.4004,0.226
+Czechia,Panama,0.3849,0.3939,0.2212
+Czechia,Paraguay,0.3597,0.4083,0.232
+Czechia,Portugal,0.3327,0.4237,0.2436
+Czechia,Qatar,0.3764,0.3987,0.2248
+Czechia,Saudi Arabia,0.3807,0.3963,0.223
+Czechia,Scotland,0.357,0.4099,0.2331
+Czechia,Senegal,0.3461,0.4161,0.2378
+Czechia,South Africa,0.3722,0.4012,0.2266
+Czechia,Spain,0.3235,0.4289,0.2476
+Czechia,Sweden,0.3556,0.4107,0.2337
+Czechia,Switzerland,0.3515,0.413,0.2355
+Czechia,Tunisia,0.3708,0.402,0.2272
+Czechia,Türkiye,0.3529,0.4122,0.2349
+Czechia,United States,0.3502,0.4138,0.2361
+Czechia,Uruguay,0.3434,0.4176,0.239
+Czechia,Uzbekistan,0.3779,0.3979,0.2242
+Czechia,Algeria,0.3667,0.4044,0.229
+Czechia,Côte d'Ivoire,0.368,0.4036,0.2284
+Ecuador,Egypt,0.3947,0.3835,0.2218
+Ecuador,England,0.3584,0.4091,0.2325
+Ecuador,France,0.3556,0.4107,0.2337
+Ecuador,Germany,0.3653,0.4051,0.2296
+Ecuador,Ghana,0.3971,0.3793,0.2236
+Ecuador,Haiti,0.4075,0.3611,0.2314
+Ecuador,Iraq,0.4028,0.3694,0.2278
+Ecuador,IR Iran,0.3923,0.3878,0.22
+Ecuador,Japan,0.3793,0.3971,0.2236
+Ecuador,Jordan,0.4044,0.3667,0.229
+Ecuador,Korea Republic,0.3931,0.3863,0.2206
+Ecuador,Mexico,0.3807,0.3963,0.223
+Ecuador,Morocco,0.3722,0.4012,0.2266
+Ecuador,Netherlands,0.3667,0.4044,0.229
+Ecuador,New Zealand,0.4099,0.357,0.2331
+Ecuador,Norway,0.3996,0.375,0.2254
+Ecuador,Panama,0.4059,0.3639,0.2302
+Ecuador,Paraguay,0.3914,0.3892,0.2194
+Ecuador,Portugal,0.3639,0.4059,0.2302
+Ecuador,Qatar,0.4012,0.3722,0.2266
+Ecuador,Saudi Arabia,0.4036,0.368,0.2284
+Ecuador,Scotland,0.3892,0.3914,0.2194
+Ecuador,Senegal,0.3779,0.3979,0.2242
+Ecuador,South Africa,0.3987,0.3764,0.2248
+Ecuador,Spain,0.3543,0.4114,0.2343
+Ecuador,Sweden,0.3878,0.3923,0.22
+Ecuador,Switzerland,0.3835,0.3947,0.2218
+Ecuador,Tunisia,0.3979,0.3779,0.2242
+Ecuador,Türkiye,0.3849,0.3939,0.2212
+Ecuador,United States,0.3821,0.3955,0.2224
+Ecuador,Uruguay,0.375,0.3996,0.2254
+Ecuador,Uzbekistan,0.402,0.3708,0.2272
+Ecuador,Algeria,0.3955,0.3821,0.2224
+Ecuador,Côte d'Ivoire,0.3963,0.3807,0.223
+Egypt,England,0.3515,0.413,0.2355
+Egypt,France,0.3488,0.4146,0.2366
+Egypt,Germany,0.3584,0.4091,0.2325
+Egypt,Ghana,0.3931,0.3863,0.2206
+Egypt,Haiti,0.4036,0.368,0.2284
+Egypt,Iraq,0.3987,0.3764,0.2248
+Egypt,IR Iran,0.3863,0.3931,0.2206
+Egypt,Japan,0.3722,0.4012,0.2266
+Egypt,Jordan,0.4004,0.3736,0.226
+Egypt,Korea Republic,0.3878,0.3923,0.22
+Egypt,Mexico,0.3736,0.4004,0.226
+Egypt,Morocco,0.3653,0.4051,0.2296
+Egypt,Netherlands,0.3597,0.4083,0.232
+Egypt,New Zealand,0.4059,0.3639,0.2302
+Egypt,Norway,0.3955,0.3821,0.2224
+Egypt,Panama,0.402,0.3708,0.2272
+Egypt,Paraguay,0.3849,0.3939,0.2212
+Egypt,Portugal,0.357,0.4099,0.2331
+Egypt,Qatar,0.3971,0.3793,0.2236
+Egypt,Saudi Arabia,0.3996,0.375,0.2254
+Egypt,Scotland,0.3821,0.3955,0.2224
+Egypt,Senegal,0.3708,0.402,0.2272
+Egypt,South Africa,0.3947,0.3835,0.2218
+Egypt,Spain,0.3474,0.4153,0.2372
+Egypt,Sweden,0.3807,0.3963,0.223
+Egypt,Switzerland,0.3764,0.3987,0.2248
+Egypt,Tunisia,0.3939,0.3849,0.2212
+Egypt,Türkiye,0.3779,0.3979,0.2242
+Egypt,United States,0.375,0.3996,0.2254
+Egypt,Uruguay,0.368,0.4036,0.2284
+Egypt,Uzbekistan,0.3979,0.3779,0.2242
+Egypt,Algeria,0.3914,0.3892,0.2194
+Egypt,Côte d'Ivoire,0.3923,0.3878,0.22
+England,France,0.3878,0.3923,0.22
+England,Germany,0.3947,0.3835,0.2218
+England,Ghana,0.4153,0.3474,0.2372
+England,Haiti,0.4252,0.3301,0.2447
+England,Iraq,0.4207,0.338,0.2413
+England,IR Iran,0.4107,0.3556,0.2337
+England,Japan,0.4028,0.3694,0.2278
+England,Jordan,0.4222,0.3354,0.2424
+England,Korea Republic,0.4114,0.3543,0.2343
+England,Mexico,0.4036,0.368,0.2284
+England,Morocco,0.3987,0.3764,0.2248
+England,Netherlands,0.3955,0.3821,0.2224
+England,New Zealand,0.4275,0.3261,0.2464
+England,Norway,0.4176,0.3434,0.239
+England,Panama,0.4237,0.3327,0.2436
+England,Paraguay,0.4099,0.357,0.2331
+England,Portugal,0.3939,0.3849,0.2212
+England,Qatar,0.4192,0.3407,0.2401
+England,Saudi Arabia,0.4214,0.3367,0.2418
+England,Scotland,0.4083,0.3597,0.232
+England,Senegal,0.402,0.3708,0.2272
+England,South Africa,0.4169,0.3447,0.2384
+England,Spain,0.3863,0.3931,0.2206
+England,Sweden,0.4075,0.3611,0.2314
+England,Switzerland,0.4051,0.3653,0.2296
+England,Tunisia,0.4161,0.3461,0.2378
+England,Türkiye,0.4059,0.3639,0.2302
+England,United States,0.4044,0.3667,0.229
+England,Uruguay,0.4004,0.3736,0.226
+England,Uzbekistan,0.4199,0.3394,0.2407
+England,Algeria,0.4138,0.3502,0.2361
+England,Côte d'Ivoire,0.4146,0.3488,0.2366
+France,Germany,0.3963,0.3807,0.223
+France,Ghana,0.4169,0.3447,0.2384
+France,Haiti,0.4267,0.3274,0.2459
+France,Iraq,0.4222,0.3354,0.2424
+France,IR Iran,0.4122,0.3529,0.2349
+France,Japan,0.4044,0.3667,0.229
+France,Jordan,0.4237,0.3327,0.2436
+France,Korea Republic,0.413,0.3515,0.2355
+France,Mexico,0.4051,0.3653,0.2296
+France,Morocco,0.4004,0.3736,0.226
+France,Netherlands,0.3971,0.3793,0.2236
+France,New Zealand,0.4289,0.3235,0.2476
+France,Norway,0.4192,0.3407,0.2401
+France,Panama,0.4252,0.3301,0.2447
+France,Paraguay,0.4114,0.3543,0.2343
+France,Portugal,0.3955,0.3821,0.2224
+France,Qatar,0.4207,0.338,0.2413
+France,Saudi Arabia,0.423,0.334,0.243
+France,Scotland,0.4099,0.357,0.2331
+France,Senegal,0.4036,0.368,0.2284
+France,South Africa,0.4184,0.3421,0.2395
+France,Spain,0.3892,0.3914,0.2194
+France,Sweden,0.4091,0.3584,0.2325
+France,Switzerland,0.4067,0.3625,0.2308
+France,Tunisia,0.4176,0.3434,0.239
+France,Türkiye,0.4075,0.3611,0.2314
+France,United States,0.4059,0.3639,0.2302
+France,Uruguay,0.402,0.3708,0.2272
+France,Uzbekistan,0.4214,0.3367,0.2418
+France,Algeria,0.4153,0.3474,0.2372
+France,Côte d'Ivoire,0.4161,0.3461,0.2378
+Germany,Ghana,0.4114,0.3543,0.2343
+Germany,Haiti,0.4214,0.3367,0.2418
+Germany,Iraq,0.4169,0.3447,0.2384
+Germany,IR Iran,0.4067,0.3625,0.2308
+Germany,Japan,0.3987,0.3764,0.2248
+Germany,Jordan,0.4184,0.3421,0.2395
+Germany,Korea Republic,0.4075,0.3611,0.2314
+Germany,Mexico,0.3996,0.375,0.2254
+Germany,Morocco,0.3947,0.3835,0.2218
+Germany,Netherlands,0.3914,0.3892,0.2194
+Germany,New Zealand,0.4237,0.3327,0.2436
+Germany,Norway,0.4138,0.3502,0.2361
+Germany,Panama,0.4199,0.3394,0.2407
+Germany,Paraguay,0.4059,0.3639,0.2302
+Germany,Portugal,0.3892,0.3914,0.2194
+Germany,Qatar,0.4153,0.3474,0.2372
+Germany,Saudi Arabia,0.4176,0.3434,0.239
+Germany,Scotland,0.4044,0.3667,0.229
+Germany,Senegal,0.3979,0.3779,0.2242
+Germany,South Africa,0.413,0.3515,0.2355
+Germany,Spain,0.3793,0.3971,0.2236
+Germany,Sweden,0.4036,0.368,0.2284
+Germany,Switzerland,0.4012,0.3722,0.2266
+Germany,Tunisia,0.4122,0.3529,0.2349
+Germany,Türkiye,0.402,0.3708,0.2272
+Germany,United States,0.4004,0.3736,0.226
+Germany,Uruguay,0.3963,0.3807,0.223
+Germany,Uzbekistan,0.4161,0.3461,0.2378
+Germany,Algeria,0.4099,0.357,0.2331
+Germany,Côte d'Ivoire,0.4107,0.3556,0.2337
+Ghana,Haiti,0.4012,0.3722,0.2266
+Ghana,Iraq,0.3963,0.3807,0.223
+Ghana,IR Iran,0.3821,0.3955,0.2224
+Ghana,Japan,0.368,0.4036,0.2284
+Ghana,Jordan,0.3979,0.3779,0.2242
+Ghana,Korea Republic,0.3835,0.3947,0.2218
+Ghana,Mexico,0.3694,0.4028,0.2278
+Ghana,Morocco,0.3611,0.4075,0.2314
+Ghana,Netherlands,0.3556,0.4107,0.2337
+Ghana,New Zealand,0.4036,0.368,0.2284
+Ghana,Norway,0.3931,0.3863,0.2206
+Ghana,Panama,0.3996,0.375,0.2254
+Ghana,Paraguay,0.3807,0.3963,0.223
+Ghana,Portugal,0.3529,0.4122,0.2349
+Ghana,Qatar,0.3947,0.3835,0.2218
+Ghana,Saudi Arabia,0.3971,0.3793,0.2236
+Ghana,Scotland,0.3779,0.3979,0.2242
+Ghana,Senegal,0.3667,0.4044,0.229
+Ghana,South Africa,0.3923,0.3878,0.22
+Ghana,Spain,0.3434,0.4176,0.239
+Ghana,Sweden,0.3764,0.3987,0.2248
+Ghana,Switzerland,0.3722,0.4012,0.2266
+Ghana,Tunisia,0.3914,0.3892,0.2194
+Ghana,Türkiye,0.3736,0.4004,0.226
+Ghana,United States,0.3708,0.402,0.2272
+Ghana,Uruguay,0.3639,0.4059,0.2302
+Ghana,Uzbekistan,0.3955,0.3821,0.2224
+Ghana,Algeria,0.3878,0.3923,0.22
+Ghana,Côte d'Ivoire,0.3892,0.3914,0.2194
+Haiti,Iraq,0.3821,0.3955,0.2224
+Haiti,IR Iran,0.3639,0.4059,0.2302
+Haiti,Japan,0.3502,0.4138,0.2361
+Haiti,Jordan,0.3849,0.3939,0.2212
+Haiti,Korea Republic,0.3653,0.4051,0.2296
+Haiti,Mexico,0.3515,0.413,0.2355
+Haiti,Morocco,0.3434,0.4176,0.239
+Haiti,Netherlands,0.338,0.4207,0.2413
+Haiti,New Zealand,0.3931,0.3863,0.2206
+Haiti,Norway,0.3764,0.3987,0.2248
+Haiti,Panama,0.3878,0.3923,0.22
+Haiti,Paraguay,0.3625,0.4067,0.2308
+Haiti,Portugal,0.3354,0.4222,0.2424
+Haiti,Qatar,0.3793,0.3971,0.2236
+Haiti,Saudi Arabia,0.3835,0.3947,0.2218
+Haiti,Scotland,0.3597,0.4083,0.232
+Haiti,Senegal,0.3488,0.4146,0.2366
+Haiti,South Africa,0.375,0.3996,0.2254
+Haiti,Spain,0.3261,0.4275,0.2464
+Haiti,Sweden,0.3584,0.4091,0.2325
+Haiti,Switzerland,0.3543,0.4114,0.2343
+Haiti,Tunisia,0.3736,0.4004,0.226
+Haiti,Türkiye,0.3556,0.4107,0.2337
+Haiti,United States,0.3529,0.4122,0.2349
+Haiti,Uruguay,0.3461,0.4161,0.2378
+Haiti,Uzbekistan,0.3807,0.3963,0.223
+Haiti,Algeria,0.3694,0.4028,0.2278
+Haiti,Côte d'Ivoire,0.3708,0.402,0.2272
+Iraq,IR Iran,0.3722,0.4012,0.2266
+Iraq,Japan,0.3584,0.4091,0.2325
+Iraq,Jordan,0.3923,0.3878,0.22
+Iraq,Korea Republic,0.3736,0.4004,0.226
+Iraq,Mexico,0.3597,0.4083,0.232
+Iraq,Morocco,0.3515,0.413,0.2355
+Iraq,Netherlands,0.3461,0.4161,0.2378
+Iraq,New Zealand,0.3979,0.3779,0.2242
+Iraq,Norway,0.3849,0.3939,0.2212
+Iraq,Panama,0.3939,0.3849,0.2212
+Iraq,Paraguay,0.3708,0.402,0.2272
+Iraq,Portugal,0.3434,0.4176,0.239
+Iraq,Qatar,0.3878,0.3923,0.22
+Iraq,Saudi Arabia,0.3914,0.3892,0.2194
+Iraq,Scotland,0.368,0.4036,0.2284
+Iraq,Senegal,0.357,0.4099,0.2331
+Iraq,South Africa,0.3835,0.3947,0.2218
+Iraq,Spain,0.334,0.423,0.243
+Iraq,Sweden,0.3667,0.4044,0.229
+Iraq,Switzerland,0.3625,0.4067,0.2308
+Iraq,Tunisia,0.3821,0.3955,0.2224
+Iraq,Türkiye,0.3639,0.4059,0.2302
+Iraq,United States,0.3611,0.4075,0.2314
+Iraq,Uruguay,0.3543,0.4114,0.2343
+Iraq,Uzbekistan,0.3892,0.3914,0.2194
+Iraq,Algeria,0.3779,0.3979,0.2242
+Iraq,Côte d'Ivoire,0.3793,0.3971,0.2236
+IR Iran,Japan,0.3764,0.3987,0.2248
+IR Iran,Jordan,0.4028,0.3694,0.2278
+IR Iran,Korea Republic,0.3914,0.3892,0.2194
+IR Iran,Mexico,0.3779,0.3979,0.2242
+IR Iran,Morocco,0.3694,0.4028,0.2278
+IR Iran,Netherlands,0.3639,0.4059,0.2302
+IR Iran,New Zealand,0.4083,0.3597,0.232
+IR Iran,Norway,0.3979,0.3779,0.2242
+IR Iran,Panama,0.4044,0.3667,0.229
+IR Iran,Paraguay,0.3892,0.3914,0.2194
+IR Iran,Portugal,0.3611,0.4075,0.2314
+IR Iran,Qatar,0.3996,0.375,0.2254
+IR Iran,Saudi Arabia,0.402,0.3708,0.2272
+IR Iran,Scotland,0.3863,0.3931,0.2206
+IR Iran,Senegal,0.375,0.3996,0.2254
+IR Iran,South Africa,0.3971,0.3793,0.2236
+IR Iran,Spain,0.3515,0.413,0.2355
+IR Iran,Sweden,0.3849,0.3939,0.2212
+IR Iran,Switzerland,0.3807,0.3963,0.223
+IR Iran,Tunisia,0.3963,0.3807,0.223
+IR Iran,Türkiye,0.3821,0.3955,0.2224
+IR Iran,United States,0.3793,0.3971,0.2236
+IR Iran,Uruguay,0.3722,0.4012,0.2266
+IR Iran,Uzbekistan,0.4004,0.3736,0.226
+IR Iran,Algeria,0.3939,0.3849,0.2212
+IR Iran,Côte d'Ivoire,0.3947,0.3835,0.2218
+Japan,Jordan,0.4107,0.3556,0.2337
+Japan,Korea Republic,0.3996,0.375,0.2254
+Japan,Mexico,0.3914,0.3892,0.2194
+Japan,Morocco,0.3835,0.3947,0.2218
+Japan,Netherlands,0.3779,0.3979,0.2242
+Japan,New Zealand,0.4161,0.3461,0.2378
+Japan,Norway,0.4059,0.3639,0.2302
+Japan,Panama,0.4122,0.3529,0.2349
+Japan,Paraguay,0.3979,0.3779,0.2242
+Japan,Portugal,0.375,0.3996,0.2254
+Japan,Qatar,0.4075,0.3611,0.2314
+Japan,Saudi Arabia,0.4099,0.357,0.2331
+Japan,Scotland,0.3963,0.3807,0.223
+Japan,Senegal,0.3892,0.3914,0.2194
+Japan,South Africa,0.4051,0.3653,0.2296
+Japan,Spain,0.3653,0.4051,0.2296
+Japan,Sweden,0.3955,0.3821,0.2224
+Japan,Switzerland,0.3931,0.3863,0.2206
+Japan,Tunisia,0.4044,0.3667,0.229
+Japan,Türkiye,0.3939,0.3849,0.2212
+Japan,United States,0.3923,0.3878,0.22
+Japan,Uruguay,0.3863,0.3931,0.2206
+Japan,Uzbekistan,0.4083,0.3597,0.232
+Japan,Algeria,0.402,0.3708,0.2272
+Japan,Côte d'Ivoire,0.4028,0.3694,0.2278
+Jordan,Korea Republic,0.3708,0.402,0.2272
+Jordan,Mexico,0.357,0.4099,0.2331
+Jordan,Morocco,0.3488,0.4146,0.2366
+Jordan,Netherlands,0.3434,0.4176,0.239
+Jordan,New Zealand,0.3963,0.3807,0.223
+Jordan,Norway,0.3821,0.3955,0.2224
+Jordan,Panama,0.3923,0.3878,0.22
+Jordan,Paraguay,0.368,0.4036,0.2284
+Jordan,Portugal,0.3407,0.4192,0.2401
+Jordan,Qatar,0.3849,0.3939,0.2212
+Jordan,Saudi Arabia,0.3892,0.3914,0.2194
+Jordan,Scotland,0.3653,0.4051,0.2296
+Jordan,Senegal,0.3543,0.4114,0.2343
+Jordan,South Africa,0.3807,0.3963,0.223
+Jordan,Spain,0.3314,0.4245,0.2441
+Jordan,Sweden,0.3639,0.4059,0.2302
+Jordan,Switzerland,0.3597,0.4083,0.232
+Jordan,Tunisia,0.3793,0.3971,0.2236
+Jordan,Türkiye,0.3611,0.4075,0.2314
+Jordan,United States,0.3584,0.4091,0.2325
+Jordan,Uruguay,0.3515,0.413,0.2355
+Jordan,Uzbekistan,0.3863,0.3931,0.2206
+Jordan,Algeria,0.375,0.3996,0.2254
+Jordan,Côte d'Ivoire,0.3764,0.3987,0.2248
+Korea Republic,Mexico,0.3764,0.3987,0.2248
+Korea Republic,Morocco,0.368,0.4036,0.2284
+Korea Republic,Netherlands,0.3625,0.4067,0.2308
+Korea Republic,New Zealand,0.4075,0.3611,0.2314
+Korea Republic,Norway,0.3971,0.3793,0.2236
+Korea Republic,Panama,0.4036,0.368,0.2284
+Korea Republic,Paraguay,0.3878,0.3923,0.22
+Korea Republic,Portugal,0.3597,0.4083,0.232
+Korea Republic,Qatar,0.3987,0.3764,0.2248
+Korea Republic,Saudi Arabia,0.4012,0.3722,0.2266
+Korea Republic,Scotland,0.3849,0.3939,0.2212
+Korea Republic,Senegal,0.3736,0.4004,0.226
+Korea Republic,South Africa,0.3963,0.3807,0.223
+Korea Republic,Spain,0.3502,0.4138,0.2361
+Korea Republic,Sweden,0.3835,0.3947,0.2218
+Korea Republic,Switzerland,0.3793,0.3971,0.2236
+Korea Republic,Tunisia,0.3955,0.3821,0.2224
+Korea Republic,Türkiye,0.3807,0.3963,0.223
+Korea Republic,United States,0.3779,0.3979,0.2242
+Korea Republic,Uruguay,0.3708,0.402,0.2272
+Korea Republic,Uzbekistan,0.3996,0.375,0.2254
+Korea Republic,Algeria,0.3931,0.3863,0.2206
+Korea Republic,Côte d'Ivoire,0.3939,0.3849,0.2212
+Mexico,Morocco,0.3821,0.3955,0.2224
+Mexico,Netherlands,0.3764,0.3987,0.2248
+Mexico,New Zealand,0.4153,0.3474,0.2372
+Mexico,Norway,0.4051,0.3653,0.2296
+Mexico,Panama,0.4114,0.3543,0.2343
+Mexico,Paraguay,0.3971,0.3793,0.2236
+Mexico,Portugal,0.3736,0.4004,0.226
+Mexico,Qatar,0.4067,0.3625,0.2308
+Mexico,Saudi Arabia,0.4091,0.3584,0.2325
+Mexico,Scotland,0.3955,0.3821,0.2224
+Mexico,Senegal,0.3878,0.3923,0.22
+Mexico,South Africa,0.4044,0.3667,0.229
+Mexico,Spain,0.3639,0.4059,0.2302
+Mexico,Sweden,0.3947,0.3835,0.2218
+Mexico,Switzerland,0.3923,0.3878,0.22
+Mexico,Tunisia,0.4036,0.368,0.2284
+Mexico,Türkiye,0.3931,0.3863,0.2206
+Mexico,United States,0.3914,0.3892,0.2194
+Mexico,Uruguay,0.3849,0.3939,0.2212
+Mexico,Uzbekistan,0.4075,0.3611,0.2314
+Mexico,Algeria,0.4012,0.3722,0.2266
+Mexico,Côte d'Ivoire,0.402,0.3708,0.2272
+Morocco,Netherlands,0.3849,0.3939,0.2212
+Morocco,New Zealand,0.4199,0.3394,0.2407
+Morocco,Norway,0.4099,0.357,0.2331
+Morocco,Panama,0.4161,0.3461,0.2378
+Morocco,Paraguay,0.402,0.3708,0.2272
+Morocco,Portugal,0.3821,0.3955,0.2224
+Morocco,Qatar,0.4114,0.3543,0.2343
+Morocco,Saudi Arabia,0.4138,0.3502,0.2361
+Morocco,Scotland,0.4004,0.3736,0.226
+Morocco,Senegal,0.3939,0.3849,0.2212
+Morocco,South Africa,0.4091,0.3584,0.2325
+Morocco,Spain,0.3722,0.4012,0.2266
+Morocco,Sweden,0.3996,0.375,0.2254
+Morocco,Switzerland,0.3971,0.3793,0.2236
+Morocco,Tunisia,0.4083,0.3597,0.232
+Morocco,Türkiye,0.3979,0.3779,0.2242
+Morocco,United States,0.3963,0.3807,0.223
+Morocco,Uruguay,0.3923,0.3878,0.22
+Morocco,Uzbekistan,0.4122,0.3529,0.2349
+Morocco,Algeria,0.4059,0.3639,0.2302
+Morocco,Côte d'Ivoire,0.4067,0.3625,0.2308
+Netherlands,New Zealand,0.423,0.334,0.243
+Netherlands,Norway,0.413,0.3515,0.2355
+Netherlands,Panama,0.4192,0.3407,0.2401
+Netherlands,Paraguay,0.4051,0.3653,0.2296
+Netherlands,Portugal,0.3878,0.3923,0.22
+Netherlands,Qatar,0.4146,0.3488,0.2366
+Netherlands,Saudi Arabia,0.4169,0.3447,0.2384
+Netherlands,Scotland,0.4036,0.368,0.2284
+Netherlands,Senegal,0.3971,0.3793,0.2236
+Netherlands,South Africa,0.4122,0.3529,0.2349
+Netherlands,Spain,0.3779,0.3979,0.2242
+Netherlands,Sweden,0.4028,0.3694,0.2278
+Netherlands,Switzerland,0.4004,0.3736,0.226
+Netherlands,Tunisia,0.4114,0.3543,0.2343
+Netherlands,Türkiye,0.4012,0.3722,0.2266
+Netherlands,United States,0.3996,0.375,0.2254
+Netherlands,Uruguay,0.3955,0.3821,0.2224
+Netherlands,Uzbekistan,0.4153,0.3474,0.2372
+Netherlands,Algeria,0.4091,0.3584,0.2325
+Netherlands,Côte d'Ivoire,0.4099,0.357,0.2331
+New Zealand,Norway,0.3722,0.4012,0.2266
+New Zealand,Panama,0.3835,0.3947,0.2218
+New Zealand,Paraguay,0.3584,0.4091,0.2325
+New Zealand,Portugal,0.3314,0.4245,0.2441
+New Zealand,Qatar,0.375,0.3996,0.2254
+New Zealand,Saudi Arabia,0.3793,0.3971,0.2236
+New Zealand,Scotland,0.3556,0.4107,0.2337
+New Zealand,Senegal,0.3447,0.4169,0.2384
+New Zealand,South Africa,0.3708,0.402,0.2272
+New Zealand,Spain,0.3222,0.4297,0.2481
+New Zealand,Sweden,0.3543,0.4114,0.2343
+New Zealand,Switzerland,0.3502,0.4138,0.2361
+New Zealand,Tunisia,0.3694,0.4028,0.2278
+New Zealand,Türkiye,0.3515,0.413,0.2355
+New Zealand,United States,0.3488,0.4146,0.2366
+New Zealand,Uruguay,0.3421,0.4184,0.2395
+New Zealand,Uzbekistan,0.3764,0.3987,0.2248
+New Zealand,Algeria,0.3653,0.4051,0.2296
+New Zealand,Côte d'Ivoire,0.3667,0.4044,0.229
+Norway,Panama,0.3971,0.3793,0.2236
+Norway,Paraguay,0.3764,0.3987,0.2248
+Norway,Portugal,0.3488,0.4146,0.2366
+Norway,Qatar,0.3923,0.3878,0.22
+Norway,Saudi Arabia,0.3947,0.3835,0.2218
+Norway,Scotland,0.3736,0.4004,0.226
+Norway,Senegal,0.3625,0.4067,0.2308
+Norway,South Africa,0.3892,0.3914,0.2194
+Norway,Spain,0.3394,0.4199,0.2407
+Norway,Sweden,0.3722,0.4012,0.2266
+Norway,Switzerland,0.368,0.4036,0.2284
+Norway,Tunisia,0.3878,0.3923,0.22
+Norway,Türkiye,0.3694,0.4028,0.2278
+Norway,United States,0.3667,0.4044,0.229
+Norway,Uruguay,0.3597,0.4083,0.232
+Norway,Uzbekistan,0.3931,0.3863,0.2206
+Norway,Algeria,0.3835,0.3947,0.2218
+Norway,Côte d'Ivoire,0.3849,0.3939,0.2212
+Panama,Paraguay,0.3653,0.4051,0.2296
+Panama,Portugal,0.338,0.4207,0.2413
+Panama,Qatar,0.3821,0.3955,0.2224
+Panama,Saudi Arabia,0.3863,0.3931,0.2206
+Panama,Scotland,0.3625,0.4067,0.2308
+Panama,Senegal,0.3515,0.413,0.2355
+Panama,South Africa,0.3779,0.3979,0.2242
+Panama,Spain,0.3288,0.426,0.2453
+Panama,Sweden,0.3611,0.4075,0.2314
+Panama,Switzerland,0.357,0.4099,0.2331
+Panama,Tunisia,0.3764,0.3987,0.2248
+Panama,Türkiye,0.3584,0.4091,0.2325
+Panama,United States,0.3556,0.4107,0.2337
+Panama,Uruguay,0.3488,0.4146,0.2366
+Panama,Uzbekistan,0.3835,0.3947,0.2218
+Panama,Algeria,0.3722,0.4012,0.2266
+Panama,Côte d'Ivoire,0.3736,0.4004,0.226
+Paraguay,Portugal,0.3625,0.4067,0.2308
+Paraguay,Qatar,0.4004,0.3736,0.226
+Paraguay,Saudi Arabia,0.4028,0.3694,0.2278
+Paraguay,Scotland,0.3878,0.3923,0.22
+Paraguay,Senegal,0.3764,0.3987,0.2248
+Paraguay,South Africa,0.3979,0.3779,0.2242
+Paraguay,Spain,0.3529,0.4122,0.2349
+Paraguay,Sweden,0.3863,0.3931,0.2206
+Paraguay,Switzerland,0.3821,0.3955,0.2224
+Paraguay,Tunisia,0.3971,0.3793,0.2236
+Paraguay,Türkiye,0.3835,0.3947,0.2218
+Paraguay,United States,0.3807,0.3963,0.223
+Paraguay,Uruguay,0.3736,0.4004,0.226
+Paraguay,Uzbekistan,0.4012,0.3722,0.2266
+Paraguay,Algeria,0.3947,0.3835,0.2218
+Paraguay,Côte d'Ivoire,0.3955,0.3821,0.2224
+Portugal,Qatar,0.4161,0.3461,0.2378
+Portugal,Saudi Arabia,0.4184,0.3421,0.2395
+Portugal,Scotland,0.4051,0.3653,0.2296
+Portugal,Senegal,0.3987,0.3764,0.2248
+Portugal,South Africa,0.4138,0.3502,0.2361
+Portugal,Spain,0.3807,0.3963,0.223
+Portugal,Sweden,0.4044,0.3667,0.229
+Portugal,Switzerland,0.402,0.3708,0.2272
+Portugal,Tunisia,0.413,0.3515,0.2355
+Portugal,Türkiye,0.4028,0.3694,0.2278
+Portugal,United States,0.4012,0.3722,0.2266
+Portugal,Uruguay,0.3971,0.3793,0.2236
+Portugal,Uzbekistan,0.4169,0.3447,0.2384
+Portugal,Algeria,0.4107,0.3556,0.2337
+Portugal,Côte d'Ivoire,0.4114,0.3543,0.2343
+Qatar,Saudi Arabia,0.3931,0.3863,0.2206
+Qatar,Scotland,0.3708,0.402,0.2272
+Qatar,Senegal,0.3597,0.4083,0.232
+Qatar,South Africa,0.3863,0.3931,0.2206
+Qatar,Spain,0.3367,0.4214,0.2418
+Qatar,Sweden,0.3694,0.4028,0.2278
+Qatar,Switzerland,0.3653,0.4051,0.2296
+Qatar,Tunisia,0.3849,0.3939,0.2212
+Qatar,Türkiye,0.3667,0.4044,0.229
+Qatar,United States,0.3639,0.4059,0.2302
+Qatar,Uruguay,0.357,0.4099,0.2331
+Qatar,Uzbekistan,0.3914,0.3892,0.2194
+Qatar,Algeria,0.3807,0.3963,0.223
+Qatar,Côte d'Ivoire,0.3821,0.3955,0.2224
+Saudi Arabia,Scotland,0.3667,0.4044,0.229
+Saudi Arabia,Senegal,0.3556,0.4107,0.2337
+Saudi Arabia,South Africa,0.3821,0.3955,0.2224
+Saudi Arabia,Spain,0.3327,0.4237,0.2436
+Saudi Arabia,Sweden,0.3653,0.4051,0.2296
+Saudi Arabia,Switzerland,0.3611,0.4075,0.2314
+Saudi Arabia,Tunisia,0.3807,0.3963,0.223
+Saudi Arabia,Türkiye,0.3625,0.4067,0.2308
+Saudi Arabia,United States,0.3597,0.4083,0.232
+Saudi Arabia,Uruguay,0.3529,0.4122,0.2349
+Saudi Arabia,Uzbekistan,0.3878,0.3923,0.22
+Saudi Arabia,Algeria,0.3764,0.3987,0.2248
+Saudi Arabia,Côte d'Ivoire,0.3779,0.3979,0.2242
+Scotland,Senegal,0.3793,0.3971,0.2236
+Scotland,South Africa,0.3996,0.375,0.2254
+Scotland,Spain,0.3556,0.4107,0.2337
+Scotland,Sweden,0.3892,0.3914,0.2194
+Scotland,Switzerland,0.3849,0.3939,0.2212
+Scotland,Tunisia,0.3987,0.3764,0.2248
+Scotland,Türkiye,0.3863,0.3931,0.2206
+Scotland,United States,0.3835,0.3947,0.2218
+Scotland,Uruguay,0.3764,0.3987,0.2248
+Scotland,Uzbekistan,0.4028,0.3694,0.2278
+Scotland,Algeria,0.3963,0.3807,0.223
+Scotland,Côte d'Ivoire,0.3971,0.3793,0.2236
+Senegal,South Africa,0.4059,0.3639,0.2302
+Senegal,Spain,0.3667,0.4044,0.229
+Senegal,Sweden,0.3963,0.3807,0.223
+Senegal,Switzerland,0.3939,0.3849,0.2212
+Senegal,Tunisia,0.4051,0.3653,0.2296
+Senegal,Türkiye,0.3947,0.3835,0.2218
+Senegal,United States,0.3931,0.3863,0.2206
+Senegal,Uruguay,0.3878,0.3923,0.22
+Senegal,Uzbekistan,0.4091,0.3584,0.2325
+Senegal,Algeria,0.4028,0.3694,0.2278
+Senegal,Côte d'Ivoire,0.4036,0.368,0.2284
+South Africa,Spain,0.3407,0.4192,0.2401
+South Africa,Sweden,0.3736,0.4004,0.226
+South Africa,Switzerland,0.3694,0.4028,0.2278
+South Africa,Tunisia,0.3892,0.3914,0.2194
+South Africa,Türkiye,0.3708,0.402,0.2272
+South Africa,United States,0.368,0.4036,0.2284
+South Africa,Uruguay,0.3611,0.4075,0.2314
+South Africa,Uzbekistan,0.3939,0.3849,0.2212
+South Africa,Algeria,0.3849,0.3939,0.2212
+South Africa,Côte d'Ivoire,0.3863,0.3931,0.2206
+Spain,Sweden,0.4099,0.357,0.2331
+Spain,Switzerland,0.4075,0.3611,0.2314
+Spain,Tunisia,0.4184,0.3421,0.2395
+Spain,Türkiye,0.4083,0.3597,0.232
+Spain,United States,0.4067,0.3625,0.2308
+Spain,Uruguay,0.4028,0.3694,0.2278
+Spain,Uzbekistan,0.4222,0.3354,0.2424
+Spain,Algeria,0.4161,0.3461,0.2378
+Spain,Côte d'Ivoire,0.4169,0.3447,0.2384
+Sweden,Switzerland,0.3863,0.3931,0.2206
+Sweden,Tunisia,0.3996,0.375,0.2254
+Sweden,Türkiye,0.3878,0.3923,0.22
+Sweden,United States,0.3849,0.3939,0.2212
+Sweden,Uruguay,0.3779,0.3979,0.2242
+Sweden,Uzbekistan,0.4036,0.368,0.2284
+Sweden,Algeria,0.3971,0.3793,0.2236
+Sweden,Côte d'Ivoire,0.3979,0.3779,0.2242
+Switzerland,Tunisia,0.402,0.3708,0.2272
+Switzerland,Türkiye,0.3914,0.3892,0.2194
+Switzerland,United States,0.3892,0.3914,0.2194
+Switzerland,Uruguay,0.3821,0.3955,0.2224
+Switzerland,Uzbekistan,0.4059,0.3639,0.2302
+Switzerland,Algeria,0.3996,0.375,0.2254
+Switzerland,Côte d'Ivoire,0.4004,0.3736,0.226
+Tunisia,Türkiye,0.3722,0.4012,0.2266
+Tunisia,United States,0.3694,0.4028,0.2278
+Tunisia,Uruguay,0.3625,0.4067,0.2308
+Tunisia,Uzbekistan,0.3947,0.3835,0.2218
+Tunisia,Algeria,0.3863,0.3931,0.2206
+Tunisia,Côte d'Ivoire,0.3878,0.3923,0.22
+Türkiye,United States,0.3878,0.3923,0.22
+Türkiye,Uruguay,0.3807,0.3963,0.223
+Türkiye,Uzbekistan,0.4051,0.3653,0.2296
+Türkiye,Algeria,0.3987,0.3764,0.2248
+Türkiye,Côte d'Ivoire,0.3996,0.375,0.2254
+United States,Uruguay,0.3835,0.3947,0.2218
+United States,Uzbekistan,0.4067,0.3625,0.2308
+United States,Algeria,0.4004,0.3736,0.226
+United States,Côte d'Ivoire,0.4012,0.3722,0.2266
+Uruguay,Uzbekistan,0.4107,0.3556,0.2337
+Uruguay,Algeria,0.4044,0.3667,0.229
+Uruguay,Côte d'Ivoire,0.4051,0.3653,0.2296
+Uzbekistan,Algeria,0.3793,0.3971,0.2236
+Uzbekistan,Côte d'Ivoire,0.3807,0.3963,0.223
+Algeria,Côte d'Ivoire,0.3914,0.3892,0.2194
