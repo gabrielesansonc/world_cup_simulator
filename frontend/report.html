@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="theme-yellow">
+<html lang="es" class="theme-yellow">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The AI Consensus of the World Cup — 2026 Forecast</title>
+<title>El consenso de las IA del Mundial — Pronóstico 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Gabarito:wght@400..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -362,7 +362,7 @@ const I18N = {
   ],
   S:{
    kicker:"Mundial FIFA 2026 · Pronóstico de consenso",
-   h1:'El <span class="hl">consenso de las IA</span> del Mundial',
+   h1:'El <span class="hl">Consenso De Las IA</span> Del Mundial',
    lead:'Un pronóstico Monte-Carlo del Mundial 2026 construido a partir del consenso equiponderado de cinco modelos de IA punteros, y sometido a <b id="hSims"></b> torneos simulados.',
    nav_odds:'Título', nav_stages:'Rondas', nav_groups:'Grupos', nav_bracket:'Cuadro',
    nav_bias:'Sesgos', nav_conf:'Convicción', nav_find:'Curiosidades', nav_expl:'Explorador',
@@ -391,9 +391,9 @@ const I18N = {
 };
 
 // ── language state ───────────────────────────────────────────────────────────
+// Spanish is the default; a previously saved user choice (either language) wins.
 let LANG = localStorage.getItem('wc_lang');
-if(LANG!=='en' && LANG!=='es')
-  LANG = (navigator.language||'').toLowerCase().startsWith('es') ? 'es' : 'en';
+if(LANG!=='en' && LANG!=='es') LANG = 'es';
 
 const R = () => I18N[LANG];
 function fmtJourney(j){
